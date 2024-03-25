@@ -19,6 +19,7 @@ public class ViewFactory {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("SwimInGreece");
+        stage.resizableProperty().set(false);
         stage.show();
     }
 }
