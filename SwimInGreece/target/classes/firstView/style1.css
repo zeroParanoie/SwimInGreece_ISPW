@@ -1,0 +1,50 @@
+.textRect {
+    -fx-arc-width: 50;
+    -fx-arc-height: 50;
+}
+
+.navbar {
+    -fx-background-color: dimgray;
+    -fx-spacing: 20;
+}
+
+.navbar Button:hover {
+    -fx-cursor: hand;
+}
+
+.navbar Button {
+    -fx-background-color: linear-gradient(wheat, lightgray);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-font-size: 25;
+    -fx-font-family: sans-serif;
+}
+
+.navbar FontAwesomeIconView {
+    -fx-fill: white;
+}
+
+.logo_container {
+    -fx-background-color: white;
+    -fx-background-radius: 50;
+    -fx-spacing: 20;
+}
+
+.logo_container Button {
+    -fx-background-color: linear-gradient(wheat, lightgray);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-font-size: 25;
+}
+
+.logo_container TextField {
+    -fx-border-radius: 20;
+    -fx-background-color: white;
+    -fx-border-color: #5FBCDE;
+}
+
+.hButton {
+
+}

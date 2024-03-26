@@ -2,6 +2,7 @@ package misc;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class ViewFactory {
@@ -17,6 +18,7 @@ public class ViewFactory {
         }
 
         Stage stage = new Stage();
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/misc/icon.jpg"))));
         stage.setScene(scene);
         stage.setTitle("SwimInGreece");
         stage.resizableProperty().set(false);
