@@ -4,4 +4,5 @@ module SwimInGreece {
     requires javafx.graphics;
 
     opens misc;
+    opens controllers.graphical;
 }
