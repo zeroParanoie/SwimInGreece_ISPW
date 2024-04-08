@@ -7,6 +7,7 @@ import java.util.List;
 public class Tour {
     private String startDate;
     private String endDate;
+    private String name;
     private List<Swim> allSwims = new ArrayList<>();
 
     public Tour(String startDate, String endDate) {
@@ -26,6 +27,10 @@ public class Tour {
         return allSwims;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
@@ -36,5 +41,9 @@ public class Tour {
 
     public void addSwim(Swim swim) {
         this.allSwims.add(swim);
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

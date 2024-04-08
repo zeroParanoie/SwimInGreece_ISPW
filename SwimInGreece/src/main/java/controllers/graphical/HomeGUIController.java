@@ -15,6 +15,9 @@ import java.util.ResourceBundle;
 
 public class HomeGUIController implements Initializable {
     @FXML
+    public Button sponsorBtn;
+
+    @FXML
     private AnchorPane body;
 
     @FXML

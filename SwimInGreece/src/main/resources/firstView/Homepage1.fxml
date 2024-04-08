@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.graphical.HomeGUIController">
+<BorderPane maxHeight="500.0" prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.graphical.HomeGUIController">
    <center>
-      <AnchorPane fx:id="body" prefHeight="200.0" prefWidth="200.0" stylesheets="@style1.css" BorderPane.alignment="CENTER">
-         <ImageView fitHeight="651.0" fitWidth="1000.0" layoutX="357.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane fx:id="body" prefHeight="800.0" prefWidth="1500.0" stylesheets="@style1.css" BorderPane.alignment="CENTER">
+         <ImageView fitHeight="800.0" fitWidth="1500.0" layoutX="357.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <effect>
                <BoxBlur />
             </effect>
@@ -22,12 +26,17 @@
          <ImageView fitHeight="260.0" fitWidth="325.0" layoutX="89.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../misc/textHomepage.png" />
          </ImageView>
-         <Label fx:id="errorLabel" layoutX="742.0" layoutY="6.0" text="You need to login to perform this action!" textFill="RED" />
+         <Label fx:id="errorLabel" layoutX="1021.0" layoutY="6.0" text="You need to login to perform this action!" textFill="RED" />
+         <Button fx:id="becomeGuideBtn" layoutX="69.0" layoutY="474.0" minWidth="200.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="365.0" style="-fx-background-color: linear-gradient(wheat, lightgray); -fx-background-radius: 30; -fx-text-fill: white; -fx-font-size: 25; -fx-cursor: hand;" text="Become a tour guide">
+            <graphic>
+               <FontAwesomeIconView fill="WHITE" glyphName="USER" />
+            </graphic>
+         </Button>
       </AnchorPane>
    </center>
    <top>
       <HBox fx:id="navbar" prefHeight="75.0" prefWidth="200.0" styleClass="navbar" stylesheets="@style1.css" BorderPane.alignment="CENTER">
-         <Button fx:id="homeBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(#5FCBDE, #5FCBBE);" styleClass="hButton" stylesheets="@style1.css" text="Home">
+         <Button fx:id="homeBtn" minWidth="200.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(#5FCBDE, #5FCBBE);" styleClass="hButton" stylesheets="@style1.css" text="Home">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
@@ -37,8 +46,11 @@
             <HBox.margin>
                <Insets left="20.0" top="10.0" />
             </HBox.margin>
+            <padding>
+               <Insets right="1.0" top="1.0" />
+            </padding>
          </Button>
-         <Button fx:id="loginBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Login">
+         <Button fx:id="loginBtn" minWidth="200.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="200.0" text="Login">
             <graphic>
                <FontAwesomeIconView glyphName="USER" />
             </graphic>
@@ -46,17 +58,28 @@
                <Insets top="10.0" />
             </HBox.margin>
          </Button>
-         <Button fx:id="bookBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Book a trip">
+         <Button fx:id="bookBtn" minWidth="200.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="200.0" text="Book trips">
             <graphic>
                <FontAwesomeIconView glyphName="ANCHOR" />
             </graphic>
             <HBox.margin>
                <Insets top="10.0" />
             </HBox.margin>
+            <padding>
+               <Insets right="1.0" top="1.0" />
+            </padding>
          </Button>
-         <ImageView fitHeight="70.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
+         <Button fx:id="sponsorBtn" alignment="TOP_CENTER" minWidth="300.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="300.0" text="Sponsor your trip">
             <HBox.margin>
-               <Insets top="15.0" />
+               <Insets top="10.0" />
+            </HBox.margin>
+            <graphic>
+               <FontAwesomeIconView glyphName="CERTIFICATE" />
+            </graphic>
+         </Button>
+         <ImageView fitHeight="23.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
+            <HBox.margin>
+               <Insets left="30.0" top="25.0" />
             </HBox.margin>
             <Image url="@../misc/logo.png" />
          </ImageView>
