@@ -55,6 +55,7 @@ public class HomeGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
+        sponsorBtn.setVisible(false);
 
         loginBtn.setOnAction(actionEvent -> onLogin());
         bookBtn.setOnAction(actionEvent -> onBook());
