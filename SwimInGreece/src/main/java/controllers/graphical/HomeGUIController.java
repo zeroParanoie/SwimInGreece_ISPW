@@ -18,6 +18,9 @@ public class HomeGUIController implements Initializable {
     public Button sponsorBtn;
 
     @FXML
+    public Button becomeGuideBtn;
+
+    @FXML
     private AnchorPane body;
 
     @FXML
@@ -43,10 +46,17 @@ public class HomeGUIController implements Initializable {
         Model.getInstance().getViewFactory().showLogin();
     }
 
+    private void onBook() {
+        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showBooking();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
 
         loginBtn.setOnAction(actionEvent -> onLogin());
+        bookBtn.setOnAction(actionEvent -> onBook());
     }
 }

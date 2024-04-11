@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="640.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <effect>
+                    <BoxBlur />
+                </effect>
+                <Image url="@../misc/GreeceBG.jpg" />
+            </ImageView>
+            <VBox layoutX="75.0" layoutY="20.0" prefHeight="600.0" prefWidth="850.0" styleClass="logo_container" stylesheets="@style1.css" AnchorPane.bottomAnchor="12.0" AnchorPane.topAnchor="12.0">
+                <TextField fx:id="searchField" prefHeight="50.0" promptText="Search for trips here...">
+                    <VBox.margin>
+                        <Insets left="30.0" right="30.0" top="15.0" />
+                    </VBox.margin>
+                </TextField>
+                <HBox fx:id="finalDatePicker" prefHeight="28.0" prefWidth="850.0">
+                    <DatePicker fx:id="startDatePicker" promptText="Start date...">
+                        <HBox.margin>
+                            <Insets left="200.0" />
+                        </HBox.margin>
+                    </DatePicker>
+                    <DatePicker promptText="Final date...">
+                        <HBox.margin>
+                            <Insets left="20.0" />
+                        </HBox.margin>
+                    </DatePicker>
+                </HBox>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the maximum trip length">
+                    <VBox.margin>
+                        <Insets left="305.0" />
+                    </VBox.margin>
+                </Text>
+                <TextField fx:id="maxLengthField" promptText="Insert here...">
+                    <VBox.margin>
+                        <Insets left="300.0" right="330.0" top="-10.0" />
+                    </VBox.margin>
+                </TextField>
+                <TableView fx:id="tableView" prefHeight="297.0" prefWidth="810.0">
+                    <columns>
+                        <TableColumn fx:id="nameCol" prefWidth="319.0" text="Name" />
+                        <TableColumn fx:id="orgCol" prefWidth="235.0" text="Organiser" />
+                        <TableColumn fx:id="placeCol" prefWidth="159.0" text="Place" />
+                        <TableColumn fx:id="lengthCol" prefWidth="96.0" text="Length" />
+                    </columns>
+                    <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                    </VBox.margin>
+                </TableView>
+                <Button fx:id="submitBtn" mnemonicParsing="false" style="-fx-cursor: hand;" text="Book">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets left="360.0" />
+                    </VBox.margin>
+                    <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" />
+                    </graphic>
+                </Button>
+            <Label fx:id="errorLabel" text="You need to login to perform this action!" textFill="RED">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="295.0" />
+               </VBox.margin>
+            </Label>
+            </VBox>
+        </AnchorPane>
+    </center>
+    <top>
+        <HBox fx:id="navbar" prefHeight="75.0" prefWidth="200.0" style="-fx-spacing: 20;" styleClass="navbar" stylesheets="@style1.css" BorderPane.alignment="CENTER">
+            <Button fx:id="homeBtn" mnemonicParsing="false" text="Home">
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <HBox.margin>
+                    <Insets left="20.0" top="10.0" />
+                </HBox.margin>
+                <graphic>
+                    <FontAwesomeIconView glyphName="HOME" />
+                </graphic>
+            </Button>
+            <Button fx:id="loginBtn" mnemonicParsing="false" text="Login">
+                <HBox.margin>
+                    <Insets top="10.0" />
+                </HBox.margin>
+                <graphic>
+                    <FontAwesomeIconView glyphName="USER" />
+                </graphic>
+            </Button>
+            <Button fx:id="bookBtn" mnemonicParsing="false" style="-fx-background-color: linear-gradient(#5FCBDE, #5FCBBE);" text="Book a trip">
+                <HBox.margin>
+                    <Insets top="10.0" />
+                </HBox.margin>
+                <graphic>
+                    <FontAwesomeIconView />
+                </graphic>
+            </Button>
+            <ImageView fitHeight="70.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
+                <HBox.margin>
+                    <Insets left="150.0" top="15.0" />
+                </HBox.margin>
+                <Image url="@../misc/logo.png" />
+            </ImageView>
+        </HBox>
+    </top>
+</BorderPane>
