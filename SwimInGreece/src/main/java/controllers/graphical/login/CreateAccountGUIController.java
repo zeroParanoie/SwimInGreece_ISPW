@@ -1,4 +1,4 @@
-package controllers.graphical;
+package controllers.graphical.login;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

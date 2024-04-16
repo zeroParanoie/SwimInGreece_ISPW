@@ -1,5 +1,8 @@
-package controllers.graphical;
+package controllers.graphical.login;
 
+import controllers.application.LoginController;
+import engClasses.beans.LoggedUserBean;
+import engClasses.beans.UserBean;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,11 +12,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import misc.Model;
+import misc.Session;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginGUIController implements Initializable {
+    private Session session;
+
     @FXML
     private Button bookBtn;
 
@@ -44,6 +50,8 @@ public class LoginGUIController implements Initializable {
     @FXML
     private CheckBox orgCheckBox;
 
+    public LoginGUIController() {}
+
     private void onHome() {
         Stage stage = (Stage) submitBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
@@ -56,11 +64,31 @@ public class LoginGUIController implements Initializable {
         Model.getInstance().getViewFactory().showCreateAccount();
     }
 
+    private void onLogin() {
+        LoggedUserBean loggedUserBean;
+        boolean isOrganiser = orgCheckBox.isSelected();
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+
+            UserBean userBean = new UserBean();
+            userBean.setUsername(username);
+            userBean.setOrganiser(isOrganiser);
+            userBean.setPassword(password);
+            LoginController loginController = new LoginController();
+            loggedUserBean = loginController.loginMethod(userBean);
+
+            Stage stage = (Stage) submitBtn.getScene().getWindow();
+            Model.getInstance().getViewFactory().closeStage(stage);
+            Model.getInstance().getViewFactory().showHomepage();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
 
         homeBtn.setOnAction(actionEvent -> onHome());
         registerBtn.setOnAction(actionEvent -> onCreateAccount());
+        submitBtn.setOnAction(actionEvent -> onLogin());
     }
 }

@@ -1,8 +1,8 @@
 package misc;
 
-import controllers.graphical.CreateAccountGUIController;
+import controllers.graphical.login.CreateAccountGUIController;
 import controllers.graphical.HomeGUIController;
-import controllers.graphical.LoginGUIController;
+import controllers.graphical.login.LoginGUIController;
 import controllers.graphical.SearchTripsGUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
