@@ -23,6 +23,23 @@ public class LoginController {
                 loggedUser.setFullname(swimmer.getFullName());
             }
         return loggedUser;
+    }
 
+    public LoggedUserBean signInMethod(UserBean loggingUser) {
+        String username = loggingUser.getUsername();
+        String fullname = loggingUser.getFullname();
+        String password = loggingUser.getPassword();
+
+        LoggedUserBean loggedUserBean = new LoggedUserBean();
+        if(loggingUser.isOrganiser()) {
+            Organiser organiser = new Organiser(username, fullname);
+            OrganiserDAO.addOrganiser(organiser, password);
+        } else {
+            Swimmer swimmer = new Swimmer(username, fullname);
+            SwimmerDAO.addSwimmer(swimmer, password);
+        }
+
+        loggedUserBean.setFullname(fullname);
+        return loggedUserBean;
     }
 }

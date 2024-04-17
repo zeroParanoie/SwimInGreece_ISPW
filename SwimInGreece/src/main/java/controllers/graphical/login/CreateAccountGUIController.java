@@ -1,5 +1,8 @@
 package controllers.graphical.login;
 
+import controllers.application.LoginController;
+import engClasses.beans.LoggedUserBean;
+import engClasses.beans.UserBean;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import misc.Model;
+import model.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -60,11 +64,31 @@ public class CreateAccountGUIController implements Initializable {
         Model.getInstance().getViewFactory().showHomepage();
     }
 
+    private void onSignIn() {
+        LoggedUserBean loggedUserBean;
+        boolean isOrganiser = orgCheckBox.isSelected();
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        String fullname = fullnameField.getText();
+        UserBean userBean = new UserBean();
+        userBean.setOrganiser(isOrganiser);
+        userBean.setPassword(password);
+        userBean.setUsername(username);
+        userBean.setFullname(fullname);
+        LoginController loginController = new LoginController();
+        loggedUserBean = loginController.signInMethod(userBean);
+
+        Stage stage = (Stage) usernameField.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showHomepage();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
 
         homeBtn.setOnAction(actionEvent -> onHome());
         loginBtn.setOnAction(actionEvent -> onLogin());
+        submitBtn.setOnAction(actionEvent -> onSignIn());
     }
 }

@@ -6,7 +6,6 @@ import java.util.List;
 
 public class LoggedUserBean {
     private String usr;
-
     private List<Tour> bookedTours;
     private String fullname;
 

@@ -36,5 +36,23 @@ public class SwimmerDAO {
         return new Swimmer(usr, fullName);
     }
 
+    public static void addSwimmer(Swimmer swimmer, String pw) {
+        Statement stmt = null;
+        Connection conn = null;
 
+        try {
+            conn = Connect.getInstance().getConnection();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+            ResultSet rs = LoginQuery.swimmerLogin(stmt, swimmer.getUsername());
+            if(rs.first()) {
+                //username already in use
+            }
+
+            LoginQuery.swimmerSignIn(stmt, swimmer, pw);
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
