@@ -18,7 +18,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginGUIController implements Initializable {
-    private Session session;
 
     @FXML
     private Button bookBtn;
@@ -66,21 +65,28 @@ public class LoginGUIController implements Initializable {
 
     private void onLogin() {
         LoggedUserBean loggedUserBean;
+        Session session = new Session();
         boolean isOrganiser = orgCheckBox.isSelected();
         String username = usernameField.getText();
         String password = passwordField.getText();
 
 
-            UserBean userBean = new UserBean();
-            userBean.setUsername(username);
-            userBean.setOrganiser(isOrganiser);
-            userBean.setPassword(password);
-            LoginController loginController = new LoginController();
-            loggedUserBean = loginController.loginMethod(userBean);
+        UserBean userBean = new UserBean();
+        userBean.setUsername(username);
+        userBean.setOrganiser(isOrganiser);
+        userBean.setPassword(password);
+        LoginController loginController = new LoginController();
+        loggedUserBean = loginController.loginMethod(userBean);
+        session.setLoggedUserBean(loggedUserBean);
 
-            Stage stage = (Stage) submitBtn.getScene().getWindow();
-            Model.getInstance().getViewFactory().closeStage(stage);
-            Model.getInstance().getViewFactory().showHomepage();
+        Stage stage = (Stage) submitBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+
+        if(isOrganiser) {
+            Model.getInstance().getViewFactory().showOrganiserHomePage(session);
+        } else {
+            Model.getInstance().getViewFactory().showSwimmerHomepage(session);
+        }
     }
 
     @Override

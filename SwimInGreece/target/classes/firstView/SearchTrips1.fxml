@@ -54,7 +54,7 @@
                         <Insets left="300.0" right="330.0" top="-10.0" />
                     </VBox.margin>
                 </TextField>
-                <TableView fx:id="tableView" prefHeight="297.0" prefWidth="810.0">
+                <TableView fx:id="tableView" prefHeight="297.0" prefWidth="810.0" style="-fx-background-radius: 3';">
                     <columns>
                         <TableColumn fx:id="nameCol" prefWidth="319.0" text="Name" />
                         <TableColumn fx:id="orgCol" prefWidth="235.0" text="Organiser" />
@@ -65,17 +65,30 @@
                         <Insets left="20.0" right="20.0" />
                     </VBox.margin>
                 </TableView>
-                <Button fx:id="submitBtn" mnemonicParsing="false" style="-fx-cursor: hand;" text="Book">
-                    <opaqueInsets>
-                        <Insets />
-                    </opaqueInsets>
-                    <VBox.margin>
-                        <Insets left="360.0" />
-                    </VBox.margin>
-                    <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" />
-                    </graphic>
-                </Button>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <Button fx:id="submitBtn" mnemonicParsing="false" style="-fx-cursor: hand;" text="Book">
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <graphic>
+                            <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" />
+                        </graphic>
+                        <HBox.margin>
+                            <Insets left="270.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="readReviewsBtn" layoutX="280.0" layoutY="10.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Read reviews">
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <HBox.margin>
+                            <Insets left="20.0" />
+                        </HBox.margin>
+                        <graphic>
+                            <FontAwesomeIconView fill="WHITE" glyphName="AT" />
+                        </graphic>
+                    </Button>
+                </HBox>
             <Label fx:id="errorLabel" text="You need to login to perform this action!" textFill="RED">
                <VBox.margin>
                   <Insets bottom="10.0" left="295.0" />

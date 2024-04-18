@@ -1,5 +1,7 @@
 package misc;
 
+import controllers.graphical.OrganiserHomepageGUIController;
+import controllers.graphical.SwimmerHomepageGUIController;
 import controllers.graphical.login.CreateAccountGUIController;
 import controllers.graphical.HomeGUIController;
 import controllers.graphical.login.LoginGUIController;
@@ -69,6 +71,42 @@ public class ViewFactory {
     public void showBooking() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SearchTrips1.fxml"));
         loader.setController(new SearchTripsGUIController());
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/misc/icon.jpg"))));
+        stage.setScene(scene);
+        stage.setTitle("SwimInGreece");
+        stage.resizableProperty().set(false);
+        stage.show();
+    }
+
+    public void showSwimmerHomepage(Session session) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SwimmerHomepage1.fxml"));
+        loader.setController(new SwimmerHomepageGUIController(session));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/misc/icon.jpg"))));
+        stage.setScene(scene);
+        stage.setTitle("SwimInGreece");
+        stage.resizableProperty().set(false);
+        stage.show();
+    }
+
+    public void showOrganiserHomePage(Session session) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/OrganiserHomepage1.fxml"));
+        loader.setController(new OrganiserHomepageGUIController(session));
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
