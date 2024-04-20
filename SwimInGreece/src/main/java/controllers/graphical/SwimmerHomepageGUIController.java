@@ -44,6 +44,7 @@ public class SwimmerHomepageGUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        errorLabel.setVisible(false);
         welcomeLabel.setText("Welcome back, " + this.session.getLoggedUserBean().getFullname());
     }
 }

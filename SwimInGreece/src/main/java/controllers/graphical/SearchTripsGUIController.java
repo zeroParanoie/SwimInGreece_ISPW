@@ -1,17 +1,21 @@
 package controllers.graphical;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import misc.Model;
+import misc.Session;
+import model.Tour;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SearchTripsGUIController implements Initializable {
-
+    private Session session;
     @FXML
     private Button bookBtn;
 
@@ -22,7 +26,7 @@ public class SearchTripsGUIController implements Initializable {
     private Button homeBtn;
 
     @FXML
-    private TableColumn<?, ?> lengthCol;
+    private TableColumn<Tour, Float> lengthCol;
 
     @FXML
     private Button loginBtn;
@@ -31,16 +35,16 @@ public class SearchTripsGUIController implements Initializable {
     private TextField maxLengthField;
 
     @FXML
-    private TableColumn<?, ?> nameCol;
+    private TableColumn<Tour, String> nameCol;
 
     @FXML
     private HBox navbar;
 
     @FXML
-    private TableColumn<?, ?> orgCol;
+    private TableColumn<Tour, String> orgCol;
 
     @FXML
-    private TableColumn<?, ?> placeCol;
+    private TableColumn<Tour, String> placeCol;
 
     @FXML
     private TextField searchField;
@@ -52,10 +56,16 @@ public class SearchTripsGUIController implements Initializable {
     private Button submitBtn;
 
     @FXML
-    private TableView<?> tableView;
+    private TableView<Tour> tableView;
 
     @FXML
     private Label errorLabel;
+
+    ObservableList<Tour> tourObservableList = FXCollections.observableArrayList();
+
+    public SearchTripsGUIController(Session session) {
+        this.session = session;
+    }
 
     private void onLogin() {
         Stage stage = (Stage) submitBtn.getScene().getWindow();
@@ -69,10 +79,20 @@ public class SearchTripsGUIController implements Initializable {
         Model.getInstance().getViewFactory().showHomepage();
     }
 
+    private void onBook() {
+        if(session.getLoggedUserBean() == null) {
+            errorLabel.setText("you need to login to perform that action!");
+            errorLabel.setVisible(true);
+        } else {
+            //booking logic
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
         homeBtn.setOnAction(actionEvent -> onHome());
         loginBtn.setOnAction(actionEvent -> onLogin());
+        submitBtn.setOnAction(actionEvent -> onBook());
     }
 }

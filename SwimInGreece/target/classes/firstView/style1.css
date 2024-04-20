@@ -94,3 +94,9 @@
     -fx-background-color: -fx-light-grey-color;
 }
 
+.logo_container choice-box {
+    -fx-text-fill: #5FBCDE;
+    -fx-background-color: white;
+    -fx-border-color: #5FBCDE;
+}
+

@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import misc.Model;
 import misc.Session;
 import model.Organiser;
 
@@ -39,9 +41,17 @@ public class OrganiserHomepageGUIController implements Initializable {
         this.session = session;
     }
 
+    private void onSponsor() {
+        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showSponsor(session);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
         welcomeLabel.setText("Welcome back, " + session.getLoggedUserBean().getFullname());
+
+        sponsorBtn.setOnAction(actionEvent -> onSponsor());
     }
 }

@@ -5,45 +5,58 @@ import java.util.Date;
 import java.util.List;
 
 public class Tour {
-    private String startDate;
-    private String endDate;
     private String name;
-    private List<Swim> allSwims = new ArrayList<>();
+    private Organiser organiser;
+    private String place;
+    private float length;
 
-    public Tour(String startDate, String endDate) {
-        this.startDate = startDate;
-        this.endDate = endDate;
+    private List<Swim> swims;
+
+    public Tour(String name, Organiser organiser, String place, float length, List<Swim> swims) {
+        this.name = name;
+        this.organiser = organiser;
+        this.place = place;
+        this.length = length;
+        this.swims = swims;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public void setOrganiser(Organiser organiser) {
+        this.organiser = organiser;
     }
 
-    public List<Swim> getAllSwims() {
-        return allSwims;
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public void setLength(float length) {
+        this.length = length;
+    }
+
+    public void setSwims(List<Swim> swims) {
+        this.swims = swims;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public Organiser getOrganiser() {
+        return organiser;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public String getPlace() {
+        return place;
     }
 
-    public void addSwim(Swim swim) {
-        this.allSwims.add(swim);
+    public float getLength() {
+        return length;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public List<Swim> getSwims() {
+        return swims;
     }
 }

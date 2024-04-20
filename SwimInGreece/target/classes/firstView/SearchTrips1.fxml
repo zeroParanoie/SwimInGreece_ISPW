@@ -54,7 +54,7 @@
                         <Insets left="300.0" right="330.0" top="-10.0" />
                     </VBox.margin>
                 </TextField>
-                <TableView fx:id="tableView" prefHeight="297.0" prefWidth="810.0" style="-fx-background-radius: 3';">
+                <TableView fx:id="tableView" prefHeight="297.0" prefWidth="810.0" style="-fx-background-radius: 3">
                     <columns>
                         <TableColumn fx:id="nameCol" prefWidth="319.0" text="Name" />
                         <TableColumn fx:id="orgCol" prefWidth="235.0" text="Organiser" />

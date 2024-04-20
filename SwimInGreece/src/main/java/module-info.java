@@ -7,4 +7,5 @@ module SwimInGreece {
     opens misc;
     opens controllers.graphical;
     opens controllers.graphical.login;
+    opens controllers.graphical.sponsorTrip;
 }

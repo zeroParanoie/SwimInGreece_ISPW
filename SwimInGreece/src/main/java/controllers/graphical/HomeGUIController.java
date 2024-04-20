@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import misc.Model;
+import misc.Session;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,7 +50,7 @@ public class HomeGUIController implements Initializable {
     private void onBook() {
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showBooking();
+        Model.getInstance().getViewFactory().showBooking(new Session());
     }
 
     @Override
