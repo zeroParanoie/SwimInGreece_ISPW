@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import misc.Model;
 import misc.Places;
 import misc.Session;
@@ -66,9 +67,14 @@ public class SponsorTripFormGUIController implements Initializable {
         }
 
         for (int i = 0; i < numberOfSwims; i += 1) {
-            System.out.println("SponsorTripFormGUIController - " + i);
             Model.getInstance().getViewFactory().showAddSwim(session, i + 1);
         }
+    }
+
+    private void onHome() {
+        Stage stage = (Stage) submitBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showOrganiserHomePage(session);
     }
 
     @Override
@@ -80,5 +86,6 @@ public class SponsorTripFormGUIController implements Initializable {
         placeChoiceBox.setItems(placesObservableList);
 
         submitBtn.setOnAction(actionEvent -> onAdd());
+        homeBtn.setOnAction(actionEvent -> onHome());
     }
 }

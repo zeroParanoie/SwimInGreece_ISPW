@@ -1,8 +1,8 @@
 package controllers.graphical.login;
 
 import controllers.application.LoginController;
-import engClasses.beans.LoggedUserBean;
-import engClasses.beans.UserBean;
+import engClasses.beans.login.LoggedUserBean;
+import engClasses.beans.login.UserBean;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

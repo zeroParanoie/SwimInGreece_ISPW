@@ -1,4 +1,4 @@
-package engClasses.beans;
+package engClasses.beans.login;
 
 public class UserBean {
     private String username;

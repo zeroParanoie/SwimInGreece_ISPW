@@ -1,6 +1,6 @@
 package misc;
 
-import engClasses.beans.LoggedUserBean;
+import engClasses.beans.login.LoggedUserBean;
 
 public class Session {
     private LoggedUserBean loggedUserBean;

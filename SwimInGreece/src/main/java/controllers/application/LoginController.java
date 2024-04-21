@@ -2,8 +2,8 @@ package controllers.application;
 
 import engClasses.DAO.OrganiserDAO;
 import engClasses.DAO.SwimmerDAO;
-import engClasses.beans.LoggedUserBean;
-import engClasses.beans.UserBean;
+import engClasses.beans.login.LoggedUserBean;
+import engClasses.beans.login.UserBean;
 import model.Organiser;
 import model.Swimmer;
 

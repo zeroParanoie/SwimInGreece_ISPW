@@ -1,4 +1,4 @@
-package engClasses.beans;
+package engClasses.beans.login;
 
 import model.Tour;
 

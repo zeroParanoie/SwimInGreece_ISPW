@@ -37,6 +37,10 @@ public class ViewFactory {
     public void showLogin() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/Login1.fxml"));
         loader.setController(new LoginGUIController());
+        showStage(loader);
+    }
+
+    private void showStage(FXMLLoader loader) {
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
@@ -55,109 +59,37 @@ public class ViewFactory {
     public void showCreateAccount() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/CreateAccount1.fxml"));
         loader.setController(new CreateAccountGUIController());
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = new Stage();
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/misc/icon.jpg"))));
-        stage.setScene(scene);
-        stage.setTitle("SwimInGreece");
-        stage.resizableProperty().set(false);
-        stage.show();
+        showStage(loader);
     }
 
     public void showBooking(Session session) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SearchTrips1.fxml"));
         loader.setController(new SearchTripsGUIController(session));
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = new Stage();
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/misc/icon.jpg"))));
-        stage.setScene(scene);
-        stage.setTitle("SwimInGreece");
-        stage.resizableProperty().set(false);
-        stage.show();
+        showStage(loader);
     }
 
     public void showSwimmerHomepage(Session session) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SwimmerHomepage1.fxml"));
         loader.setController(new SwimmerHomepageGUIController(session));
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = new Stage();
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/misc/icon.jpg"))));
-        stage.setScene(scene);
-        stage.setTitle("SwimInGreece");
-        stage.resizableProperty().set(false);
-        stage.show();
+        showStage(loader);
     }
 
     public void showOrganiserHomePage(Session session) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/OrganiserHomepage1.fxml"));
         loader.setController(new OrganiserHomepageGUIController(session));
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = new Stage();
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/misc/icon.jpg"))));
-        stage.setScene(scene);
-        stage.setTitle("SwimInGreece");
-        stage.resizableProperty().set(false);
-        stage.show();
+        showStage(loader);
     }
 
     public void showSponsor(Session session) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SponsorTour1.fxml"));
         loader.setController(new SponsorTripFormGUIController(session));
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = new Stage();
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/misc/icon.jpg"))));
-        stage.setScene(scene);
-        stage.setTitle("SwimInGreece");
-        stage.resizableProperty().set(false);
-        stage.show();
+        showStage(loader);
     }
 
     public void showAddSwim(Session session, int swimNum) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/AddSwim1.fxml"));
         loader.setController(new AddSwimGUIController(session, swimNum));
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = new Stage();
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/misc/icon.jpg"))));
-        stage.setScene(scene);
-        stage.setTitle("SwimInGreece");
-        stage.resizableProperty().set(false);
-        stage.show();
+        showStage(loader);
     }
 
     public void closeStage(Stage stage) {
