@@ -3,7 +3,11 @@ SwimInGreece is the project for the Software Engineering course in Tor Vergata.
 # To-do
 - login use case; DONE
 - implement logic from other use cases (beans, DAOs etc.);
-      - careful: this node is not expanded, but will be expanded later
+      - sponsor tour - ONGOING - level hard
+      - read reviews - level medium
+      - write reviews - level easy
+      - book tour - level medium
+      - special use case - need to think about this later, but should be easy
 - create second view;
 - test cases;
 - design level diagram;
