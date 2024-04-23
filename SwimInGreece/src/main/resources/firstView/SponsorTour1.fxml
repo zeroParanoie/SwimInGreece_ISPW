@@ -25,10 +25,23 @@
                 </effect>
                 <Image url="@../misc/GreeceBG.jpg" />
             </ImageView>
-            <VBox layoutX="380.0" layoutY="280.0" prefHeight="241.0" prefWidth="521.0" style="-fx-background-color: WHITE; -fx-background-radius: 50;" styleClass="logo_container" stylesheets="@style1.css">
+            <VBox layoutX="380.0" layoutY="200.0" prefHeight="316.0" prefWidth="521.0" style="-fx-background-color: WHITE; -fx-background-radius: 50;" styleClass="logo_container" stylesheets="@style1.css">
+            <Label fx:id="TourNameLabel" text="Tour name">
+               <VBox.margin>
+                  <Insets left="100.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="TourNameField">
+               <VBox.margin>
+                  <Insets left="100.0" right="100.0" top="-15.0" />
+               </VBox.margin>
+            </TextField>
                 <Label fx:id="swimsLabel" text="Number of total swims for the tour">
                     <VBox.margin>
-                        <Insets left="100.0" top="20.0" />
+                        <Insets left="100.0" />
                     </VBox.margin>
                     <font>
                         <Font size="14.0" />
@@ -60,6 +73,11 @@
                         <Insets left="90.0" top="10.0" />
                     </VBox.margin>
                 </Button>
+            <Label fx:id="errorLabel" text="error" textFill="RED">
+               <VBox.margin>
+                  <Insets left="230.0" />
+               </VBox.margin>
+            </Label>
             </VBox>
         </AnchorPane>
     </center>

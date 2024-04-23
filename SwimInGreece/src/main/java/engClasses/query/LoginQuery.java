@@ -11,25 +11,25 @@ public class LoginQuery {
 
     public static ResultSet swimmerLogin(Statement stmt, String usr, String pw) throws SQLException {
         String sql;
-        sql = "SELECT * FROM swimmers WHERE Username =  '" + usr + "' AND Password = '" + pw + "';";
+        sql = "SELECT * FROM Swimmers WHERE Username =  '" + usr + "' AND Password = '" + pw + "';";
         return stmt.executeQuery(sql);
     }
 
     public static ResultSet swimmerLogin(Statement stmt, String usr) throws SQLException {
         String sql;
-        sql = "SELECT * FROM swimmers WHERE Username =  '" + usr + "';";
+        sql = "SELECT * FROM Swimmers WHERE Username =  '" + usr + "';";
         return stmt.executeQuery(sql);
     }
 
     public static ResultSet orgLogin(Statement stmt, String usr, String pw) throws SQLException {
         String sql;
-        sql = "SELECT * FROM organisers WHERE Username =  '" + usr + "' AND Password = '" + pw + "';";
+        sql = "SELECT * FROM Organisers WHERE Username =  '" + usr + "' AND Password = '" + pw + "';";
         return stmt.executeQuery(sql);
     }
 
     public static ResultSet orgLogin(Statement stmt, String usr) throws SQLException {
         String sql;
-        sql = "SELECT * FROM organisers WHERE Username =  '" + usr + "';";
+        sql = "SELECT * FROM Organisers WHERE Username =  '" + usr + "';";
         return stmt.executeQuery(sql);
     }
 
@@ -38,7 +38,7 @@ public class LoginQuery {
         String username = user.getUsername();
         String fullname = user.getFullName();
 
-        newStmt = String.format("INSERT INTO swimmers (Username, Password, Fullname) VALUES ('%s', '%s', '%s')", username, pw, fullname);
+        newStmt = String.format("INSERT INTO Swimmers (Username, Password, Fullname) VALUES ('%s', '%s', '%s')", username, pw, fullname);
         return stmt.executeUpdate(newStmt);
     }
 
@@ -47,7 +47,7 @@ public class LoginQuery {
         String username = user.getUsername();
         String fullname = user.getFullName();
 
-        newStmt = String.format("INSERT INTO organisers (Username, Password, Fullname) VALUES ('%s', '%s', '%s')", username, pw, fullname);
+        newStmt = String.format("INSERT INTO Organisers (Username, Password, Fullname) VALUES ('%s', '%s', '%s')", username, pw, fullname);
         return stmt.executeUpdate(newStmt);
     }
 }

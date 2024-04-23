@@ -8,6 +8,7 @@ import controllers.graphical.login.LoginGUIController;
 import controllers.graphical.SearchTripsGUIController;
 import controllers.graphical.sponsorTrip.AddSwimGUIController;
 import controllers.graphical.sponsorTrip.SponsorTripFormGUIController;
+import controllers.graphical.sponsorTrip.SubmitTripGUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -86,9 +87,15 @@ public class ViewFactory {
         showStage(loader);
     }
 
-    public void showAddSwim(Session session, int swimNum) {
+    public void showAddSwim(Session session, int swimNum, int maxSwims) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/AddSwim1.fxml"));
-        loader.setController(new AddSwimGUIController(session, swimNum));
+        loader.setController(new AddSwimGUIController(session, swimNum, maxSwims));
+        showStage(loader);
+    }
+
+    public void showSubmitTour(Session session) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SubmitTour1.fxml"));
+        loader.setController(new SubmitTripGUIController(session));
         showStage(loader);
     }
 

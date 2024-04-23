@@ -16,12 +16,18 @@ import misc.Places;
 import misc.Session;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SponsorTripFormGUIController implements Initializable {
     private Session session;
 
 
+    @FXML
+    private Label TourNameLabel;
+
+    @FXML
+    private TextField TourNameField;
 
     @FXML
     private AnchorPane body;
@@ -42,6 +48,9 @@ public class SponsorTripFormGUIController implements Initializable {
     private Button readReviewsBtn;
 
     @FXML
+    private Label errorLabel;
+
+    @FXML
     private Button sponsorBtn;
 
     @FXML
@@ -59,16 +68,24 @@ public class SponsorTripFormGUIController implements Initializable {
     }
 
     private void onAdd() {
-        int numberOfSwims;
-        try {
-            numberOfSwims = Integer.parseInt(swimsField.getText());
-        } catch (NumberFormatException nfe) {
-            throw new RuntimeException("insert an integer!");
+        if (TourNameField.getText().isEmpty() || swimsField.getText().isEmpty() || placeChoiceBox.getValue() == null) {
+            errorLabel.setVisible(true);
+            errorLabel.setText("Fields can't be empty!");
+        } else {
+            errorLabel.setVisible(false);
+            int numberOfSwims;
+            try {
+                numberOfSwims = Integer.parseInt(swimsField.getText());
+            } catch (NumberFormatException nfe) {
+                throw new RuntimeException("insert an integer!");
+            }
+
+
+            for (int i = numberOfSwims; i > 0; i = i - 1) {
+                Model.getInstance().getViewFactory().showAddSwim(session, i, numberOfSwims);
+            }
         }
 
-        for (int i = 0; i < numberOfSwims; i += 1) {
-            Model.getInstance().getViewFactory().showAddSwim(session, i + 1);
-        }
     }
 
     private void onHome() {
@@ -79,6 +96,7 @@ public class SponsorTripFormGUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        errorLabel.setVisible(false);
 
         for(Places places : Places.values()) {
             placesObservableList.add(places.place);
