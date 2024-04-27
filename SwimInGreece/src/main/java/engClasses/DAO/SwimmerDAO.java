@@ -47,10 +47,10 @@ public class SwimmerDAO {
             ResultSet rs = LoginQuery.swimmerLogin(stmt, swimmer.getUsername());
             if(rs.first()) {
                 //username already in use
+            } else {
+                LoginQuery.swimmerSignIn(stmt, swimmer, pw);
+                stmt.close();
             }
-
-            LoginQuery.swimmerSignIn(stmt, swimmer, pw);
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

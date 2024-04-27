@@ -20,6 +20,8 @@ public class AddSwimGUIController implements Initializable {
 
     private int totalSwims;
 
+    private Stage closingStage;
+
     @FXML
     private Label errorLabel;
 
@@ -32,10 +34,11 @@ public class AddSwimGUIController implements Initializable {
     @FXML
     private Button submitBtn;
 
-    public AddSwimGUIController(Session session, int swimNum, int maxSwims) {
+    public AddSwimGUIController(Session session, int swimNum, int maxSwims, Stage closingStage) {
         this.session = session;
         this.swimNum = swimNum;
         this.totalSwims = maxSwims;
+        this.closingStage = closingStage;
     }
 
     private void onSubmit() {
@@ -47,8 +50,9 @@ public class AddSwimGUIController implements Initializable {
                 Model.getInstance().getViewFactory().closeStage(stage);
             } else {
                 // here i shall add all the logic to add the swims and go to the tour submit button
-                Model.getInstance().getViewFactory().showSubmitTour(session);
-                System.out.println("AddSwimGUIController - line 49 - last swim detected");
+                Stage stage = (Stage) submitBtn.getScene().getWindow();
+                Model.getInstance().getViewFactory().closeStage(stage);
+                Model.getInstance().getViewFactory().showSubmitTour(session, closingStage);
             }
         }
     }

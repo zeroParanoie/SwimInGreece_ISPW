@@ -1,5 +1,7 @@
 package controllers.graphical.sponsorTrip;
 
+import controllers.application.SponsorTourController;
+import engClasses.beans.sponsorTour.BeanNewTour;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,10 +18,9 @@ import misc.Places;
 import misc.Session;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class SponsorTripFormGUIController implements Initializable {
+public class SponsorTourFormGUIController implements Initializable {
     private Session session;
 
 
@@ -63,7 +64,7 @@ public class SponsorTripFormGUIController implements Initializable {
     private Label swimsLabel;
     private ObservableList<String> placesObservableList = FXCollections.observableArrayList();
 
-    public SponsorTripFormGUIController(Session session) {
+    public SponsorTourFormGUIController(Session session) {
         this.session = session;
     }
 
@@ -80,9 +81,16 @@ public class SponsorTripFormGUIController implements Initializable {
                 throw new RuntimeException("insert an integer!");
             }
 
+            BeanNewTour beanNewTour = new BeanNewTour();
+            beanNewTour.setName(TourNameField.getText());
+            beanNewTour.setOrganiser(session.getLoggedUserBean().getUsr());
+            beanNewTour.setLength(0);
+            beanNewTour.setPlace(placeChoiceBox.getValue());
+            SponsorTourController sponsorTourController = new SponsorTourController();
+            sponsorTourController.saveTour(beanNewTour);
 
             for (int i = numberOfSwims; i > 0; i = i - 1) {
-                Model.getInstance().getViewFactory().showAddSwim(session, i, numberOfSwims);
+                Model.getInstance().getViewFactory().showAddSwim(session, i, numberOfSwims, (Stage) errorLabel.getScene().getWindow());
             }
         }
 

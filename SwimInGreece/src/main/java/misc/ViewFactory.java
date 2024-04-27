@@ -7,8 +7,8 @@ import controllers.graphical.HomeGUIController;
 import controllers.graphical.login.LoginGUIController;
 import controllers.graphical.SearchTripsGUIController;
 import controllers.graphical.sponsorTrip.AddSwimGUIController;
-import controllers.graphical.sponsorTrip.SponsorTripFormGUIController;
-import controllers.graphical.sponsorTrip.SubmitTripGUIController;
+import controllers.graphical.sponsorTrip.SponsorTourFormGUIController;
+import controllers.graphical.sponsorTrip.SubmitTourGUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -83,19 +83,19 @@ public class ViewFactory {
 
     public void showSponsor(Session session) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SponsorTour1.fxml"));
-        loader.setController(new SponsorTripFormGUIController(session));
+        loader.setController(new SponsorTourFormGUIController(session));
         showStage(loader);
     }
 
-    public void showAddSwim(Session session, int swimNum, int maxSwims) {
+    public void showAddSwim(Session session, int swimNum, int maxSwims, Stage closingStage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/AddSwim1.fxml"));
-        loader.setController(new AddSwimGUIController(session, swimNum, maxSwims));
+        loader.setController(new AddSwimGUIController(session, swimNum, maxSwims, closingStage));
         showStage(loader);
     }
 
-    public void showSubmitTour(Session session) {
+    public void showSubmitTour(Session session, Stage closingStage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SubmitTour1.fxml"));
-        loader.setController(new SubmitTripGUIController(session));
+        loader.setController(new SubmitTourGUIController(session, closingStage));
         showStage(loader);
     }
 

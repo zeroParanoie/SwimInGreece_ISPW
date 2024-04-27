@@ -3,16 +3,23 @@ package engClasses.query;
 import model.Organiser;
 import model.Tour;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TourQuery {
     private TourQuery() {}
 
-    public static int insertSwim(Statement stmt, float length, Tour tour, Organiser organiser) {
+    public static void insertTour(Statement stmt, float length, String tourName, String organiser, String place) throws SQLException {
         String newStatement;
-        String place = tour.getPlace();
 
-        //newStatement = String.format("INSERT INTO swims (Place, Tour, Organiser, Length) VALUES ('%s', '%s', '%s', '%s')", );
-        return 0;
+        newStatement = String.format("INSERT INTO Tours (Name, Organiser, TotalLength, Place) VALUES ('%s', '%s', %s, '%s')", tourName, organiser, length, place);
+        stmt.executeUpdate(newStatement);
+    }
+
+    public static ResultSet selectTour(Statement stmt, String tourName, String organiser) throws SQLException {
+        String sql;
+        sql = "SELECT * FROM Tours WHERE Name = '" + tourName + "' AND Organiser = '" + organiser + "';";
+        return stmt.executeQuery(sql);
     }
 }
