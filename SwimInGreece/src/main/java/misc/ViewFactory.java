@@ -9,6 +9,7 @@ import controllers.graphical.SearchTripsGUIController;
 import controllers.graphical.sponsorTrip.AddSwimGUIController;
 import controllers.graphical.sponsorTrip.SponsorTourFormGUIController;
 import controllers.graphical.sponsorTrip.SubmitTourGUIController;
+import engClasses.beans.sponsorTour.BeanNewTour;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -87,9 +88,9 @@ public class ViewFactory {
         showStage(loader);
     }
 
-    public void showAddSwim(Session session, int swimNum, int maxSwims, Stage closingStage) {
+    public void showAddSwim(Session session, int swimNum, int maxSwims, Stage closingStage, BeanNewTour beanNewTour) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/AddSwim1.fxml"));
-        loader.setController(new AddSwimGUIController(session, swimNum, maxSwims, closingStage));
+        loader.setController(new AddSwimGUIController(session, swimNum, maxSwims, closingStage, beanNewTour));
         showStage(loader);
     }
 

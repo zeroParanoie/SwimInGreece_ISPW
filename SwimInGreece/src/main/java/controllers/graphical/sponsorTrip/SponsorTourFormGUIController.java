@@ -90,7 +90,7 @@ public class SponsorTourFormGUIController implements Initializable {
             sponsorTourController.saveTour(beanNewTour);
 
             for (int i = numberOfSwims; i > 0; i = i - 1) {
-                Model.getInstance().getViewFactory().showAddSwim(session, i, numberOfSwims, (Stage) errorLabel.getScene().getWindow());
+                Model.getInstance().getViewFactory().showAddSwim(session, i, numberOfSwims, (Stage) errorLabel.getScene().getWindow(), beanNewTour);
             }
         }
 

@@ -1,5 +1,8 @@
 package controllers.graphical.sponsorTrip;
 
+import controllers.application.SponsorTourController;
+import engClasses.beans.addSwim.BeanNewSwim;
+import engClasses.beans.sponsorTour.BeanNewTour;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,6 +25,8 @@ public class AddSwimGUIController implements Initializable {
 
     private Stage closingStage;
 
+    private BeanNewTour referencedTour;
+
     @FXML
     private Label errorLabel;
 
@@ -34,24 +39,32 @@ public class AddSwimGUIController implements Initializable {
     @FXML
     private Button submitBtn;
 
-    public AddSwimGUIController(Session session, int swimNum, int maxSwims, Stage closingStage) {
+    public AddSwimGUIController(Session session, int swimNum, int maxSwims, Stage closingStage, BeanNewTour referencedTour) {
         this.session = session;
         this.swimNum = swimNum;
         this.totalSwims = maxSwims;
         this.closingStage = closingStage;
+        this.referencedTour = referencedTour;
     }
 
     private void onSubmit() {
         if (lengthField.getText().isEmpty()) {
             errorLabel.setVisible(true);
         } else {
-            if (swimNum != totalSwims) {
-                Stage stage = (Stage) submitBtn.getScene().getWindow();
-                Model.getInstance().getViewFactory().closeStage(stage);
-            } else {
-                // here i shall add all the logic to add the swims and go to the tour submit button
-                Stage stage = (Stage) submitBtn.getScene().getWindow();
-                Model.getInstance().getViewFactory().closeStage(stage);
+
+            BeanNewSwim beanNewSwim = new BeanNewSwim();
+            try {
+                Float length = Float.parseFloat(lengthField.getText());
+                beanNewSwim.setLength(length);
+            } catch (NumberFormatException nfe) {
+                throw new RuntimeException("insert a float number!");
+            }
+
+            SponsorTourController sponsorTourController = new SponsorTourController();
+            sponsorTourController.saveSwim(beanNewSwim, referencedTour);
+            Stage stage = (Stage) submitBtn.getScene().getWindow();
+            Model.getInstance().getViewFactory().closeStage(stage);
+            if (swimNum == totalSwims) {
                 Model.getInstance().getViewFactory().showSubmitTour(session, closingStage);
             }
         }
