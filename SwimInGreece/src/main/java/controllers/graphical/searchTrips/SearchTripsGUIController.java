@@ -1,4 +1,4 @@
-package controllers.graphical;
+package controllers.graphical.searchTrips;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,7 +50,7 @@ public class SearchTripsGUIController implements Initializable {
     private TextField searchField;
 
     @FXML
-    private DatePicker startDatePicker;
+    private Button refreshBtn;
 
     @FXML
     private Button submitBtn;
@@ -91,8 +91,11 @@ public class SearchTripsGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
+
         homeBtn.setOnAction(actionEvent -> onHome());
         loginBtn.setOnAction(actionEvent -> onLogin());
         submitBtn.setOnAction(actionEvent -> onBook());
+
+
     }
 }

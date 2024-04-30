@@ -3,8 +3,6 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -32,18 +30,7 @@
                         <Insets left="30.0" right="30.0" top="15.0" />
                     </VBox.margin>
                 </TextField>
-                <HBox fx:id="finalDatePicker" prefHeight="28.0" prefWidth="850.0">
-                    <DatePicker fx:id="startDatePicker" promptText="Start date...">
-                        <HBox.margin>
-                            <Insets left="200.0" />
-                        </HBox.margin>
-                    </DatePicker>
-                    <DatePicker promptText="Final date...">
-                        <HBox.margin>
-                            <Insets left="20.0" />
-                        </HBox.margin>
-                    </DatePicker>
-                </HBox>
+                <HBox fx:id="finalDatePicker" prefHeight="28.0" prefWidth="850.0" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the maximum trip length">
                     <VBox.margin>
                         <Insets left="305.0" />
@@ -54,14 +41,6 @@
                         <Insets left="300.0" right="330.0" top="-10.0" />
                     </VBox.margin>
                 </TextField>
-            <Button fx:id="refreshBtn" mnemonicParsing="false" prefHeight="52.0" prefWidth="52.0">
-               <VBox.margin>
-                  <Insets left="380.0" />
-               </VBox.margin>
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" />
-               </graphic>
-            </Button>
                 <TableView fx:id="tableView" prefHeight="297.0" prefWidth="810.0" style="-fx-background-radius: 3">
                     <columns>
                         <TableColumn fx:id="nameCol" prefWidth="319.0" text="Name" />
@@ -97,17 +76,12 @@
                         </graphic>
                     </Button>
                 </HBox>
-            <Label fx:id="errorLabel" text="You need to login to perform this action!" textFill="RED">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="295.0" />
-               </VBox.margin>
-            </Label>
             </VBox>
         </AnchorPane>
     </center>
     <top>
         <HBox fx:id="navbar" prefHeight="75.0" prefWidth="200.0" style="-fx-spacing: 20;" styleClass="navbar" stylesheets="@style1.css" BorderPane.alignment="CENTER">
-            <Button fx:id="homeBtn" mnemonicParsing="false" text="Home">
+            <Button fx:id="homeBtn" minWidth="150.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="207.0" text="Home">
                 <opaqueInsets>
                     <Insets />
                 </opaqueInsets>
@@ -118,15 +92,15 @@
                     <FontAwesomeIconView glyphName="HOME" />
                 </graphic>
             </Button>
-            <Button fx:id="loginBtn" mnemonicParsing="false" text="Login">
+            <Button fx:id="sponsorBtn" minWidth="260.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="190.0" text="Sponsor your tour">
                 <HBox.margin>
                     <Insets top="10.0" />
                 </HBox.margin>
                 <graphic>
-                    <FontAwesomeIconView glyphName="USER" />
+                    <FontAwesomeIconView glyphName="CERTIFICATE" />
                 </graphic>
             </Button>
-            <Button fx:id="bookBtn" mnemonicParsing="false" style="-fx-background-color: linear-gradient(#5FCBDE, #5FCBBE);" text="Book a trip">
+            <Button fx:id="bookBtn" minWidth="190.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="278.0" style="-fx-background-color: linear-gradient(#5FCBDE, #5FCBBE);" text="Book a trip">
                 <HBox.margin>
                     <Insets top="10.0" />
                 </HBox.margin>
@@ -136,7 +110,7 @@
             </Button>
             <ImageView fitHeight="70.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
                 <HBox.margin>
-                    <Insets left="150.0" top="15.0" />
+                    <Insets top="15.0" />
                 </HBox.margin>
                 <Image url="@../misc/logo.png" />
             </ImageView>

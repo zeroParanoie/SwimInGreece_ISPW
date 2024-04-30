@@ -8,4 +8,5 @@ module SwimInGreece {
     opens controllers.graphical;
     opens controllers.graphical.login;
     opens controllers.graphical.sponsorTrip;
+    opens controllers.graphical.searchTrips;
 }

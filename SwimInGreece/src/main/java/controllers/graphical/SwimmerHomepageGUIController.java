@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import misc.Model;
 import misc.Session;
 
 import java.net.URL;
@@ -42,9 +44,17 @@ public class SwimmerHomepageGUIController implements Initializable {
         this.session = session;
     }
 
+    private void onBook() {
+        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showBooking(session);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
         welcomeLabel.setText("Welcome back, " + this.session.getLoggedUserBean().getFullname());
+
+        bookBtn.setOnAction(actionEvent -> onBook());
     }
 }

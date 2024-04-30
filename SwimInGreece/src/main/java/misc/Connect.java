@@ -35,7 +35,6 @@ public class Connect {
                 String password = properties.getProperty("PASSWORD");
 
                 this.conn = DriverManager.getConnection(connectionUrl, user, password);
-                System.out.println("Successfully connected.");
             } catch (IOException | SQLException e) {
                 e.printStackTrace();
             }

@@ -13,7 +13,7 @@ public class SwimDAO {
             connection = Connect.getInstance().getConnection();
             stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-            CallableStatement callableStatement = connection.prepareCall("insertSwims(?, ?, ?, ?)");
+            CallableStatement callableStatement = connection.prepareCall(" call insertSwims(?, ?, ?, ?)");
             callableStatement.setFloat(1, length);
             callableStatement.setString(2, place);
             callableStatement.setString(3, tour);

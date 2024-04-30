@@ -22,4 +22,17 @@ public class TourQuery {
         sql = "SELECT * FROM Tours WHERE Name = '" + tourName + "' AND Organiser = '" + organiser + "';";
         return stmt.executeQuery(sql);
     }
+
+    public static ResultSet getAllTours(Statement stmt) throws SQLException {
+        String sql;
+        sql = "SELECT * FROM Tours;";
+        return stmt.executeQuery(sql);
+    }
+
+    public static ResultSet searchTour(Statement stmt, String tourName) throws SQLException {
+        String sql;
+        sql = "SELECT * FROM Tours WHERE Name = '" + tourName +"';";
+        return stmt.executeQuery(sql);
+    }
+
 }

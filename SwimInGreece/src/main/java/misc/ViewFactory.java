@@ -5,7 +5,8 @@ import controllers.graphical.SwimmerHomepageGUIController;
 import controllers.graphical.login.CreateAccountGUIController;
 import controllers.graphical.HomeGUIController;
 import controllers.graphical.login.LoginGUIController;
-import controllers.graphical.SearchTripsGUIController;
+import controllers.graphical.searchTrips.LoggedSearchTripsGUIController;
+import controllers.graphical.searchTrips.SearchTripsGUIController;
 import controllers.graphical.sponsorTrip.AddSwimGUIController;
 import controllers.graphical.sponsorTrip.SponsorTourFormGUIController;
 import controllers.graphical.sponsorTrip.SubmitTourGUIController;
@@ -19,6 +20,7 @@ public class ViewFactory {
     public ViewFactory() {}
 
     public void showHomepage() {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/Homepage1.fxml"));
         Scene scene = null;
         try {
@@ -65,8 +67,19 @@ public class ViewFactory {
     }
 
     public void showBooking(Session session) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SearchTrips1.fxml"));
-        loader.setController(new SearchTripsGUIController(session));
+        String resource;
+        if(session.getLoggedUserBean() == null) {
+            resource = "/firstView/SearchTrips1.fxml";
+        } else {
+            resource = "/firstView/LoggedSearchTrips1.fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
+        if(session.getLoggedUserBean() == null) {
+            loader.setController(new SearchTripsGUIController(session));
+        } else {
+            loader.setController(new LoggedSearchTripsGUIController(session));
+        }
+
         showStage(loader);
     }
 
