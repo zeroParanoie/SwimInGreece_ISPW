@@ -1,10 +1,13 @@
 package controllers.graphical.searchTrips;
 
+import controllers.application.SearchTrips;
+import engClasses.beans.searchTrips.TourBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import misc.Model;
@@ -97,5 +100,20 @@ public class SearchTripsGUIController implements Initializable {
         submitBtn.setOnAction(actionEvent -> onBook());
 
 
+        SearchTrips searchTrips = new SearchTrips();
+        TourBean allTours = new TourBean();
+        allTours = searchTrips.getAllTours();
+        for(Tour tour : allTours.getTours()) {
+
+            tourObservableList.add(tour);
+        }
+
+        lengthCol.setCellValueFactory(new PropertyValueFactory<>("length"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        orgCol.setCellValueFactory(new PropertyValueFactory<>("orgName"));
+        placeCol.setCellValueFactory(new PropertyValueFactory<>("place"));
+
+        tableView.setItems(tourObservableList);
     }
+
 }

@@ -77,6 +77,7 @@ public class ToursDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             ResultSet rs = LoginQuery.orgLogin(stmt, username);
+            rs.next();
 
             String usr = rs.getString("Username");
             String fullname = rs.getString("Fullname");
@@ -91,7 +92,7 @@ public class ToursDAO {
     private static ArrayList<Swim> findSwims(String tourName) {
         Statement stmt = null;
         Connection conn = null;
-        ArrayList<Swim> swimArrayList = null;
+        ArrayList<Swim> swimArrayList = new ArrayList<Swim>();
 
         try {
             conn = Connect.getInstance().getConnection();

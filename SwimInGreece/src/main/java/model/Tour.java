@@ -7,6 +7,8 @@ import java.util.List;
 public class Tour {
     private String name;
     private Organiser organiser;
+
+    private String orgName;
     private String place;
     private float length;
 
@@ -18,6 +20,7 @@ public class Tour {
         this.place = place;
         this.length = length;
         this.swims = swims;
+        this.orgName = organiser.getUsername();
     }
 
     public void setName(String name) {
@@ -58,5 +61,13 @@ public class Tour {
 
     public List<Swim> getSwims() {
         return swims;
+    }
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = organiser.getUsername();
     }
 }

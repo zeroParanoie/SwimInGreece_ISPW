@@ -9,25 +9,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public class SearchTrips {
-    public ArrayList<TourBean> getAllTours() {
-        ArrayList<Tour> availableTours = new ArrayList<Tour>();
-        ArrayList<TourBean> beans = new ArrayList<TourBean>();
-        Iterator iterator = availableTours.iterator();
+    public TourBean getAllTours() {
+        TourBean tourBean = new TourBean();
+        tourBean.setTours(ToursDAO.getAllTours());
 
-        availableTours = ToursDAO.getAllTours();
-
-        while(iterator.hasNext()) {
-            TourBean tourBean = new TourBean();
-            Tour tour = (Tour) iterator.next();
-
-            tourBean.setName(tour.getName());
-            tourBean.setOrganiser(tour.getOrganiser().getUsername());
-            tourBean.setPlace(tour.getPlace());
-            tourBean.setLength(tour.getLength());
-
-            beans.add(tourBean);
-        }
-
-        return beans;
+        // this is ok System.out.println(ToursDAO.getAllTours().get(0).getOrganiser().getUsername());
+        // this is ok System.out.println(tourBean.getTours().get(0).getOrganiser().getUsername());
+        return tourBean;
     }
+
+
 }

@@ -9,4 +9,5 @@ module SwimInGreece {
     opens controllers.graphical.login;
     opens controllers.graphical.sponsorTrip;
     opens controllers.graphical.searchTrips;
+    opens model;
 }
