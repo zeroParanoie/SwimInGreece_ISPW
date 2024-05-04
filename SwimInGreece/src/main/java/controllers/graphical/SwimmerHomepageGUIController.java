@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SwimmerHomepageGUIController implements Initializable {
-    Session session;
+    private Session session;
 
     @FXML
     private Button becomeGuideBtn;
