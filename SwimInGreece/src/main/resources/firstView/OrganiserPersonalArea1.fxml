@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <ImageView fitHeight="768.0" fitWidth="962.0" pickOnBounds="true" preserveRatio="true"
+              AnchorPane.bottomAnchor="-168.0" AnchorPane.topAnchor="0.0">
+      <effect>
+         <BoxBlur/>
+      </effect>
+      <Image url="@../misc/GreeceBG.jpg"/>
+   </ImageView>
+   <VBox prefHeight="200.0" prefWidth="766.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="navbar"
+            stylesheets="@style1.css">
+         <VBox.margin>
+            <Insets top="150.0"/>
+         </VBox.margin>
+         <Button fx:id="pubBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="273.0"
+                 text="Published trips">
+            <graphic>
+               <FontAwesomeIconView glyphName="INFO"/>
+            </graphic>
+            <HBox.margin>
+               <Insets left="150.0"/>
+            </HBox.margin>
+         </Button>
+         <Button fx:id="revBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="276.0"
+                 text="Reviews on trips">
+            <graphic>
+               <FontAwesomeIconView glyphName="AT"/>
+            </graphic>
+            <HBox.margin>
+               <Insets left="70.0"/>
+            </HBox.margin>
+         </Button>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="160.0" prefHeight="100.0" prefWidth="200.0"
+            style="-fx-background-color: transparent;" styleClass="navbar" stylesheets="@style1.css">
+         <VBox.margin>
+            <Insets top="50.0"/>
+         </VBox.margin>
+         <Button fx:id="logoutBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="220.0" text="Logout">
+            <graphic>
+               <FontAwesomeIconView glyphName="USER"/>
+            </graphic>
+            <HBox.margin>
+               <Insets left="180.0"/>
+            </HBox.margin>
+         </Button>
+         <Button fx:id="homeBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="220.0" text="Home">
+            <graphic>
+               <FontAwesomeIconView glyphName="HOME"/>
+            </graphic>
+            <HBox.margin>
+               <Insets left="115.0"/>
+            </HBox.margin>
+         </Button>
+      </HBox>
+   </VBox>
+</AnchorPane>
