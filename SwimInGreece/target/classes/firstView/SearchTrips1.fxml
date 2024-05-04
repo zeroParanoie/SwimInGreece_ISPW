@@ -32,18 +32,6 @@
                         <Insets left="30.0" right="30.0" top="15.0" />
                     </VBox.margin>
                 </TextField>
-                <HBox fx:id="finalDatePicker" prefHeight="28.0" prefWidth="850.0">
-                    <DatePicker fx:id="startDatePicker" promptText="Start date...">
-                        <HBox.margin>
-                            <Insets left="200.0" />
-                        </HBox.margin>
-                    </DatePicker>
-                    <DatePicker promptText="Final date...">
-                        <HBox.margin>
-                            <Insets left="20.0" />
-                        </HBox.margin>
-                    </DatePicker>
-                </HBox>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the maximum trip length">
                     <VBox.margin>
                         <Insets left="305.0" />
@@ -54,7 +42,7 @@
                         <Insets left="300.0" right="330.0" top="-10.0" />
                     </VBox.margin>
                 </TextField>
-            <Button fx:id="refreshBtn" mnemonicParsing="false" prefHeight="52.0" prefWidth="52.0">
+            <Button fx:id="refreshBtn" mnemonicParsing="false" prefHeight="52.0" prefWidth="52.0" style = "-fx-cursor: hand">
                <VBox.margin>
                   <Insets left="380.0" />
                </VBox.margin>

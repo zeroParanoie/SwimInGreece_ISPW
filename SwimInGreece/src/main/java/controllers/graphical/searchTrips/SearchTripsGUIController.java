@@ -4,6 +4,7 @@ import controllers.application.SearchTrips;
 import engClasses.beans.searchTrips.TourBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -91,6 +92,10 @@ public class SearchTripsGUIController implements Initializable {
         }
     }
 
+    private void onRefresh() {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
@@ -98,7 +103,7 @@ public class SearchTripsGUIController implements Initializable {
         homeBtn.setOnAction(actionEvent -> onHome());
         loginBtn.setOnAction(actionEvent -> onLogin());
         submitBtn.setOnAction(actionEvent -> onBook());
-
+        refreshBtn.setOnAction(actionEvent -> onRefresh());
 
         SearchTrips searchTrips = new SearchTrips();
         TourBean allTours = new TourBean();
