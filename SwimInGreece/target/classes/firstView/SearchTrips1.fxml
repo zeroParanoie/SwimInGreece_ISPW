@@ -70,19 +70,8 @@
                             <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" />
                         </graphic>
                         <HBox.margin>
-                            <Insets left="270.0" />
+                            <Insets left="370.0" />
                         </HBox.margin>
-                    </Button>
-                    <Button fx:id="readReviewsBtn" layoutX="280.0" layoutY="10.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Read reviews">
-                        <opaqueInsets>
-                            <Insets />
-                        </opaqueInsets>
-                        <HBox.margin>
-                            <Insets left="20.0" />
-                        </HBox.margin>
-                        <graphic>
-                            <FontAwesomeIconView fill="WHITE" glyphName="AT" />
-                        </graphic>
                     </Button>
                 </HBox>
             <Label fx:id="errorLabel" text="You need to login to perform this action!" textFill="RED">
