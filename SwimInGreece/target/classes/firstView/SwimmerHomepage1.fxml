@@ -28,9 +28,9 @@
                 <Image url="@../misc/textHomepage.png" />
             </ImageView>
             <Label fx:id="errorLabel" layoutX="1021.0" layoutY="6.0" text="You need to login to perform this action!" textFill="RED" />
-            <Button fx:id="becomeGuideBtn" layoutX="69.0" layoutY="474.0" minWidth="200.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="365.0" style="-fx-background-color: linear-gradient(wheat, lightgray); -fx-background-radius: 30; -fx-text-fill: white; -fx-font-size: 25; -fx-cursor: hand;" text="Become a tour guide">
+            <Button fx:id="personalAreaBtn" layoutX="69.0" layoutY="474.0" minWidth="200.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="365.0" style="-fx-background-color: linear-gradient(wheat, lightgray); -fx-background-radius: 30; -fx-text-fill: white; -fx-font-size: 25; -fx-cursor: hand;" text="Personal area">
                 <graphic>
-                    <FontAwesomeIconView fill="WHITE" glyphName="USER" />
+                    <FontAwesomeIconView fill="WHITE" glyphName="INFO" />
                 </graphic>
             </Button>
          <Label fx:id="welcomeLabel" layoutX="55.0" layoutY="6.0" prefHeight="43.0" prefWidth="527.0" text="welcome" textFill="WHITE">

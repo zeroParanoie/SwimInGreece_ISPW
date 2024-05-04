@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -33,6 +34,15 @@
                <Font size="18.0" />
             </font>
          </Label>
+         <VBox layoutX="71.0" layoutY="486.0" prefHeight="292.0" prefWidth="363.0" style="-fx-background-color: transparent;" styleClass="navbar" stylesheets="@style1.css">
+            <children>
+               <Button fx:id="personalAreaBtn" mnemonicParsing="false" prefHeight="46.0" prefWidth="392.0" text="Personal area">
+                  <graphic>
+                     <FontAwesomeIconView glyphName="INFO" />
+                  </graphic>
+               </Button>
+            </children>
+         </VBox>
         </AnchorPane>
     </center>
     <top>

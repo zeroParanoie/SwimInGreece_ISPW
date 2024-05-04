@@ -20,6 +20,9 @@ public class OrganiserHomepageGUIController implements Initializable {
     private AnchorPane body;
 
     @FXML
+    private Button personalAreaBtn;
+
+    @FXML
     private Label errorLabel;
 
     @FXML
@@ -47,11 +50,18 @@ public class OrganiserHomepageGUIController implements Initializable {
         Model.getInstance().getViewFactory().showSponsor(session);
     }
 
+    private void onPersonalArea() {
+        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showPersonalArea(session);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
         welcomeLabel.setText("Welcome back, " + session.getLoggedUserBean().getFullname());
 
         sponsorBtn.setOnAction(actionEvent -> onSponsor());
+        personalAreaBtn.setOnAction(actionEvent -> onPersonalArea());
     }
 }

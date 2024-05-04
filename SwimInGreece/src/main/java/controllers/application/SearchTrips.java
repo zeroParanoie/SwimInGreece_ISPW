@@ -13,8 +13,6 @@ public class SearchTrips {
         TourBean tourBean = new TourBean();
         tourBean.setTours(ToursDAO.getAllTours());
 
-        // this is ok System.out.println(ToursDAO.getAllTours().get(0).getOrganiser().getUsername());
-        // this is ok System.out.println(tourBean.getTours().get(0).getOrganiser().getUsername());
         return tourBean;
     }
 

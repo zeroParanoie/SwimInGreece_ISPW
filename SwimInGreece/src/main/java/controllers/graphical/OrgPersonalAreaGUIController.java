@@ -1,9 +1,17 @@
 package controllers.graphical;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import misc.Model;
+import misc.Session;
 
-public class OrgPersonalAreaGUIController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class OrgPersonalAreaGUIController implements Initializable {
+    private Session session;
 
     @FXML
     private Button homeBtn;
@@ -17,5 +25,26 @@ public class OrgPersonalAreaGUIController {
     @FXML
     private Button revBtn;
 
+    public OrgPersonalAreaGUIController(Session session) {
+        this.session = session;
+    }
+
+    private void onHome() {
+        Stage stage = (Stage) pubBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showOrganiserHomePage(session);
+    }
+
+    private void logout() {
+        Stage stage = (Stage) pubBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showHomepage();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        logoutBtn.setOnAction(actionEvent -> logout());
+        homeBtn.setOnAction(actionEvent -> onHome());
+    }
 }
 

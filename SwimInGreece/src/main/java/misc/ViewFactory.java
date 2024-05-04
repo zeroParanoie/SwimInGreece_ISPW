@@ -1,9 +1,7 @@
 package misc;
 
-import controllers.graphical.OrganiserHomepageGUIController;
-import controllers.graphical.SwimmerHomepageGUIController;
+import controllers.graphical.*;
 import controllers.graphical.login.CreateAccountGUIController;
-import controllers.graphical.HomeGUIController;
 import controllers.graphical.login.LoginGUIController;
 import controllers.graphical.searchTrips.LoggedSearchTripsGUIController;
 import controllers.graphical.searchTrips.SearchTripsGUIController;
@@ -110,6 +108,24 @@ public class ViewFactory {
     public void showSubmitTour(Session session, Stage closingStage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SubmitTour1.fxml"));
         loader.setController(new SubmitTourGUIController(session, closingStage));
+        showStage(loader);
+    }
+
+    public void showPersonalArea(Session session) {
+        String resource;
+        if(session.isOrganiser()) {
+            resource = "/firstView/OrganiserPersonalArea1.fxml";
+        } else {
+            resource = "/firstView/SwimmerPersonalArea1.fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
+
+        if(session.isOrganiser()) {
+            loader.setController(new OrgPersonalAreaGUIController(session));
+        } else {
+            loader.setController(new SwimmerPersonalAreaGUIController(session));
+        }
+
         showStage(loader);
     }
 
