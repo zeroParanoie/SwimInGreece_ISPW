@@ -93,7 +93,37 @@ public class SearchTripsGUIController implements Initializable {
     }
 
     private void onRefresh() {
+        ObservableList<Tour> filteredToursObservableList = FXCollections.observableArrayList();
+        SearchTrips searchTrips = new SearchTrips();
+        TourBean tourBean = new TourBean();
 
+        try {
+            float maxLength = Float.parseFloat(maxLengthField.getText());
+        } catch (NumberFormatException e) {
+            errorLabel.setText("max length must be a number!");
+            errorLabel.setVisible(true);
+            e.printStackTrace();
+        }
+
+        if(searchField.getText().isEmpty() && maxLengthField.getText().isEmpty()) {
+            errorLabel.setVisible(false);
+            tourBean = searchTrips.getAllTours();
+        } else if(searchField.getText().isEmpty() && !maxLengthField.getText().isEmpty()) {
+            errorLabel.setVisible(false);
+            tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
+        } else if(!searchField.getText().isEmpty() && maxLengthField.getText().isEmpty()) {
+            errorLabel.setVisible(false);
+            tourBean = searchTrips.getSelectedTours(searchField.getText(), 0);
+        } else if(searchField.getText().isEmpty() && !maxLengthField.getText().isEmpty()) {
+            errorLabel.setVisible(false);
+            tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
+        }
+
+        for(Tour tour : tourBean.getTours()) {
+            filteredToursObservableList.add(tour);
+        }
+
+        this.tableView.setItems(filteredToursObservableList);
     }
 
     @Override
@@ -109,7 +139,6 @@ public class SearchTripsGUIController implements Initializable {
         TourBean allTours = new TourBean();
         allTours = searchTrips.getAllTours();
         for(Tour tour : allTours.getTours()) {
-
             tourObservableList.add(tour);
         }
 

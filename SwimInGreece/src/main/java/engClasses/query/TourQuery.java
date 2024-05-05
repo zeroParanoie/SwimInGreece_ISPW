@@ -31,8 +31,19 @@ public class TourQuery {
 
     public static ResultSet searchTour(Statement stmt, String tourName) throws SQLException {
         String sql;
-        sql = "SELECT * FROM Tours WHERE Name = '" + tourName +"';";
+        sql = "SELECT * FROM Tours WHERE Name LIKE '%" + tourName +"%';";
         return stmt.executeQuery(sql);
     }
 
+    public static ResultSet searchTour(Statement stmt, String tourName, float maxLength) throws SQLException {
+        String sql;
+        sql = "SELECT * FROM Tours WHERE Name LIKE '%" + tourName + "%' AND TotalLength <= " + maxLength + ";";
+        return stmt.executeQuery(sql);
+    }
+
+    public static ResultSet searchTour(Statement stmt, float maxLength) throws SQLException {
+        String sql;
+        sql = "SELECT * FROM Tours WHERE TotalLength <= " + maxLength + ";";
+        return stmt.executeQuery(sql);
+    }
 }

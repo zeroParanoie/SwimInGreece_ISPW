@@ -45,13 +45,96 @@ public class ToursDAO {
         ArrayList<Tour> outputTours = new ArrayList<Tour>();
 
 
-
         try {
             conn = Connect.getInstance().getConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             ResultSet rs = TourQuery.getAllTours(stmt);
             while(rs.next()) {
+                String name = rs.getString("Name");
+                String organiser = rs.getString("Organiser");
+                String place = rs.getString("Place");
+                float length = rs.getFloat("TotalLength");
+
+                Tour tour = new Tour(name, organiserBuilder(organiser), place, length, findSwims(name));
+                outputTours.add(tour);
+            }
+
+            return outputTours;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static ArrayList<Tour> getFilteredTours(String filterString) {
+        Statement stmt = null;
+        Connection conn = null;
+        ArrayList<Tour> outputTours = new ArrayList<Tour>();
+
+        try {
+            conn = Connect.getInstance().getConnection();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+            ResultSet rs = TourQuery.searchTour(stmt, filterString);
+
+            while (rs.next()) {
+                String name = rs.getString("Name");
+                String organiser = rs.getString("Organiser");
+                String place = rs.getString("Place");
+                float length = rs.getFloat("TotalLength");
+
+                Tour tour = new Tour(name, organiserBuilder(organiser), place, length, findSwims(name));
+                outputTours.add(tour);
+            }
+
+            return outputTours;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static ArrayList<Tour> getFilteredTours(String filterString, float maxLength) {
+        Statement stmt = null;
+        Connection conn = null;
+        ArrayList<Tour> outputTours = new ArrayList<Tour>();
+
+        try {
+            conn = Connect.getInstance().getConnection();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+            ResultSet rs = TourQuery.searchTour(stmt, filterString, maxLength);
+
+            while (rs.next()) {
+                String name = rs.getString("Name");
+                String organiser = rs.getString("Organiser");
+                String place = rs.getString("Place");
+                float length = rs.getFloat("TotalLength");
+
+                Tour tour = new Tour(name, organiserBuilder(organiser), place, length, findSwims(name));
+                outputTours.add(tour);
+            }
+
+            return outputTours;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static ArrayList<Tour> getFilteredTours(float maxLength) {
+        Statement stmt = null;
+        Connection conn = null;
+        ArrayList<Tour> outputTours = new ArrayList<Tour>();
+
+        try {
+            conn = Connect.getInstance().getConnection();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+            ResultSet rs = TourQuery.searchTour(stmt, maxLength);
+
+            while (rs.next()) {
                 String name = rs.getString("Name");
                 String organiser = rs.getString("Organiser");
                 String place = rs.getString("Place");
