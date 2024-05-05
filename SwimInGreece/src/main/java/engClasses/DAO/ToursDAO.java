@@ -151,6 +151,21 @@ public class ToursDAO {
         }
     }
 
+    public static void insertBooking(String date, String organiser, String swimmer, String tourName) {
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            conn = Connect.getInstance().getConnection();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+            TourQuery.insertBooking(stmt, organiser, swimmer, date, tourName);
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static Organiser organiserBuilder(String username) {
         Statement stmt = null;
         Connection conn = null;

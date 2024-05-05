@@ -46,4 +46,10 @@ public class TourQuery {
         sql = "SELECT * FROM Tours WHERE TotalLength <= " + maxLength + ";";
         return stmt.executeQuery(sql);
     }
+
+    public static void insertBooking(Statement stmt, String organiser, String swimmer, String date, String tourName) throws SQLException {
+        String newStatement;
+        newStatement = String.format("INSERT INTO Bookings (Swimmer, Name, Org, Date) VALUES ('%s', '%s', '%s', '%s')", swimmer, tourName, organiser, date);
+        stmt.executeUpdate(newStatement);
+    }
 }

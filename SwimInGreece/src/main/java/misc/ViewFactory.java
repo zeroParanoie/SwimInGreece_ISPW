@@ -3,6 +3,7 @@ package misc;
 import controllers.graphical.*;
 import controllers.graphical.login.CreateAccountGUIController;
 import controllers.graphical.login.LoginGUIController;
+import controllers.graphical.searchTrips.BookConfirmationGUIController;
 import controllers.graphical.searchTrips.LoggedSearchTripsGUIController;
 import controllers.graphical.searchTrips.SearchTripsGUIController;
 import controllers.graphical.sponsorTrip.AddSwimGUIController;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.Tour;
 
 public class ViewFactory {
     public ViewFactory() {}
@@ -108,6 +110,12 @@ public class ViewFactory {
     public void showSubmitTour(Session session, Stage closingStage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SubmitTour1.fxml"));
         loader.setController(new SubmitTourGUIController(session, closingStage));
+        showStage(loader);
+    }
+
+    public void showBookConfirmation(Session session, Tour bookingTour) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/BookTourConfirmation1.fxml"));
+        loader.setController(new BookConfirmationGUIController(session, bookingTour));
         showStage(loader);
     }
 

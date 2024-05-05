@@ -1,6 +1,7 @@
 package controllers.application;
 
 import engClasses.DAO.ToursDAO;
+import engClasses.beans.login.LoggedUserBean;
 import engClasses.beans.searchTrips.TourBean;
 import model.Tour;
 
@@ -32,5 +33,7 @@ public class SearchTrips {
         return tourBean;
     }
 
-
+    public void book(String date, Tour tour, LoggedUserBean loggedUserBean) {
+        ToursDAO.insertBooking(date, tour.getOrgName(), loggedUserBean.getUsr(), tour.getName());
+    }
 }

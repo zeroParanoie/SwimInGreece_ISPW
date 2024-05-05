@@ -1,6 +1,7 @@
 package controllers.graphical.searchTrips;
 
 import controllers.application.SearchTrips;
+import controllers.graphical.exceptions.TourNotSelectedException;
 import engClasses.beans.searchTrips.TourBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -85,8 +86,12 @@ public class LoggedSearchTripsGUIController implements Initializable {
         Model.getInstance().getViewFactory().showSwimmerHomepage(session);
     }
 
-    private void onBook() {
-        //booking logic
+    private void onBook() throws TourNotSelectedException {
+        Tour selectedTour = tableView.getSelectionModel().getSelectedItem();
+        if(selectedTour == null) {
+            throw new TourNotSelectedException("no tour selected!");
+        }
+        Model.getInstance().getViewFactory().showBookConfirmation(session, selectedTour);
     }
 
     private void onRefresh() {
@@ -119,8 +124,15 @@ public class LoggedSearchTripsGUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         homeBtn.setOnAction(actionEvent -> onHome());
-        submitBtn.setOnAction(actionEvent -> onBook());
+        submitBtn.setOnAction(actionEvent -> {
+            try {
+                onBook();
+            } catch (TourNotSelectedException e) {
+                throw new RuntimeException(e);
+            }
+        });
         refreshBtn.setOnAction(actionEvent -> onRefresh());
 
         SearchTrips searchTrips = new SearchTrips();
