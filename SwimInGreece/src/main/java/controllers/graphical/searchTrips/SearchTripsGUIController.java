@@ -84,12 +84,8 @@ public class SearchTripsGUIController implements Initializable {
     }
 
     private void onBook() {
-        if(session.getLoggedUserBean() == null) {
-            errorLabel.setText("you need to login to perform that action!");
-            errorLabel.setVisible(true);
-        } else {
-            //booking logic
-        }
+        errorLabel.setText("you need to login to perform that action!");
+        errorLabel.setVisible(true);
     }
 
     private void onRefresh() {
