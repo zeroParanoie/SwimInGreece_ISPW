@@ -1,4 +1,4 @@
-package controllers.graphical.exceptions;
+package engClasses.exceptions;
 
 public class TourNotSelectedException extends Exception {
     public TourNotSelectedException(String message) {

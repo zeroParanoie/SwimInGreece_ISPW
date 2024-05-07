@@ -39,9 +39,17 @@ public class SwimmerPersonalAreaGUIController implements Initializable {
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showHomepage();
     }
+
+    private void onBookings() {
+        Stage stage = (Stage) logoutBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showBookings(session);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         homeBtn.setOnAction(actionEvent -> onHome());
         logoutBtn.setOnAction(actionEvent -> logout());
+        bookingsBtn.setOnAction(actionEvent -> onBookings());
     }
 }

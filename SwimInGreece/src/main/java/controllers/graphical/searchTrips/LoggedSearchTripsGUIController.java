@@ -1,7 +1,7 @@
 package controllers.graphical.searchTrips;
 
 import controllers.application.SearchTrips;
-import controllers.graphical.exceptions.TourNotSelectedException;
+import engClasses.exceptions.TourNotSelectedException;
 import engClasses.beans.searchTrips.TourBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -122,6 +122,12 @@ public class LoggedSearchTripsGUIController implements Initializable {
         this.tableView.setItems(filteredToursObservableList);
     }
 
+    private void onReviews() {
+        Stage stage = (Stage) submitBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showReviewsPage(session, tableView.getSelectionModel().getSelectedItem());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -134,6 +140,7 @@ public class LoggedSearchTripsGUIController implements Initializable {
             }
         });
         refreshBtn.setOnAction(actionEvent -> onRefresh());
+        readReviewsBtn.setOnAction(actionEvent -> onReviews());
 
         SearchTrips searchTrips = new SearchTrips();
         TourBean allTours = new TourBean();

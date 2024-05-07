@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import misc.Model;
 import misc.Session;
 import model.Tour;
 
@@ -38,6 +40,8 @@ public class BookConfirmationGUIController implements Initializable {
         SearchTrips searchTrips = new SearchTrips();
 
         searchTrips.book(formattedDate, bookingTour, session.getLoggedUserBean());
+        Stage stage = (Stage) submitBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
     }
 
     @Override
