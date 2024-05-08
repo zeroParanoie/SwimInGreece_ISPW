@@ -18,4 +18,10 @@ public class ReviewsQuery {
         sql = "SELECT * FROM Reviews WHERE Username = '" + username + "';";
         return stmt.executeQuery(sql);
     }
+
+    public static ResultSet getReviewsFromTourName(Statement stmt, String tourName) throws SQLException {
+        String sql;
+        sql = "SELECT * FROM Reviews WHERE Tour = '" + tourName + "';";
+        return stmt.executeQuery(sql);
+    }
 }

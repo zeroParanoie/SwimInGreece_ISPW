@@ -3,6 +3,7 @@ package model;
 public class Review {
     private String body;
     private Swimmer swimmer;
+    private String swimmerName;
     private Tour tour;
     private String tourName;
     private int rating;
@@ -20,6 +21,10 @@ public class Review {
 
     public void setTour(Tour tour) {
         this.tour = tour;
+    }
+
+    public void setSwimmerName() {
+        this.swimmerName = swimmer.getUsername();
     }
 
     public void setTourName() {
@@ -52,5 +57,9 @@ public class Review {
 
     public String getTourName() {
         return tourName;
+    }
+
+    public String getSwimmerName() {
+        return swimmerName;
     }
 }

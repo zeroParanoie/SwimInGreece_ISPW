@@ -28,4 +28,24 @@ public class WriteReview {
 
            return fetchReviewsBean;
     }
+
+    public FetchReviewsBean getReviews(String tourName) {
+        FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
+        List<Review> reviews = ReviewsDAO.getReviewsFromTourName(tourName);
+
+        fetchReviewsBean.setReviews(reviews);
+        return fetchReviewsBean;
+    }
+
+    public float getRatingPercentage(int rating, FetchReviewsBean fetchReviewsBean) {
+        float retVal = 0;
+
+        for(Review review : fetchReviewsBean.getReviews()) {
+            if(review.getRating() == rating) {
+                retVal += 1;
+            }
+        }
+
+        return retVal/fetchReviewsBean.getReviews().size();
+    }
 }

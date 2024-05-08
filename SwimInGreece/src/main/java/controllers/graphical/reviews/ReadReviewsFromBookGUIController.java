@@ -1,17 +1,32 @@
 package controllers.graphical.reviews;
 
+import controllers.application.WriteReview;
+import engClasses.beans.reviews.FetchReviewsBean;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import misc.Session;
+import model.Review;
+import model.Tour;
 
-public class ReadReviewsFromBookGUIController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ReadReviewsFromBookGUIController implements Initializable {
+
+    private Session session;
+    private Tour tour;
 
     @FXML
-    private TableColumn<?, ?> bodyCol;
+    private TableColumn<Review, String> bodyCol;
 
     @FXML
     private Button bookBtn;
@@ -53,13 +68,13 @@ public class ReadReviewsFromBookGUIController {
     private Label onePerc;
 
     @FXML
-    private TableColumn<?, ?> ratingCol;
+    private TableColumn<Review, Integer> ratingCol;
 
     @FXML
     private Button submitBtn;
 
     @FXML
-    private TableView<?> tableView;
+    private TableView<Review> tableView;
 
     @FXML
     private ProgressBar threeBar;
@@ -68,7 +83,7 @@ public class ReadReviewsFromBookGUIController {
     private Label threeLabel;
 
     @FXML
-    private Label threePer;
+    private Label threePerc;
 
     @FXML
     private ProgressBar twoBar;
@@ -80,7 +95,70 @@ public class ReadReviewsFromBookGUIController {
     private Label twoPerc;
 
     @FXML
-    private TableColumn<?, ?> userCol;
+    private TableColumn<Review, String> userCol;
 
+    ObservableList<Review> reviewObservableList = FXCollections.observableArrayList();
+
+    public ReadReviewsFromBookGUIController(Session session, Tour tour) {
+        this.session = session;
+        this.tour = tour;
+    }
+
+    private void tableInit() {
+        WriteReview writeReview = new WriteReview();
+        FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
+
+        fetchReviewsBean = writeReview.getReviews(tour.getName());
+
+        for(Review review : fetchReviewsBean.getReviews()) {
+            reviewObservableList.add(review);
+        }
+
+        bodyCol.setCellValueFactory(new PropertyValueFactory<>("body"));
+        ratingCol.setCellValueFactory(new PropertyValueFactory<>("rating"));
+        userCol.setCellValueFactory(new PropertyValueFactory<>("swimmerName"));
+
+        tableView.setItems(reviewObservableList);
+    }
+
+    public void progressBarsInit() {
+        WriteReview writeReview = new WriteReview();
+        FetchReviewsBean fetchReviewsBean = writeReview.getReviews(tour.getName());
+        float percentage;
+
+        for(int i = 1; i < 6; i += 1) {
+            percentage = writeReview.getRatingPercentage(i, fetchReviewsBean);
+            switch (i) {
+                case 1:
+                    oneBar.setProgress(percentage);
+                    onePerc.setText(percentage * 100 + "%");
+                    break;
+                case 2:
+                    twoBar.setProgress(percentage);
+                    twoPerc.setText(percentage * 100 + "%");
+                    break;
+                case 3:
+                    threeBar.setProgress(percentage);
+                    threePerc.setText(percentage * 100 + "%");
+                    break;
+                case 4:
+                    fourBar.setProgress(percentage);
+                    fourPerc.setText(percentage * 100 + "%");
+                    break;
+                case 5:
+                    fiveBar.setProgress(percentage);
+                    fivePerc.setText(percentage * 100 + "%");
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tableInit();
+        progressBarsInit();
+    }
 }
 

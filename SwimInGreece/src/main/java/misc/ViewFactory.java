@@ -141,9 +141,9 @@ public class ViewFactory {
         showStage(loader);
     }
 
-    public void showTourReviewsFromBooking(Session session) {
+    public void showTourReviewsFromBooking(Session session, Tour tour) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/ReadReviewsFromBook1.fxml"));
-        loader.setController(new ReadReviewsFromBookGUIController());
+        loader.setController(new ReadReviewsFromBookGUIController(session, tour));
         showStage(loader);
     }
 
