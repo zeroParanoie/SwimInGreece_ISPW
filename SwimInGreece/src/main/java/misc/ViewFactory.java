@@ -147,10 +147,17 @@ public class ViewFactory {
         showStage(loader);
     }
 
+    public void showOrgPubs(Session session) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/OrgPubs1.fxml"));
+        loader.setController(new OrgPubsGUIController(session));
+        showStage(loader);
+    }
+
     public void showPersonalArea(Session session) {
         String resource;
         if(session.isOrganiser()) {
             resource = "/firstView/OrganiserPersonalArea1.fxml";
+            System.out.println("ViewFactory - line 160");
         } else {
             resource = "/firstView/SwimmerPersonalArea1.fxml";
         }

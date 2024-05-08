@@ -36,4 +36,10 @@ public class SearchTrips {
     public void book(String date, Tour tour, LoggedUserBean loggedUserBean) {
         ToursDAO.insertBooking(date, tour.getOrgName(), loggedUserBean.getUsr(), tour.getName());
     }
+
+    public TourBean getToursOrg(LoggedUserBean loggedUserBean) {
+        TourBean tourBean = new TourBean();
+        tourBean.setTours(ToursDAO.getToursFromOrganiser(loggedUserBean.getUsr()));
+        return tourBean;
+    }
 }

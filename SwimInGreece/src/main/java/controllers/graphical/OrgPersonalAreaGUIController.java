@@ -41,10 +41,17 @@ public class OrgPersonalAreaGUIController implements Initializable {
         Model.getInstance().getViewFactory().showHomepage();
     }
 
+    private void onPubs() {
+        Stage stage = (Stage) pubBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showOrgPubs(session);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         logoutBtn.setOnAction(actionEvent -> logout());
         homeBtn.setOnAction(actionEvent -> onHome());
+        pubBtn.setOnAction(actionEvent -> onPubs());
     }
 }
 

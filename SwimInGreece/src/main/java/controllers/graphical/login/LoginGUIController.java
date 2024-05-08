@@ -83,8 +83,10 @@ public class LoginGUIController implements Initializable {
         Model.getInstance().getViewFactory().closeStage(stage);
 
         if(isOrganiser) {
+            session.setOrganiser(true);
             Model.getInstance().getViewFactory().showOrganiserHomePage(session);
         } else {
+            session.setOrganiser(false);
             Model.getInstance().getViewFactory().showSwimmerHomepage(session);
         }
     }
