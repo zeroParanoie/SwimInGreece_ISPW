@@ -55,4 +55,25 @@ public class OrganiserDAO {
             e.printStackTrace();
         }
     }
+
+    public static Organiser getOrganiser(String username) {
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            conn = Connect.getInstance().getConnection();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+            ResultSet rs = LoginQuery.orgLogin(stmt, username);
+            if(rs.first()) {
+                // no organiser found
+            }
+
+            String fullname = rs.getString("Fullname");
+            return new Organiser(username, fullname);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

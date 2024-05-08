@@ -52,4 +52,10 @@ public class TourQuery {
         newStatement = String.format("INSERT INTO Bookings (Swimmer, Name, Org, Date) VALUES ('%s', '%s', '%s', '%s')", swimmer, tourName, organiser, date);
         stmt.executeUpdate(newStatement);
     }
+
+    public static ResultSet selectTour(Statement stmt, String organiser) throws SQLException {
+        String sql;
+        sql = "SELECT * FROM Tours WHERE Organiser = '" + organiser + "';";
+        return stmt.executeQuery(sql);
+    }
 }

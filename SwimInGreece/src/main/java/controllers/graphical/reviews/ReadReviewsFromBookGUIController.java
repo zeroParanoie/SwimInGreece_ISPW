@@ -1,29 +1,17 @@
 package controllers.graphical.reviews;
 
-import controllers.application.WriteReview;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
-import misc.Session;
-import model.Tour;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class ReadReviewsGUIController implements Initializable {
-
-
-    private Session session;
-
-    private Tour tour;
+public class ReadReviewsFromBookGUIController {
 
     @FXML
-    private TableColumn<Tour, String> bodyCol;
+    private TableColumn<?, ?> bodyCol;
 
     @FXML
     private Button bookBtn;
@@ -65,13 +53,13 @@ public class ReadReviewsGUIController implements Initializable {
     private Label onePerc;
 
     @FXML
-    private TableColumn<Tour, Integer> ratingCol;
+    private TableColumn<?, ?> ratingCol;
 
     @FXML
     private Button submitBtn;
 
     @FXML
-    private TableView<Tour> tableView;
+    private TableView<?> tableView;
 
     @FXML
     private ProgressBar threeBar;
@@ -92,21 +80,7 @@ public class ReadReviewsGUIController implements Initializable {
     private Label twoPerc;
 
     @FXML
-    private TableColumn<Tour, String> userCol;
-
-    public ReadReviewsGUIController(Session session, Tour tour) {
-        this.session = session;
-        this.tour = tour;
-    }
-
-    private void startSettings() {
-        WriteReview writeReview = new WriteReview();
-
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        startSettings();
-    }
+    private TableColumn<?, ?> userCol;
 
 }
+

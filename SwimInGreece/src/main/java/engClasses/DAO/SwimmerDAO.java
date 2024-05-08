@@ -55,4 +55,27 @@ public class SwimmerDAO {
             e.printStackTrace();
         }
     }
+
+    public static Swimmer selectSwimmer(String usr) {
+        Statement stmt = null;
+        Connection conn = null;
+        Swimmer swimmer = null;
+
+        try {
+            conn = Connect.getInstance().getConnection();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+            ResultSet rs = LoginQuery.swimmerLogin(stmt, usr);
+            if(!rs.first()) {
+                //no user found
+            }
+
+            rs.next();
+            String fullName = rs.getString("Fullname");
+            return new Swimmer(usr, fullName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

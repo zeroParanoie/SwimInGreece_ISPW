@@ -3,16 +3,27 @@ package model;
 public class Review {
     private String body;
     private Swimmer swimmer;
+    private Tour tour;
+    private String tourName;
     private int rating;
 
-    public Review(String body, Swimmer swimmer, int rating) {
+    public Review(String body, Swimmer swimmer, int rating, Tour tour) {
         this.body = body;
         this.swimmer = swimmer;
         this.rating = rating;
+        this.tour = tour;
     }
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
+    }
+
+    public void setTourName() {
+        this.tourName = this.tour.getName();
     }
 
     public void setSwimmer(Swimmer swimmer) {
@@ -33,5 +44,13 @@ public class Review {
 
     public int getRating() {
         return rating;
+    }
+
+    public Tour getTour() {
+        return tour;
+    }
+
+    public String getTourName() {
+        return tourName;
     }
 }

@@ -56,7 +56,7 @@ public class WriteReviewsGUIController implements Initializable {
         }
         reviewBean.setRating(rating);
         reviewBean.setSwimmer(session.getLoggedUserBean().getUsr());
-
+        reviewBean.setTourName(tour.getName());
         writeReview.addReview(reviewBean);
 
         Stage stage = (Stage) submitBtn.getScene().getWindow();

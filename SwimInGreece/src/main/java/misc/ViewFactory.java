@@ -4,7 +4,8 @@ import controllers.graphical.*;
 import controllers.graphical.login.CreateAccountGUIController;
 import controllers.graphical.login.LoginGUIController;
 import controllers.graphical.reviews.BookingsGUIController;
-import controllers.graphical.reviews.ReadReviewsGUIController;
+import controllers.graphical.reviews.ReadReviewsFromBookGUIController;
+import controllers.graphical.reviews.ReadReviewsSwimmerGUIController;
 import controllers.graphical.reviews.WriteReviewsGUIController;
 import controllers.graphical.searchTrips.BookConfirmationGUIController;
 import controllers.graphical.searchTrips.LoggedSearchTripsGUIController;
@@ -13,7 +14,6 @@ import controllers.graphical.sponsorTrip.AddSwimGUIController;
 import controllers.graphical.sponsorTrip.SponsorTourFormGUIController;
 import controllers.graphical.sponsorTrip.SubmitTourGUIController;
 import engClasses.beans.sponsorTour.BeanNewTour;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -123,12 +123,6 @@ public class ViewFactory {
         showStage(loader);
     }
 
-    public void showReviewsPage(Session session, Tour tour) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/ReadReviews1.fxml"));
-        loader.setController(new ReadReviewsGUIController(session, tour));
-        showStage(loader);
-    }
-
     public void showBookings(Session session) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/Bookings1.fxml"));
         loader.setController(new BookingsGUIController(session));
@@ -138,6 +132,18 @@ public class ViewFactory {
     public void showReviewSubmitForm(Session session, Tour tour) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/WriteReview1.fxml"));
         loader.setController(new WriteReviewsGUIController(session, tour));
+        showStage(loader);
+    }
+
+    public void showReadReviews(Session session) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/ReadReviewsSwimmer1.fxml"));
+        loader.setController(new ReadReviewsSwimmerGUIController(session));
+        showStage(loader);
+    }
+
+    public void showTourReviewsFromBooking(Session session) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/ReadReviewsFromBook1.fxml"));
+        loader.setController(new ReadReviewsFromBookGUIController());
         showStage(loader);
     }
 

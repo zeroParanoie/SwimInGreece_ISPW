@@ -125,7 +125,7 @@ public class LoggedSearchTripsGUIController implements Initializable {
     private void onReviews() {
         Stage stage = (Stage) submitBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showReviewsPage(session, tableView.getSelectionModel().getSelectedItem());
+        Model.getInstance().getViewFactory().showTourReviewsFromBooking(session);
     }
 
     @Override
