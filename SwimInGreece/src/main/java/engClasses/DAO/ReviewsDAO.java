@@ -1,16 +1,12 @@
 package engClasses.DAO;
 
-import engClasses.beans.searchTrips.TourBean;
 import engClasses.query.ReviewsQuery;
 import misc.Connect;
-import misc.Facade;
+import engClasses.pattern.Facade;
 import model.Review;
+import model.Tour;
 
-import javax.xml.transform.Result;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,8 +60,6 @@ public class ReviewsDAO {
 
         try {
             conn = Connect.getInstance().getConnection();
-            stmt = conn.createStatement();
-
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             ResultSet rs = ReviewsQuery.getReviewsFromTourName(stmt, tourName);
@@ -73,6 +67,33 @@ public class ReviewsDAO {
                 String body = rs.getString("Body");
                 int rating = rs.getInt("Rating");
                 String user = rs.getString("Username");
+                Review review = new Review(body, Facade.getInstance().getSwimmerFromFacade(user), rating, Facade.getInstance().getTourFromFacade(tourName));
+                review.setTourName();
+                review.setSwimmerName();
+                reviews.add(review);
+            }
+            return reviews;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static List<Review> getReviewsFromOrg(String organiser) {
+        Connection conn = null;
+        List<Review> reviews = new ArrayList<Review>();
+
+        try {
+            conn = Connect.getInstance().getConnection();
+
+            CallableStatement callableStatement = conn.prepareCall("{? = call get_org()}");
+            int retVal = callableStatement.registerOutParameter();
+            ResultSet rs = callableStatement.executeQuery();
+            while(rs.next()) {
+                String user = rs.getString("Username");
+                String body = rs.getString("Body");
+                int rating = rs.getInt("Rating");
+                String tourName = rs.getString("Name");
                 Review review = new Review(body, Facade.getInstance().getSwimmerFromFacade(user), rating, Facade.getInstance().getTourFromFacade(tourName));
                 review.setTourName();
                 review.setSwimmerName();

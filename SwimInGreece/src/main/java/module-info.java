@@ -11,4 +11,5 @@ module SwimInGreece {
     opens controllers.graphical.searchTrips;
     opens controllers.graphical.reviews;
     opens model;
+    opens engClasses.pattern;
 }

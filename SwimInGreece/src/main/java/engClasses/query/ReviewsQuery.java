@@ -24,4 +24,5 @@ public class ReviewsQuery {
         sql = "SELECT * FROM Reviews WHERE Tour = '" + tourName + "';";
         return stmt.executeQuery(sql);
     }
+
 }

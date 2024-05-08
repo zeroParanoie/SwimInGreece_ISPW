@@ -4,7 +4,7 @@ import engClasses.query.LoginQuery;
 import engClasses.query.SwimQuery;
 import engClasses.query.TourQuery;
 import misc.Connect;
-import misc.Facade;
+import engClasses.pattern.Facade;
 import model.Organiser;
 import model.Swim;
 import model.Tour;

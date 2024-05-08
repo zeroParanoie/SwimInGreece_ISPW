@@ -1,4 +1,4 @@
-package misc;
+package engClasses.pattern;
 
 import engClasses.DAO.BookingsDAO;
 import engClasses.DAO.OrganiserDAO;
@@ -9,7 +9,6 @@ import model.Organiser;
 import model.Swimmer;
 import model.Tour;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Facade {

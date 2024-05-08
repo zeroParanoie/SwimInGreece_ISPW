@@ -19,7 +19,6 @@ public class SwimDAO {
             callableStatement.setString(3, tour);
             callableStatement.setString(4, organiser);
             callableStatement.executeUpdate();
-            System.out.println("Query swim ok");
         } catch (SQLException e) {
             e.printStackTrace();
         }

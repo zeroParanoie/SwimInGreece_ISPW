@@ -23,7 +23,7 @@ public class WriteReview {
 
     public FetchReviewsBean getReviews(LoggedUserBean loggedUserBean) {
            FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
-           List<Review> reviews = ReviewsDAO.getReviews(loggedUserBean.getUsr());
+           List<Review> reviews = ReviewsDAO.getReviewsFromOrg(loggedUserBean.getUsr());
            fetchReviewsBean.setReviews(reviews);
 
            return fetchReviewsBean;
