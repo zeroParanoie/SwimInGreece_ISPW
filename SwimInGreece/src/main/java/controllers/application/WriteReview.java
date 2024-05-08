@@ -25,6 +25,7 @@ public class WriteReview {
            FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
            List<Review> reviews = ReviewsDAO.getReviews(loggedUserBean.getUsr());
            fetchReviewsBean.setReviews(reviews);
+
            return fetchReviewsBean;
     }
 }

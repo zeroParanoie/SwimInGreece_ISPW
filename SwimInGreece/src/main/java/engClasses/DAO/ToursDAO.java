@@ -207,7 +207,6 @@ public class ToursDAO {
                 // no tour found
             }
 
-            rs.next();
             String organiser = rs.getString("Organiser");
             String place = rs.getString("Place");
             float length = rs.getFloat("TotalLength");

@@ -70,7 +70,6 @@ public class SwimmerDAO {
                 //no user found
             }
 
-            rs.next();
             String fullName = rs.getString("Fullname");
             return new Swimmer(usr, fullName);
         } catch (SQLException e) {

@@ -46,6 +46,7 @@ public class ReviewsDAO {
                 int rating = rs.getInt("Rating");
                 String tour = rs.getString("Tour");
                 Review review = new Review(body, Facade.getInstance().getSwimmerFromFacade(username), rating, Facade.getInstance().getTourFromFacade(tour));
+                review.setTourName();
                 reviews.add(review);
             }
             return reviews;

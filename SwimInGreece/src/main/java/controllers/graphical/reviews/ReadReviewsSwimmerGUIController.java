@@ -65,6 +65,7 @@ public class ReadReviewsSwimmerGUIController implements Initializable {
         FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
 
         fetchReviewsBean = writeReview.getReviews(session.getLoggedUserBean());
+
         for(Review review : fetchReviewsBean.getReviews()) {
             reviewObservableList.add(review);
         }
