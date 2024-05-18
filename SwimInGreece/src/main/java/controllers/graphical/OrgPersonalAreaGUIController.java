@@ -38,7 +38,7 @@ public class OrgPersonalAreaGUIController implements Initializable {
     private void logout() {
         Stage stage = (Stage) pubBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showHomepage();
+        Model.getInstance().getViewFactory().showHomepage(session);
     }
 
     private void onPubs() {

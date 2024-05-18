@@ -13,11 +13,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import misc.Model;
+import misc.Session;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CreateAccountGUIController implements Initializable {
+    private Session session;
+
     @FXML
     private AnchorPane body;
 
@@ -51,16 +54,20 @@ public class CreateAccountGUIController implements Initializable {
     @FXML
     private TextField usernameField;
 
+    public CreateAccountGUIController(Session session) {
+        this.session = session;
+    }
+
     private void onLogin() {
         Stage stage = (Stage) usernameField.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showLogin();
+        Model.getInstance().getViewFactory().showLogin(session);
     }
 
     private void onHome() {
         Stage stage = (Stage) usernameField.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showHomepage();
+        Model.getInstance().getViewFactory().showHomepage(session);
     }
 
     private void onSignIn() {
@@ -79,7 +86,7 @@ public class CreateAccountGUIController implements Initializable {
 
         Stage stage = (Stage) usernameField.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showHomepage();
+        Model.getInstance().getViewFactory().showHomepage(session);
     }
 
     @Override

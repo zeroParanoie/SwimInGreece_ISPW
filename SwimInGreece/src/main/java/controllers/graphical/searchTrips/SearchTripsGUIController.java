@@ -74,13 +74,13 @@ public class SearchTripsGUIController implements Initializable {
     private void onLogin() {
         Stage stage = (Stage) submitBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showLogin();
+        Model.getInstance().getViewFactory().showLogin(session);
     }
 
     private void onHome() {
         Stage stage = (Stage) submitBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showHomepage();
+        Model.getInstance().getViewFactory().showHomepage(session);
     }
 
     private void onBook() {

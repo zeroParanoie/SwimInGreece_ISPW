@@ -6,6 +6,7 @@ public class Session {
     private LoggedUserBean loggedUserBean;
     private boolean isOrganiser;
     private String sessionFirstPage;
+    private int chosenView;
 
     public Session() {
         this.loggedUserBean = null;
@@ -25,5 +26,13 @@ public class Session {
 
     public LoggedUserBean getLoggedUserBean() {
         return loggedUserBean;
+    }
+
+    public void setChosenView(int chosenView) {
+        this.chosenView = chosenView;
+    }
+
+    public int getChosenView() {
+        return chosenView;
     }
 }

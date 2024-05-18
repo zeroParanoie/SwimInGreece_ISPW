@@ -12,8 +12,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.ToggleSwitch?>
 
-<BorderPane maxHeight="500.0" prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.graphical.HomeGUIController">
+<BorderPane maxHeight="500.0" prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane fx:id="body" prefHeight="800.0" prefWidth="1500.0" stylesheets="@style1.css" BorderPane.alignment="CENTER">
          <ImageView fitHeight="800.0" fitWidth="1500.0" layoutX="357.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -27,11 +29,12 @@
             <Image url="@../misc/textHomepage.png" />
          </ImageView>
          <Label fx:id="errorLabel" layoutX="1021.0" layoutY="6.0" text="You need to login to perform this action!" textFill="RED" />
-         <Button fx:id="becomeGuideBtn" layoutX="69.0" layoutY="474.0" minWidth="200.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="365.0" style="-fx-background-color: linear-gradient(wheat, lightgray); -fx-background-radius: 30; -fx-text-fill: white; -fx-font-size: 25; -fx-cursor: hand;" text="Become a tour guide">
-            <graphic>
-               <FontAwesomeIconView fill="WHITE" glyphName="USER" />
-            </graphic>
-         </Button>
+         <ToggleSwitch fx:id="toggleSwitch" layoutX="89.0" layoutY="766.0" />
+         <Label layoutX="164.0" layoutY="766.0" text="Tired of this theme?" textFill="WHITE">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
       </AnchorPane>
    </center>
    <top>
@@ -69,17 +72,9 @@
                <Insets right="1.0" top="1.0" />
             </padding>
          </Button>
-         <Button fx:id="sponsorBtn" alignment="TOP_CENTER" minWidth="300.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="300.0" text="Sponsor your trip">
-            <HBox.margin>
-               <Insets top="10.0" />
-            </HBox.margin>
-            <graphic>
-               <FontAwesomeIconView glyphName="CERTIFICATE" />
-            </graphic>
-         </Button>
          <ImageView fitHeight="23.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
             <HBox.margin>
-               <Insets left="30.0" top="25.0" />
+               <Insets left="350.0" top="25.0" />
             </HBox.margin>
             <Image url="@../misc/logo.png" />
          </ImageView>

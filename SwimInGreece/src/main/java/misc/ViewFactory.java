@@ -21,28 +21,23 @@ import model.Tour;
 public class ViewFactory {
     public ViewFactory() {}
 
-    public void showHomepage() {
+    public void showHomepage(Session session) {
+        String resource;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/Homepage1.fxml"));
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(session.getChosenView() == 0) {
+            resource = "/firstView/Homepage1.fxml";
+        } else {
+            resource = "/secondView/Homepage2.fxml";
         }
 
-        Stage stage = new Stage();
-        loader.setController(new HomeGUIController());
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/misc/icon.jpg"))));
-        stage.setScene(scene);
-        stage.setTitle("SwimInGreece");
-        stage.resizableProperty().set(false);
-        stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
+        loader.setController(new HomeGUIController(session));
+        showStage(loader);
     }
 
-    public void showLogin() {
+    public void showLogin(Session session) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/Login1.fxml"));
-        loader.setController(new LoginGUIController());
+        loader.setController(new LoginGUIController(session));
         showStage(loader);
     }
 
@@ -62,9 +57,9 @@ public class ViewFactory {
         stage.show();
     }
 
-    public void showCreateAccount() {
+    public void showCreateAccount(Session session) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/CreateAccount1.fxml"));
-        loader.setController(new CreateAccountGUIController());
+        loader.setController(new CreateAccountGUIController(session));
         showStage(loader);
     }
 

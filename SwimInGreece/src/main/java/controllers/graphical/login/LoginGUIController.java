@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginGUIController implements Initializable {
+    private Session session;
 
     @FXML
     private Button bookBtn;
@@ -49,18 +50,20 @@ public class LoginGUIController implements Initializable {
     @FXML
     private CheckBox orgCheckBox;
 
-    public LoginGUIController() {}
+    public LoginGUIController(Session session) {
+        this.session = session;
+    }
 
     private void onHome() {
         Stage stage = (Stage) submitBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showHomepage();
+        Model.getInstance().getViewFactory().showHomepage(session);
     }
 
     private void onCreateAccount() {
         Stage stage = (Stage) submitBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showCreateAccount();
+        Model.getInstance().getViewFactory().showCreateAccount(session);
     }
 
     private void onLogin() {

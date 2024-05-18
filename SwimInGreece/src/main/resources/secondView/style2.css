@@ -1,0 +1,18 @@
+.navbar {
+    -fx-background-color: black;
+    -fx-spacing: 20;
+}
+
+.textRect {
+    -fx-arc-width: 50;
+    -fx-arc-height: 50;
+}
+
+.navbar Button {
+    -fx-background-color: linear-gradient(rgba(235,235,250,1) 0%, rgba(91,216,241,1) 100%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-font-size: 25;
+    -fx-font-family: sans-serif;
+}

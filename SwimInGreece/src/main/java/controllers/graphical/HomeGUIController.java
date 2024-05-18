@@ -1,5 +1,7 @@
 package controllers.graphical;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,20 +11,20 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import misc.Model;
 import misc.Session;
+import org.controlsfx.control.ToggleSwitch;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class HomeGUIController implements Initializable {
-    @FXML
-    public Button sponsorBtn;
-
-    @FXML
-    public Button becomeGuideBtn;
+    private Session session;
 
     @FXML
     private AnchorPane body;
+
+    @FXML
+    private ToggleSwitch toggleSwitch;
 
     @FXML
     private Button bookBtn;
@@ -39,12 +41,14 @@ public class HomeGUIController implements Initializable {
     @FXML
     private HBox navbar;
 
-    public HomeGUIController() {}
+    public HomeGUIController(Session session) {
+        this.session = session;
+    }
 
     private void onLogin() {
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showLogin();
+        Model.getInstance().getViewFactory().showLogin(session);
     }
 
     private void onBook() {
@@ -56,8 +60,26 @@ public class HomeGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
-        sponsorBtn.setVisible(false);
+        if(session.getChosenView() == 1) {
+            toggleSwitch.setSelected(true);
+        }
 
+        toggleSwitch.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if(session.getChosenView() == 0) {
+                    session.setChosenView(1);
+                    Stage stage = (Stage) loginBtn.getScene().getWindow();
+                    Model.getInstance().getViewFactory().closeStage(stage);
+                    Model.getInstance().getViewFactory().showHomepage(session);
+                } else {
+                    session.setChosenView(0);
+                    Stage stage = (Stage) loginBtn.getScene().getWindow();
+                    Model.getInstance().getViewFactory().closeStage(stage);
+                    Model.getInstance().getViewFactory().showHomepage(session);
+                }
+            }
+        });
         loginBtn.setOnAction(actionEvent -> onLogin());
         bookBtn.setOnAction(actionEvent -> onBook());
     }

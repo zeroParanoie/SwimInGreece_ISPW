@@ -62,7 +62,7 @@ public class CSVSwimmerDAO {
         }
 
         csvReader.close();
-        return swimmers.getFirst();
+        return swimmers.get(0);
     }
 
     public static Swimmer selectSwimmer(String usr, File fd) throws IOException, CsvValidationException, WrongCredsException, DupSwimmerException {
@@ -86,6 +86,6 @@ public class CSVSwimmerDAO {
         }
 
         csvReader.close();
-        return swimmers.getFirst();
+        return swimmers.get(0);
     }
 }

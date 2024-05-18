@@ -37,7 +37,7 @@ public class SwimmerPersonalAreaGUIController implements Initializable {
     private void logout() {
         Stage stage = (Stage) logoutBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showHomepage();
+        Model.getInstance().getViewFactory().showHomepage(session);
     }
 
     private void onBookings() {

@@ -11,6 +11,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Model.getInstance().getViewFactory().showHomepage();
+        Session session = new Session();
+        session.setChosenView(1);
+        Model.getInstance().getViewFactory().showHomepage(session);
     }
 }
