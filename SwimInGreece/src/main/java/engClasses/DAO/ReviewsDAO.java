@@ -87,7 +87,7 @@ public class ReviewsDAO {
             conn = Connect.getInstance().getConnection();
 
             CallableStatement callableStatement = conn.prepareCall("{? = call get_org()}");
-            int retVal = callableStatement.registerOutParameter();
+            //int retVal = callableStatement.registerOutParameter();
             ResultSet rs = callableStatement.executeQuery();
             while(rs.next()) {
                 String user = rs.getString("Username");

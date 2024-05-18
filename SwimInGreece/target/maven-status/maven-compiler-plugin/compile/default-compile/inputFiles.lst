@@ -1,35 +1,60 @@
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\graphical\sponsorTrip\AddSwimGUIController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\DAO\SwimDAO.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\model\User.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\model\Organiser.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\model\Tour.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\query\SwimQuery.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\query\TourQuery.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\model\Swim.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\model\Swimmer.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\application\SponsorTourController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\graphical\SearchTripsGUIController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\beans\login\UserBean.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\misc\Connect.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\beans\login\LoggedUserBean.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\model\Review.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\graphical\HomeGUIController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\misc\Places.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\beans\addSwim\BeanNewSwim.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\query\LoginQuery.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\misc\Session.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\misc\App.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\module-info.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\application\LoginController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\graphical\SwimmerHomepageGUIController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\graphical\OrganiserHomepageGUIController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\misc\Model.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\graphical\sponsorTrip\SubmitTourGUIController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\misc\ViewFactory.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\DAO\ToursDAO.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\graphical\sponsorTrip\SponsorTourFormGUIController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\beans\sponsorTour\BeanNewTour.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\DAO\OrganiserDAO.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\graphical\login\CreateAccountGUIController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\controllers\graphical\login\LoginGUIController.java
-C:\Users\schiavo greco\Desktop\UNI\SwimInGreece\SwimInGreece\src\main\java\engClasses\DAO\SwimmerDAO.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/model/Review.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/beans/reviews/FetchReviewsBean.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/OrgPubsGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/application/WriteReview.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/reviews/BookingsGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/model/Swim.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/sponsorTrip/AddSwimGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/model/Organiser.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/misc/ViewFactory.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/beans/login/UserBean.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/DAO/CSVSwimmerDAO.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/DAO/ReviewsDAO.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/OrgPersonalAreaGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/application/SponsorTourController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/misc/App.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/login/LoginGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/query/ReviewsQuery.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/misc/Places.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/model/Tour.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/beans/addSwim/BeanNewSwim.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/beans/sponsorTour/BeanNewTour.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/model/Booking.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/misc/Model.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/searchTrips/LoggedSearchTripsGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/beans/reviews/BookingBean.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/exceptions/TourNotSelectedException.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/DAO/ToursDAO.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/reviews/ReadReviewsSwimmerGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/reviews/WriteReviewsGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/model/Swimmer.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/DAO/OrganiserDAO.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/searchTrips/SearchTripsGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/application/LoginController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/beans/login/LoggedUserBean.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/login/CreateAccountGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/query/BookingsQuery.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/SwimmerHomepageGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/sponsorTrip/SponsorTourFormGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/sponsorTrip/SubmitTourGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/DAO/SwimmerDAO.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/misc/Connect.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/searchTrips/BookConfirmationGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/query/TourQuery.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/beans/searchTrips/TourBean.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/module-info.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/model/User.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/beans/reviews/ReviewBean.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/exceptions/RatingNotSelectedException.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/pattern/Facade.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/HomeGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/SwimmerPersonalAreaGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/reviews/OrgReadReviewsGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/application/SearchTrips.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/DAO/SwimDAO.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/DAO/BookingsDAO.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/reviews/ReadReviewsFromBookGUIController.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/query/SwimQuery.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/engClasses/query/LoginQuery.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/misc/Session.java
+/home/andrea/Desktop/SwimInGreece/SwimInGreece/src/main/java/controllers/graphical/OrganiserHomepageGUIController.java

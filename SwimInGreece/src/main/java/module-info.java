@@ -3,6 +3,7 @@ module SwimInGreece {
     requires javafx.controls;
     requires javafx.graphics;
     requires java.sql;
+    requires com.opencsv;
 
     opens misc;
     opens controllers.graphical;
