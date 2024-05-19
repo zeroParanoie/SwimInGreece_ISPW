@@ -1,5 +1,6 @@
 package engClasses.DAO;
 
+import engClasses.exceptions.LoginFromDBException;
 import engClasses.query.LoginQuery;
 import misc.Connect;
 import model.Swimmer;
@@ -13,7 +14,7 @@ import java.sql.Statement;
 public class SwimmerDAO {
     private SwimmerDAO() {}
 
-    public static Swimmer selectSwimmer(String usr, String pw) {
+    public static Swimmer selectSwimmer(String usr, String pw) throws LoginFromDBException {
         User swimmer;
         Statement stmt = null;
         Connection conn = null;
@@ -25,7 +26,7 @@ public class SwimmerDAO {
 
             ResultSet rs = LoginQuery.swimmerLogin(stmt, usr, pw);
             if(!rs.first()) {
-                //data exception
+                throw new LoginFromDBException(0);
             }
 
             fullName = rs.getString("Fullname");

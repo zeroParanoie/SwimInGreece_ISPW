@@ -23,12 +23,12 @@ public class CSVSwimmerDAO {
         }
     }
 
-    public static void addSwimmer(Swimmer swimmer, String pw, File fd) throws DupSwimmerException, CsvValidationException, IOException, WrongCredsException {
+    public synchronized void addSwimmer(Swimmer swimmer, String pw) throws DupSwimmerException, CsvValidationException, IOException, WrongCredsException {
         boolean duplicateRecord = false;
-        CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(fd, true)));
+        CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.file, true)));
         String[] record = new String[3];
 
-        duplicateRecord = (selectSwimmer(swimmer.getUsername(), fd) != null);
+        duplicateRecord = (selectSwimmer(swimmer.getUsername()) != null);
         if(!duplicateRecord) {
             record[0] = swimmer.getUsername();
             record[1] = pw;
@@ -41,8 +41,8 @@ public class CSVSwimmerDAO {
 
     }
 
-    public static synchronized Swimmer selectSwimmer(String usr, String pw, File fd) throws IOException, CsvValidationException, WrongCredsException, DupSwimmerException {
-        CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
+    public synchronized Swimmer selectSwimmer(String usr, String pw) throws IOException, CsvValidationException, WrongCredsException, DupSwimmerException {
+        CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(this.file)));
         String[] record;
 
         List<Swimmer> swimmers = new ArrayList<Swimmer>();
@@ -65,8 +65,8 @@ public class CSVSwimmerDAO {
         return swimmers.get(0);
     }
 
-    public static Swimmer selectSwimmer(String usr, File fd) throws IOException, CsvValidationException, WrongCredsException, DupSwimmerException {
-        CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
+    public Swimmer selectSwimmer(String usr) throws IOException, CsvValidationException, WrongCredsException, DupSwimmerException {
+        CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(this.file)));
         String[] record;
 
         List<Swimmer> swimmers = new ArrayList<Swimmer>();
@@ -79,13 +79,13 @@ public class CSVSwimmerDAO {
             }
         }
 
-        if(swimmers.isEmpty()) {
+        if(!swimmers.isEmpty()) {
             throw new WrongCredsException("credentials are wrong!");
         } else if(swimmers.size() > 1) {
             throw new DupSwimmerException("Found duplicate in csv file!");
         }
 
         csvReader.close();
-        return swimmers.get(0);
+        return null;
     }
 }

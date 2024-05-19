@@ -4,11 +4,12 @@ import engClasses.DAO.OrganiserDAO;
 import engClasses.DAO.SwimmerDAO;
 import engClasses.beans.login.LoggedUserBean;
 import engClasses.beans.login.UserBean;
+import engClasses.exceptions.LoginFromDBException;
 import model.Organiser;
 import model.Swimmer;
 
 public class LoginController {
-    public LoggedUserBean loginMethod(UserBean loggingUser) {
+    public LoggedUserBean loginMethod(UserBean loggingUser) throws LoginFromDBException {
         LoggedUserBean loggedUser = new LoggedUserBean();
 
             if(loggingUser.isOrganiser()) {

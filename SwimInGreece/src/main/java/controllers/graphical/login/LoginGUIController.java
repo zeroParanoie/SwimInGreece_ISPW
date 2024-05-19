@@ -3,6 +3,7 @@ package controllers.graphical.login;
 import controllers.application.LoginController;
 import engClasses.beans.login.LoggedUserBean;
 import engClasses.beans.login.UserBean;
+import engClasses.exceptions.LoginFromDBException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -67,31 +68,41 @@ public class LoginGUIController implements Initializable {
     }
 
     private void onLogin() {
-        LoggedUserBean loggedUserBean;
-        Session session = new Session();
-        boolean isOrganiser = orgCheckBox.isSelected();
-        String username = usernameField.getText();
-        String password = passwordField.getText();
 
 
-        UserBean userBean = new UserBean();
-        userBean.setUsername(username);
-        userBean.setOrganiser(isOrganiser);
-        userBean.setPassword(password);
-        LoginController loginController = new LoginController();
-        loggedUserBean = loginController.loginMethod(userBean);
-        session.setLoggedUserBean(loggedUserBean);
+        try {
+            LoggedUserBean loggedUserBean;
+            Session session = new Session();
+            boolean isOrganiser = orgCheckBox.isSelected();
+            String username = usernameField.getText();
+            String password = passwordField.getText();
 
-        Stage stage = (Stage) submitBtn.getScene().getWindow();
-        Model.getInstance().getViewFactory().closeStage(stage);
 
-        if(isOrganiser) {
-            session.setOrganiser(true);
-            Model.getInstance().getViewFactory().showOrganiserHomePage(session);
-        } else {
-            session.setOrganiser(false);
-            Model.getInstance().getViewFactory().showSwimmerHomepage(session);
+            UserBean userBean = new UserBean();
+            userBean.setUsername(username);
+            userBean.setOrganiser(isOrganiser);
+            userBean.setPassword(password);
+            LoginController loginController = new LoginController();
+            loggedUserBean = loginController.loginMethod(userBean);
+
+            session.setLoggedUserBean(loggedUserBean);
+
+            Stage stage = (Stage) submitBtn.getScene().getWindow();
+            Model.getInstance().getViewFactory().closeStage(stage);
+
+            if(isOrganiser) {
+                session.setOrganiser(true);
+                Model.getInstance().getViewFactory().showOrganiserHomePage(session);
+            } else {
+                session.setOrganiser(false);
+                Model.getInstance().getViewFactory().showSwimmerHomepage(session);
+            }
+        } catch (LoginFromDBException e) {
+            errorLabel.setText("username or password are incorrect!");
+            errorLabel.setVisible(true);
         }
+
+
     }
 
     @Override

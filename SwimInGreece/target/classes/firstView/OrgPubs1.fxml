@@ -15,14 +15,14 @@
 
 <BorderPane maxHeight="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <center>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <ImageView fitHeight="640.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <AnchorPane prefHeight="569.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="625.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                 <effect>
                     <BoxBlur />
                 </effect>
                 <Image url="@../misc/GreeceBG.jpg" />
             </ImageView>
-            <VBox layoutX="75.0" layoutY="20.0" prefHeight="448.0" prefWidth="850.0" styleClass="logo_container" stylesheets="@style1.css" AnchorPane.bottomAnchor="140.0" AnchorPane.topAnchor="50.0">
+            <VBox layoutX="75.0" layoutY="20.0" prefHeight="448.0" prefWidth="850.0" styleClass="logo_container" stylesheets="@style1.css" AnchorPane.bottomAnchor="80.0" AnchorPane.topAnchor="80.0">
                 <TableView fx:id="tableView" prefHeight="300.0" prefWidth="810.0" style="-fx-background-radius: 3">
                     <columns>
                         <TableColumn fx:id="tourCol" prefWidth="405.0" text="Tour" />
@@ -42,9 +42,17 @@
                             <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" />
                         </graphic>
                         <HBox.margin>
-                            <Insets bottom="10.0" left="310.0" />
+                            <Insets bottom="10.0" left="140.0" />
                         </HBox.margin>
                     </Button>
+               <Button fx:id="backBtn" mnemonicParsing="false" style="-fx-cursor: hand;" text="Back to personal area">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="INFO" />
+                  </graphic>
+                  <HBox.margin>
+                     <Insets left="30.0" />
+                  </HBox.margin>
+               </Button>
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -52,41 +60,4 @@
             </VBox>
         </AnchorPane>
     </center>
-    <top>
-        <HBox fx:id="navbar" prefHeight="75.0" prefWidth="200.0" style="-fx-spacing: 20;" styleClass="navbar" stylesheets="@style1.css" BorderPane.alignment="CENTER">
-            <Button fx:id="homeBtn" mnemonicParsing="false" text="Home">
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-                <HBox.margin>
-                    <Insets left="20.0" top="10.0" />
-                </HBox.margin>
-                <graphic>
-                    <FontAwesomeIconView glyphName="HOME" />
-                </graphic>
-            </Button>
-            <Button fx:id="loginBtn" mnemonicParsing="false" text="Login">
-                <HBox.margin>
-                    <Insets top="10.0" />
-                </HBox.margin>
-                <graphic>
-                    <FontAwesomeIconView glyphName="USER" />
-                </graphic>
-            </Button>
-            <Button fx:id="bookBtn" mnemonicParsing="false" style="-fx-background-color: linear-gradient(#5FCBDE, #5FCBBE);" text="Book a trip">
-                <HBox.margin>
-                    <Insets top="10.0" />
-                </HBox.margin>
-                <graphic>
-                    <FontAwesomeIconView />
-                </graphic>
-            </Button>
-            <ImageView fitHeight="70.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
-                <HBox.margin>
-                    <Insets left="150.0" top="15.0" />
-                </HBox.margin>
-                <Image url="@../misc/logo.png" />
-            </ImageView>
-        </HBox>
-    </top>
 </BorderPane>

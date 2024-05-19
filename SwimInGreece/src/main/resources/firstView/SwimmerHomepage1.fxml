@@ -67,17 +67,9 @@
                     <Insets right="1.0" top="1.0" />
                 </padding>
             </Button>
-            <Button fx:id="sponsorBtn" alignment="TOP_CENTER" minWidth="300.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="300.0" text="Sponsor your trip">
-                <HBox.margin>
-                    <Insets top="10.0" />
-                </HBox.margin>
-                <graphic>
-                    <FontAwesomeIconView glyphName="CERTIFICATE" />
-                </graphic>
-            </Button>
             <ImageView fitHeight="23.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
                 <HBox.margin>
-                    <Insets left="250.0" top="25.0" />
+                    <Insets left="570.0" top="25.0" />
                 </HBox.margin>
                 <Image url="@../misc/logo.png" />
             </ImageView>

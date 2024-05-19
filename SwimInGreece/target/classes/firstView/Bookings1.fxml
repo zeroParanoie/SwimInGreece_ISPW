@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -20,33 +21,43 @@
         </effect>
         <Image url="@../misc/GreeceBG.jpg" />
     </ImageView>
-    <VBox layoutX="431.0" layoutY="168.0" prefHeight="200.0" prefWidth="100.0" styleClass="logo_container"
-          stylesheets="@style1.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="120.0"
-          AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="70.0">
+    <VBox layoutX="431.0" layoutY="168.0" prefHeight="200.0" prefWidth="100.0" styleClass="logo_container" stylesheets="@style1.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="70.0">
         <Label text="These are all the trips you booked">
            <font>
-               <Font size="24.0"/>
+               <Font size="24.0" />
            </font>
            <VBox.margin>
-               <Insets left="20.0" top="30.0"/>
+               <Insets left="20.0" top="30.0" />
            </VBox.margin>
         </Label>
         <TableView fx:id="tableView" prefHeight="261.0" prefWidth="682.0">
             <columns>
-                <TableColumn fx:id="tourCol" prefWidth="341.0" text="Tour"/>
-                <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="340.0" text="Date"/>
+                <TableColumn fx:id="tourCol" prefWidth="341.0" text="Tour" />
+                <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="340.0" text="Date" />
             </columns>
            <VBox.margin>
-               <Insets left="20.0" right="20.0" top="30.0"/>
+               <Insets left="20.0" right="20.0" top="30.0" />
            </VBox.margin>
         </TableView>
-        <Button fx:id="reviewBtn" mnemonicParsing="false" text="Leave a review" style="-fx-cursor: hand">
-           <VBox.margin>
-               <Insets left="230.0"/>
-           </VBox.margin>
-           <graphic>
-               <FontAwesomeIconView fill="WHITE" glyphName="AT"/>
-           </graphic>
-        </Button>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+              <Button fx:id="reviewBtn" mnemonicParsing="false" style="-fx-cursor: hand" text="Leave a review">
+                 <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="AT" />
+                 </graphic>
+               <HBox.margin>
+                  <Insets left="60.0" />
+               </HBox.margin>
+              </Button>
+            <Button fx:id="backBtn" mnemonicParsing="false" style="-fx-cursor: hand;" text="Back to personal area">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="INFO" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
     </VBox>
 </AnchorPane>

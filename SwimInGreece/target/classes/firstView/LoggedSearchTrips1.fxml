@@ -100,14 +100,6 @@
                     <FontAwesomeIconView glyphName="HOME" />
                 </graphic>
             </Button>
-            <Button fx:id="sponsorBtn" minWidth="260.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="190.0" text="Sponsor your tour">
-                <HBox.margin>
-                    <Insets top="10.0" />
-                </HBox.margin>
-                <graphic>
-                    <FontAwesomeIconView glyphName="CERTIFICATE" />
-                </graphic>
-            </Button>
             <Button fx:id="bookBtn" minWidth="190.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="278.0" style="-fx-background-color: linear-gradient(#5FCBDE, #5FCBBE);" text="Book a trip">
                 <HBox.margin>
                     <Insets top="10.0" />
@@ -118,7 +110,7 @@
             </Button>
             <ImageView fitHeight="70.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
                 <HBox.margin>
-                    <Insets top="15.0" />
+                    <Insets left="140.0" top="15.0" />
                 </HBox.margin>
                 <Image url="@../misc/logo.png" />
             </ImageView>

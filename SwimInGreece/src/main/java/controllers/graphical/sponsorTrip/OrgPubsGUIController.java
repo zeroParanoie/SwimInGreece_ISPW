@@ -1,4 +1,4 @@
-package controllers.graphical;
+package controllers.graphical.sponsorTrip;
 
 import controllers.application.SearchTrips;
 import engClasses.beans.searchTrips.TourBean;
@@ -11,6 +11,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import misc.Model;
 import misc.Session;
 import model.Tour;
 
@@ -23,6 +25,9 @@ public class OrgPubsGUIController implements Initializable {
 
     @FXML
     private Button bookBtn;
+
+    @FXML
+    private Button backBtn;
 
     @FXML
     private Button homeBtn;
@@ -65,9 +70,17 @@ public class OrgPubsGUIController implements Initializable {
         tableView.setItems(tourObservableList);
     }
 
+    private void onBack() {
+        Stage stage = (Stage) backBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showPersonalArea(session);
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableInit();
+        backBtn.setOnAction(actionEvent -> onBack());
     }
 }
 

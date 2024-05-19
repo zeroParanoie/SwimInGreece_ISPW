@@ -1,5 +1,6 @@
 package engClasses.DAO;
 
+import engClasses.exceptions.LoginFromDBException;
 import engClasses.query.LoginQuery;
 import misc.Connect;
 import model.Organiser;
@@ -12,7 +13,7 @@ import java.sql.Statement;
 public class OrganiserDAO {
     private OrganiserDAO() {}
 
-    public static Organiser organiserLogin(String usr, String pw) {
+    public static Organiser organiserLogin(String usr, String pw) throws LoginFromDBException {
         Organiser organiser;
         Statement stmt = null;
         Connection conn = null;
@@ -25,7 +26,7 @@ public class OrganiserDAO {
 
             ResultSet rs = LoginQuery.orgLogin(stmt, usr, pw);
             if(!rs.first()) {
-                //data exception
+                throw new LoginFromDBException(0);
             }
 
             fullname = rs.getString("Fullname");

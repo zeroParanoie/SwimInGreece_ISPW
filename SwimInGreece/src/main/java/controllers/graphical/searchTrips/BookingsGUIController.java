@@ -1,4 +1,4 @@
-package controllers.graphical.reviews;
+package controllers.graphical.searchTrips;
 
 import controllers.application.WriteReview;
 import engClasses.beans.reviews.BookingBean;
@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import misc.Model;
 import misc.Session;
 import model.Booking;
@@ -21,6 +22,9 @@ public class BookingsGUIController implements Initializable {
 
 
     private Session session;
+
+    @FXML
+    private Button backBtn;
 
     @FXML
     private TableColumn<Booking, String> dateCol;
@@ -59,9 +63,16 @@ public class BookingsGUIController implements Initializable {
         Model.getInstance().getViewFactory().showReviewSubmitForm(session, booking.getTour());
     }
 
+    private void onBack() {
+        Stage stage = (Stage) backBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showPersonalArea(session);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setTableView();
+        backBtn.setOnAction(actionEvent -> onBack());
         reviewBtn.setOnAction(actionEvent -> onReview());
     }
 }

@@ -69,17 +69,9 @@
                     <FontAwesomeIconView glyphName="CERTIFICATE" />
                 </graphic>
             </Button>
-         <Button fx:id="readReviewsBtn" layoutX="250.0" layoutY="20.0" minWidth="200.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="249.0" text="Read reviews">
-            <graphic>
-               <FontAwesomeIconView glyphName="AT" />
-            </graphic>
-            <HBox.margin>
-               <Insets top="10.0" />
-            </HBox.margin>
-         </Button>
             <ImageView fitHeight="23.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
                 <HBox.margin>
-                    <Insets left="200.0" top="25.0" />
+                    <Insets left="450.0" top="25.0" />
                 </HBox.margin>
                 <Image url="@../misc/logo.png" />
             </ImageView>
