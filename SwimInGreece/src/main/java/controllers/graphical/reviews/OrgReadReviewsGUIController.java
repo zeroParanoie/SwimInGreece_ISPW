@@ -2,6 +2,7 @@ package controllers.graphical.reviews;
 
 import controllers.application.WriteReview;
 import engClasses.beans.reviews.FetchReviewsBean;
+import engClasses.exceptions.NoReviewsFound;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -57,14 +58,19 @@ public class OrgReadReviewsGUIController implements Initializable {
         this.session = session;
     }
 
-    private void tableInit() {
-        WriteReview writeReview = new WriteReview();
-        FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
+    private void tableInit() throws Exception {
 
-        fetchReviewsBean = writeReview.getReviews(session.getLoggedUserBean().getUsr());
-        for(Review review : fetchReviewsBean.getReviews()) {
-            reviews.add(review);
-            System.out.println(review.getBody() + "HI");
+
+        try {
+            WriteReview writeReview = new WriteReview();
+            FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
+
+            fetchReviewsBean = writeReview.getReviews(session.getLoggedUserBean().getUsr());
+            for(Review review : fetchReviewsBean.getReviews()) {
+                reviews.add(review);
+            }
+        } catch (NoReviewsFound nrf) {
+            throw new Exception(nrf);
         }
 
         tourCol.setCellValueFactory(new PropertyValueFactory<>("tourName"));
@@ -77,7 +83,11 @@ public class OrgReadReviewsGUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tableInit();
+        try {
+            tableInit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 

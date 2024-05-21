@@ -1,5 +1,6 @@
 package engClasses.DAO;
 
+import engClasses.exceptions.NoReviewsFound;
 import engClasses.query.ReviewsQuery;
 import misc.Connect;
 import engClasses.pattern.Facade;
@@ -30,7 +31,7 @@ public class ReviewsDAO {
         }
     }
 
-    public static List<Review> getReviews(String username) {
+    public static List<Review> getReviews(String username) throws NoReviewsFound {
         Statement stmt = null;
         Connection conn = null;
         List<Review> reviews = new ArrayList<Review>();
@@ -40,6 +41,10 @@ public class ReviewsDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             ResultSet rs = ReviewsQuery.getReviewsFromBooking(stmt, username);
+            if(!rs.first()) {
+                throw new NoReviewsFound("no reviews found!");
+            }
+
             while(rs.next()) {
                 String body = rs.getString("Body");
                 int rating = rs.getInt("Rating");
@@ -55,7 +60,7 @@ public class ReviewsDAO {
         }
     }
 
-    public static List<Review> getReviewsFromTourName(String tourName) {
+    public static List<Review> getReviewsFromTourName(String tourName) throws NoReviewsFound {
         Statement stmt = null;
         Connection conn = null;
         List<Review> reviews = new ArrayList<Review>();
@@ -65,6 +70,10 @@ public class ReviewsDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             ResultSet rs = ReviewsQuery.getReviewsFromTourName(stmt, tourName);
+            if(!rs.first()) {
+                throw new NoReviewsFound("no reviews found!");
+            }
+
             while(rs.next()) {
                 String body = rs.getString("Body");
                 int rating = rs.getInt("Rating");
@@ -81,7 +90,7 @@ public class ReviewsDAO {
         }
     }
 
-    public static List<Review> getReviewsFromOrg(String organiser) {
+    public static List<Review> getReviewsFromOrg(String organiser) throws NoReviewsFound {
         Connection conn = null;
         List<Review> reviews = new ArrayList<Review>();
 
@@ -90,6 +99,7 @@ public class ReviewsDAO {
 
             CallableStatement callableStatement = conn.prepareCall("{call get_org()}");
             ResultSet rs = callableStatement.executeQuery();
+
             while(rs.next()) {
                 String user = rs.getString("Username");
                 String body = rs.getString("Body");

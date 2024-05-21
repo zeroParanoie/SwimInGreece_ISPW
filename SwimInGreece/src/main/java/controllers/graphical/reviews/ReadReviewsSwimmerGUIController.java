@@ -2,6 +2,7 @@ package controllers.graphical.reviews;
 
 import controllers.application.WriteReview;
 import engClasses.beans.reviews.FetchReviewsBean;
+import engClasses.exceptions.NoReviewsFound;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -61,13 +62,17 @@ public class ReadReviewsSwimmerGUIController implements Initializable {
     }
 
     private void startSettings() {
-        WriteReview writeReview = new WriteReview();
-        FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
 
-        fetchReviewsBean = writeReview.getReviews(session.getLoggedUserBean());
 
-        for(Review review : fetchReviewsBean.getReviews()) {
-            reviewObservableList.add(review);
+        try {
+            WriteReview writeReview = new WriteReview();
+            FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
+            fetchReviewsBean = writeReview.getReviews(session.getLoggedUserBean());
+            for(Review review : fetchReviewsBean.getReviews()) {
+                reviewObservableList.add(review);
+            }
+        } catch (NoReviewsFound e) {
+            throw new RuntimeException(e);
         }
 
         tourCol.setCellValueFactory(new PropertyValueFactory<>("tourName"));

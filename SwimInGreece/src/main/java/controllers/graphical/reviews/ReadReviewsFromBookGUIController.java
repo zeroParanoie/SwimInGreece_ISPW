@@ -2,6 +2,8 @@ package controllers.graphical.reviews;
 
 import controllers.application.WriteReview;
 import engClasses.beans.reviews.FetchReviewsBean;
+import engClasses.exceptions.DivisionByZero;
+import engClasses.exceptions.NoReviewsFound;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -108,7 +110,11 @@ public class ReadReviewsFromBookGUIController implements Initializable {
         WriteReview writeReview = new WriteReview();
         FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
 
-        fetchReviewsBean = writeReview.getReviews(tour.getName());
+        try {
+            fetchReviewsBean = writeReview.getReviews(tour.getName());
+        } catch (NoReviewsFound e) {
+            throw new RuntimeException(e);
+        }
 
         for(Review review : fetchReviewsBean.getReviews()) {
             reviewObservableList.add(review);
@@ -122,37 +128,51 @@ public class ReadReviewsFromBookGUIController implements Initializable {
     }
 
     public void progressBarsInit() {
-        WriteReview writeReview = new WriteReview();
-        FetchReviewsBean fetchReviewsBean = writeReview.getReviews(tour.getName());
-        float percentage;
 
-        for(int i = 1; i < 6; i += 1) {
-            percentage = writeReview.getRatingPercentage(i, fetchReviewsBean);
-            switch (i) {
-                case 1:
-                    oneBar.setProgress(percentage);
-                    onePerc.setText(percentage * 100 + "%");
-                    break;
-                case 2:
-                    twoBar.setProgress(percentage);
-                    twoPerc.setText(percentage * 100 + "%");
-                    break;
-                case 3:
-                    threeBar.setProgress(percentage);
-                    threePerc.setText(percentage * 100 + "%");
-                    break;
-                case 4:
-                    fourBar.setProgress(percentage);
-                    fourPerc.setText(percentage * 100 + "%");
-                    break;
-                case 5:
-                    fiveBar.setProgress(percentage);
-                    fivePerc.setText(percentage * 100 + "%");
-                    break;
-                default:
-                    break;
+        try {
+            WriteReview writeReview = new WriteReview();
+            FetchReviewsBean fetchReviewsBean = null;
+            fetchReviewsBean = writeReview.getReviews(tour.getName());
+
+            float percentage;
+
+            for(int i = 1; i < 6; i += 1) {
+                percentage = writeReview.getRatingPercentage(i, fetchReviewsBean);
+                switch (i) {
+                    case 1:
+                        oneBar.setProgress(percentage);
+                        onePerc.setText(percentage * 100 + "%");
+                        break;
+                    case 2:
+                        twoBar.setProgress(percentage);
+                        twoPerc.setText(percentage * 100 + "%");
+                        break;
+                    case 3:
+                        threeBar.setProgress(percentage);
+                        threePerc.setText(percentage * 100 + "%");
+                        break;
+                    case 4:
+                        fourBar.setProgress(percentage);
+                        fourPerc.setText(percentage * 100 + "%");
+                        break;
+                    case 5:
+                        fiveBar.setProgress(percentage);
+                        fivePerc.setText(percentage * 100 + "%");
+                        break;
+                    default:
+                        break;
+                }
             }
+        } catch (NoReviewsFound e) {
+            throw new RuntimeException(e);
+        } catch (DivisionByZero dbz) {
+            onePerc.setText("0%");
+            twoPerc.setText("0%");
+            threePerc.setText("0%");
+            fourPerc.setText("0%");
+            fivePerc.setText("0%");
         }
+
     }
 
     @Override
