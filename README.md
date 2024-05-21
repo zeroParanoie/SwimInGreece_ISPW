@@ -6,7 +6,7 @@ SwimInGreece is the project for the Software Engineering course in Tor Vergata.
   - sponsor tour - DONE
   - read/write reviews - DONE
   - book tour - level medium - DONE
-  - add exceptions - in progress
+  - add exceptions - DONE
 - create second view; - in progress
 - add file system functionality to users dao; - DONE
 - test cases;
