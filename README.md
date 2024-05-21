@@ -14,9 +14,6 @@ SwimInGreece is the project for the Software Engineering course in Tor Vergata.
 - sonarcloud api;
 
 # Current issues
-- login will accept empty credentials and log in as a swimmer | will be solved adding exceptions
-- stack trace is printed when there are empty fields in the booking view | this is ok, fixed with exceptions
-- empty fields give exceptions on tour booking | this is ok,  fixed with exceptions
 - need to fix view buttons gave from copy paste
 
 # Possible improvements
