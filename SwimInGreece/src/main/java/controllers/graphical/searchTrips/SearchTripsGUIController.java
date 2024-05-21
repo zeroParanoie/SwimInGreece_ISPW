@@ -2,6 +2,7 @@ package controllers.graphical.searchTrips;
 
 import controllers.application.SearchTrips;
 import engClasses.beans.searchTrips.TourBean;
+import engClasses.exceptions.NoTripsFound;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -101,19 +102,25 @@ public class SearchTripsGUIController implements Initializable {
             e.printStackTrace();
         }
 
-        if(searchField.getText().isEmpty() && maxLengthField.getText().isEmpty()) {
-            errorLabel.setVisible(false);
-            tourBean = searchTrips.getAllTours();
-        } else if(searchField.getText().isEmpty() && !maxLengthField.getText().isEmpty()) {
-            errorLabel.setVisible(false);
-            tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
-        } else if(!searchField.getText().isEmpty() && maxLengthField.getText().isEmpty()) {
-            errorLabel.setVisible(false);
-            tourBean = searchTrips.getSelectedTours(searchField.getText(), 0);
-        } else if(searchField.getText().isEmpty() && !maxLengthField.getText().isEmpty()) {
-            errorLabel.setVisible(false);
-            tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
+        try {
+            if(searchField.getText().isEmpty() && maxLengthField.getText().isEmpty()) {
+                errorLabel.setVisible(false);
+                tourBean = searchTrips.getAllTours();
+            } else if(searchField.getText().isEmpty() && !maxLengthField.getText().isEmpty()) {
+                errorLabel.setVisible(false);
+                tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
+            } else if(!searchField.getText().isEmpty() && maxLengthField.getText().isEmpty()) {
+                errorLabel.setVisible(false);
+                tourBean = searchTrips.getSelectedTours(searchField.getText(), 0);
+            } else if(searchField.getText().isEmpty() && !maxLengthField.getText().isEmpty()) {
+                errorLabel.setVisible(false);
+                tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
+            }
+        } catch (NoTripsFound ntf) {
+            throw new RuntimeException(ntf);
         }
+
+
 
         for(Tour tour : tourBean.getTours()) {
             filteredToursObservableList.add(tour);
@@ -133,7 +140,11 @@ public class SearchTripsGUIController implements Initializable {
 
         SearchTrips searchTrips = new SearchTrips();
         TourBean allTours = new TourBean();
-        allTours = searchTrips.getAllTours();
+        try {
+            allTours = searchTrips.getAllTours();
+        } catch (NoTripsFound e) {
+            throw new RuntimeException(e);
+        }
         for(Tour tour : allTours.getTours()) {
             tourObservableList.add(tour);
         }

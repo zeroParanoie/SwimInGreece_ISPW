@@ -3,6 +3,7 @@ package controllers.graphical.reviews;
 import controllers.application.WriteReview;
 import engClasses.beans.reviews.FetchReviewsBean;
 import engClasses.exceptions.NoReviewsFound;
+import engClasses.exceptions.NoTripsFound;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -72,6 +73,8 @@ public class ReadReviewsSwimmerGUIController implements Initializable {
                 reviewObservableList.add(review);
             }
         } catch (NoReviewsFound e) {
+            reviewObservableList = null;
+        } catch (NoTripsFound e) {
             throw new RuntimeException(e);
         }
 

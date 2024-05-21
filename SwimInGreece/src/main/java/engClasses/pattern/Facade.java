@@ -4,6 +4,7 @@ import engClasses.DAO.BookingsDAO;
 import engClasses.DAO.OrganiserDAO;
 import engClasses.DAO.SwimmerDAO;
 import engClasses.DAO.ToursDAO;
+import engClasses.exceptions.NoTripsFound;
 import model.Booking;
 import model.Organiser;
 import model.Swimmer;
@@ -23,7 +24,7 @@ public class Facade {
         return facadeInstance;
     }
 
-    public Tour getTourFromFacade(String tourName) {
+    public Tour getTourFromFacade(String tourName) throws NoTripsFound {
         Tour tour = ToursDAO.getTourFromName(tourName);
         return tour;
     }

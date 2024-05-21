@@ -1,5 +1,7 @@
 package engClasses.DAO;
 
+import engClasses.exceptions.NoTripsFound;
+import engClasses.exceptions.TourAlreadyExistsException;
 import engClasses.query.LoginQuery;
 import engClasses.query.SwimQuery;
 import engClasses.query.TourQuery;
@@ -20,7 +22,7 @@ public class ToursDAO {
     private ToursDAO() {
     }
 
-    public static void insertTour(String tourName, String organiser, float length, String place) {
+    public static void insertTour(String tourName, String organiser, float length, String place) throws TourAlreadyExistsException {
         Statement stmt = null;
         Connection conn = null;
 
@@ -30,7 +32,7 @@ public class ToursDAO {
 
             ResultSet rs = TourQuery.selectTour(stmt, tourName, organiser);
             if(rs.first()) {
-                //already exists
+                throw new TourAlreadyExistsException("tour already exists!");
             } else {
                 TourQuery.insertTour(stmt, length, tourName, organiser, place);
                 stmt.close();
@@ -40,7 +42,7 @@ public class ToursDAO {
         }
     }
 
-    public static ArrayList<Tour> getAllTours() {
+    public static ArrayList<Tour> getAllTours() throws NoTripsFound {
         Statement stmt = null;
         Connection conn = null;
         ArrayList<Tour> outputTours = new ArrayList<Tour>();
@@ -51,6 +53,10 @@ public class ToursDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             ResultSet rs = TourQuery.getAllTours(stmt);
+            if(!rs.first()) {
+                throw new NoTripsFound("no trips in the db!");
+            }
+
             while(rs.next()) {
                 String name = rs.getString("Name");
                 String organiser = rs.getString("Organiser");
@@ -68,7 +74,7 @@ public class ToursDAO {
         }
     }
 
-    public static ArrayList<Tour> getFilteredTours(String filterString) {
+    public static ArrayList<Tour> getFilteredTours(String filterString) throws NoTripsFound {
         Statement stmt = null;
         Connection conn = null;
         ArrayList<Tour> outputTours = new ArrayList<Tour>();
@@ -78,6 +84,9 @@ public class ToursDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             ResultSet rs = TourQuery.searchTour(stmt, filterString);
+            if(!rs.first()) {
+                throw new NoTripsFound("no trips found for these constraints!");
+            }
 
             while (rs.next()) {
                 String name = rs.getString("Name");
@@ -96,7 +105,7 @@ public class ToursDAO {
         }
     }
 
-    public static ArrayList<Tour> getFilteredTours(String filterString, float maxLength) {
+    public static ArrayList<Tour> getFilteredTours(String filterString, float maxLength) throws NoTripsFound {
         Statement stmt = null;
         Connection conn = null;
         ArrayList<Tour> outputTours = new ArrayList<Tour>();
@@ -106,6 +115,9 @@ public class ToursDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             ResultSet rs = TourQuery.searchTour(stmt, filterString, maxLength);
+            if(!rs.first()) {
+                throw new NoTripsFound("no trips found for these constraints!");
+            }
 
             while (rs.next()) {
                 String name = rs.getString("Name");
@@ -124,7 +136,7 @@ public class ToursDAO {
         }
     }
 
-    public static ArrayList<Tour> getFilteredTours(float maxLength) {
+    public static ArrayList<Tour> getFilteredTours(float maxLength) throws NoTripsFound {
         Statement stmt = null;
         Connection conn = null;
         ArrayList<Tour> outputTours = new ArrayList<Tour>();
@@ -134,6 +146,9 @@ public class ToursDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             ResultSet rs = TourQuery.searchTour(stmt, maxLength);
+            if(!rs.first()) {
+                throw new NoTripsFound("no trips found for these constraints!");
+            }
 
             while (rs.next()) {
                 String name = rs.getString("Name");
@@ -193,7 +208,7 @@ public class ToursDAO {
         }
     }
 
-    public static Tour getTourFromName(String tourName) {
+    public static Tour getTourFromName(String tourName) throws NoTripsFound {
         Statement stmt = null;
         Connection conn = null;
 
@@ -204,7 +219,7 @@ public class ToursDAO {
             ResultSet rs = TourQuery.searchTour(stmt, tourName);
 
             if(!rs.first()) {
-                // no tour found
+                throw new NoTripsFound("no trips found under this name!");
             }
 
             String organiser = rs.getString("Organiser");

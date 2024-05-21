@@ -2,6 +2,7 @@ package controllers.graphical.sponsorTrip;
 
 import controllers.application.SponsorTourController;
 import engClasses.beans.sponsorTour.BeanNewTour;
+import engClasses.exceptions.TourAlreadyExistsException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -87,7 +88,12 @@ public class SponsorTourFormGUIController implements Initializable {
             beanNewTour.setLength(0);
             beanNewTour.setPlace(placeChoiceBox.getValue());
             SponsorTourController sponsorTourController = new SponsorTourController();
-            sponsorTourController.saveTour(beanNewTour);
+            try {
+                sponsorTourController.saveTour(beanNewTour);
+            } catch (TourAlreadyExistsException e) {
+                errorLabel.setText(e.getMessage());
+                errorLabel.setVisible(true);
+            }
 
             for (int i = numberOfSwims; i > 0; i = i - 1) {
                 Model.getInstance().getViewFactory().showAddSwim(session, i, numberOfSwims, (Stage) errorLabel.getScene().getWindow(), beanNewTour);

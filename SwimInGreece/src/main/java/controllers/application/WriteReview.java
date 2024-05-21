@@ -8,6 +8,7 @@ import engClasses.beans.reviews.FetchReviewsBean;
 import engClasses.beans.reviews.ReviewBean;
 import engClasses.exceptions.DivisionByZero;
 import engClasses.exceptions.NoReviewsFound;
+import engClasses.exceptions.NoTripsFound;
 import model.Review;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class WriteReview {
         ReviewsDAO.insertReview(reviewBean.getBody(), reviewBean.getRating(), reviewBean.getSwimmer(), reviewBean.getTourName());
     }
 
-    public FetchReviewsBean getReviews(LoggedUserBean loggedUserBean) throws NoReviewsFound {
+    public FetchReviewsBean getReviews(LoggedUserBean loggedUserBean) throws NoReviewsFound, NoTripsFound {
            FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
            List<Review> reviews = ReviewsDAO.getReviews(loggedUserBean.getUsr());
            fetchReviewsBean.setReviews(reviews);
@@ -31,7 +32,7 @@ public class WriteReview {
            return fetchReviewsBean;
     }
 
-    public FetchReviewsBean getReviews(String organiser) throws NoReviewsFound {
+    public FetchReviewsBean getReviews(String organiser) throws NoReviewsFound, NoTripsFound {
         FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
         List<Review> reviews = ReviewsDAO.getReviewsFromOrg(organiser);
 

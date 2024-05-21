@@ -4,6 +4,7 @@ import controllers.application.WriteReview;
 import engClasses.beans.reviews.FetchReviewsBean;
 import engClasses.exceptions.DivisionByZero;
 import engClasses.exceptions.NoReviewsFound;
+import engClasses.exceptions.NoTripsFound;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -113,7 +114,9 @@ public class ReadReviewsFromBookGUIController implements Initializable {
         try {
             fetchReviewsBean = writeReview.getReviews(tour.getName());
         } catch (NoReviewsFound e) {
-            throw new RuntimeException(e);
+            reviewObservableList = null;
+        } catch (NoTripsFound ntf) {
+            throw new RuntimeException(ntf);
         }
 
         for(Review review : fetchReviewsBean.getReviews()) {
@@ -171,6 +174,8 @@ public class ReadReviewsFromBookGUIController implements Initializable {
             threePerc.setText("0%");
             fourPerc.setText("0%");
             fivePerc.setText("0%");
+        } catch (NoTripsFound ntf) {
+            throw new RuntimeException(ntf);
         }
 
     }

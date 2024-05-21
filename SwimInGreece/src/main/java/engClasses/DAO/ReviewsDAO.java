@@ -1,6 +1,7 @@
 package engClasses.DAO;
 
 import engClasses.exceptions.NoReviewsFound;
+import engClasses.exceptions.NoTripsFound;
 import engClasses.query.ReviewsQuery;
 import misc.Connect;
 import engClasses.pattern.Facade;
@@ -31,7 +32,7 @@ public class ReviewsDAO {
         }
     }
 
-    public static List<Review> getReviews(String username) throws NoReviewsFound {
+    public static List<Review> getReviews(String username) throws NoReviewsFound, NoTripsFound {
         Statement stmt = null;
         Connection conn = null;
         List<Review> reviews = new ArrayList<Review>();
@@ -60,7 +61,7 @@ public class ReviewsDAO {
         }
     }
 
-    public static List<Review> getReviewsFromTourName(String tourName) throws NoReviewsFound {
+    public static List<Review> getReviewsFromTourName(String tourName) throws NoReviewsFound, NoTripsFound {
         Statement stmt = null;
         Connection conn = null;
         List<Review> reviews = new ArrayList<Review>();
@@ -90,7 +91,7 @@ public class ReviewsDAO {
         }
     }
 
-    public static List<Review> getReviewsFromOrg(String organiser) throws NoReviewsFound {
+    public static List<Review> getReviewsFromOrg(String organiser) throws NoReviewsFound, NoTripsFound {
         Connection conn = null;
         List<Review> reviews = new ArrayList<Review>();
 

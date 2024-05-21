@@ -1,6 +1,7 @@
 package controllers.graphical.searchTrips;
 
 import controllers.application.SearchTrips;
+import engClasses.exceptions.NoTripsFound;
 import engClasses.exceptions.TourNotSelectedException;
 import engClasses.beans.searchTrips.TourBean;
 import javafx.collections.FXCollections;
@@ -105,15 +106,20 @@ public class LoggedSearchTripsGUIController implements Initializable {
             e.printStackTrace();
         }
 
-        if(searchField.getText().isEmpty() && maxLengthField.getText().isEmpty()) {
-            tourBean = searchTrips.getAllTours();
-        } else if(searchField.getText().isEmpty() && !maxLengthField.getText().isEmpty()) {
-            tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
-        } else if(!searchField.getText().isEmpty() && maxLengthField.getText().isEmpty()) {
-            tourBean = searchTrips.getSelectedTours(searchField.getText(), 0);
-        } else if(searchField.getText().isEmpty() && !maxLengthField.getText().isEmpty()) {
-            tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
+        try {
+            if(searchField.getText().isEmpty() && maxLengthField.getText().isEmpty()) {
+                tourBean = searchTrips.getAllTours();
+            } else if(searchField.getText().isEmpty() && !maxLengthField.getText().isEmpty()) {
+                tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
+            } else if(!searchField.getText().isEmpty() && maxLengthField.getText().isEmpty()) {
+                tourBean = searchTrips.getSelectedTours(searchField.getText(), 0);
+            } else if(searchField.getText().isEmpty() && !maxLengthField.getText().isEmpty()) {
+                tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
+            }
+        } catch (NoTripsFound ntf) {
+            throw new RuntimeException(ntf);
         }
+
 
         for(Tour tour : tourBean.getTours()) {
             filteredToursObservableList.add(tour);
@@ -144,7 +150,11 @@ public class LoggedSearchTripsGUIController implements Initializable {
 
         SearchTrips searchTrips = new SearchTrips();
         TourBean allTours = new TourBean();
-        allTours = searchTrips.getAllTours();
+        try {
+            allTours = searchTrips.getAllTours();
+        } catch (NoTripsFound e) {
+            throw new RuntimeException(e);
+        }
         for(Tour tour : allTours.getTours()) {
             tourObservableList.add(tour);
         }

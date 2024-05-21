@@ -4,10 +4,11 @@ import engClasses.DAO.SwimDAO;
 import engClasses.DAO.ToursDAO;
 import engClasses.beans.addSwim.BeanNewSwim;
 import engClasses.beans.sponsorTour.BeanNewTour;
+import engClasses.exceptions.TourAlreadyExistsException;
 import model.Tour;
 
 public class SponsorTourController {
-    public void saveTour(BeanNewTour beanNewTour) {
+    public void saveTour(BeanNewTour beanNewTour) throws TourAlreadyExistsException {
         ToursDAO.insertTour(beanNewTour.getName(), beanNewTour.getOrganiser(), beanNewTour.getLength(), beanNewTour.getPlace());
     }
 
