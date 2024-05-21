@@ -61,12 +61,13 @@ public class OrgReadReviewsGUIController implements Initializable {
         WriteReview writeReview = new WriteReview();
         FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
 
-        fetchReviewsBean = writeReview.getReviews(session.getLoggedUserBean());
+        fetchReviewsBean = writeReview.getReviews(session.getLoggedUserBean().getUsr());
         for(Review review : fetchReviewsBean.getReviews()) {
             reviews.add(review);
+            System.out.println(review.getBody() + "HI");
         }
 
-        tourCol.setCellValueFactory(new PropertyValueFactory<>("tour"));
+        tourCol.setCellValueFactory(new PropertyValueFactory<>("tourName"));
         userCol.setCellValueFactory(new PropertyValueFactory<>("swimmerName"));
         bodyCol.setCellValueFactory(new PropertyValueFactory<>("body"));
         ratingCol.setCellValueFactory(new PropertyValueFactory<>("rating"));

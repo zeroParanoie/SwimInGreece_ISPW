@@ -10,6 +10,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.sql.Types.VARCHAR;
+
 public class ReviewsDAO {
     private ReviewsDAO() {}
 
@@ -86,8 +88,7 @@ public class ReviewsDAO {
         try {
             conn = Connect.getInstance().getConnection();
 
-            CallableStatement callableStatement = conn.prepareCall("{? = call get_org()}");
-            //int retVal = callableStatement.registerOutParameter();
+            CallableStatement callableStatement = conn.prepareCall("{call get_org()}");
             ResultSet rs = callableStatement.executeQuery();
             while(rs.next()) {
                 String user = rs.getString("Username");

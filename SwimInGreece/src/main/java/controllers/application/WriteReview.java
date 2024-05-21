@@ -23,15 +23,15 @@ public class WriteReview {
 
     public FetchReviewsBean getReviews(LoggedUserBean loggedUserBean) {
            FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
-           List<Review> reviews = ReviewsDAO.getReviewsFromOrg(loggedUserBean.getUsr());
+           List<Review> reviews = ReviewsDAO.getReviews(loggedUserBean.getUsr());
            fetchReviewsBean.setReviews(reviews);
 
            return fetchReviewsBean;
     }
 
-    public FetchReviewsBean getReviews(String tourName) {
+    public FetchReviewsBean getReviews(String organiser) {
         FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
-        List<Review> reviews = ReviewsDAO.getReviewsFromTourName(tourName);
+        List<Review> reviews = ReviewsDAO.getReviewsFromOrg(organiser);
 
         fetchReviewsBean.setReviews(reviews);
         return fetchReviewsBean;
