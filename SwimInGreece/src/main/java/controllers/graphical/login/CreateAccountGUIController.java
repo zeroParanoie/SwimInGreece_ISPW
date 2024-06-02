@@ -3,6 +3,7 @@ package controllers.graphical.login;
 import controllers.application.LoginController;
 import engClasses.beans.login.LoggedUserBean;
 import engClasses.beans.login.UserBean;
+import engClasses.exceptions.AlreadyInUseException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -71,22 +72,28 @@ public class CreateAccountGUIController implements Initializable {
     }
 
     private void onSignIn() {
-        LoggedUserBean loggedUserBean;
-        boolean isOrganiser = orgCheckBox.isSelected();
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        String fullname = fullnameField.getText();
-        UserBean userBean = new UserBean();
-        userBean.setOrganiser(isOrganiser);
-        userBean.setPassword(password);
-        userBean.setUsername(username);
-        userBean.setFullname(fullname);
-        LoginController loginController = new LoginController();
-        loggedUserBean = loginController.signInMethod(userBean);
 
-        Stage stage = (Stage) usernameField.getScene().getWindow();
-        Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showHomepage(session);
+        try {
+            LoggedUserBean loggedUserBean;
+            boolean isOrganiser = orgCheckBox.isSelected();
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+            String fullname = fullnameField.getText();
+            UserBean userBean = new UserBean();
+            userBean.setOrganiser(isOrganiser);
+            userBean.setPassword(password);
+            userBean.setUsername(username);
+            userBean.setFullname(fullname);
+            LoginController loginController = new LoginController();
+            loggedUserBean = loginController.signInMethod(userBean);
+
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            Model.getInstance().getViewFactory().closeStage(stage);
+            Model.getInstance().getViewFactory().showHomepage(session);
+        } catch (AlreadyInUseException e) {
+            errorLabel.setText(e.getMessage());
+        }
+
     }
 
     @Override

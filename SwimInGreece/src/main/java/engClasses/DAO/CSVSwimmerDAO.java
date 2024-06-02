@@ -28,7 +28,7 @@ public class CSVSwimmerDAO {
         CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.file, true)));
         String[] record = new String[3];
 
-        duplicateRecord = (selectSwimmer(swimmer.getUsername()) != null);
+        duplicateRecord = (selectSwimmer(swimmer.getUsername()) == null);
         if(!duplicateRecord) {
             record[0] = swimmer.getUsername();
             record[1] = pw;
@@ -80,7 +80,7 @@ public class CSVSwimmerDAO {
         }
 
         if(!swimmers.isEmpty()) {
-            throw new WrongCredsException("credentials are wrong!");
+            return null;
         } else if(swimmers.size() > 1) {
             throw new DupSwimmerException("Found duplicate in csv file!");
         }

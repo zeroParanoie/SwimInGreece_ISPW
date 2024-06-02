@@ -16,3 +16,41 @@
     -fx-font-size: 25;
     -fx-font-family: sans-serif;
 }
+
+.logo_container {
+    -fx-background-color: white;
+    -fx-background-radius: 50;
+    -fx-spacing: 20;
+}
+
+.logo_container Button {
+    -fx-background-color: linear-gradient(rgba(235,235,250,1) 0%, rgba(91,216,241,1) 100%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-font-size: 25;
+}
+
+.logo_container TextField {
+    -fx-border-radius: 20;
+    -fx-background-color: white;
+    -fx-border-color: rgba(91,216,241,1);
+}
+
+.logo_container CheckBox .box {
+    -fx-border-radius: 20;
+    -fx-border-color: #323232;
+    -fx-background-color: white;
+}
+
+.logo_container CheckBox .mark {
+    -fx-shape: "M1.73,12.91 8.1,19.28 22.79,4.59 22.79,1.59 8.1,16.28 1.73,9.91";
+}
+
+.logo_container CheckBox:selected .mark {
+    -fx-background-color: white;
+}
+
+.logo_container CheckBox:selected .box {
+    -fx-background-color: #323232;
+}

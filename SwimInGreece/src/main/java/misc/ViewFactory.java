@@ -37,7 +37,14 @@ public class ViewFactory {
     }
 
     public void showLogin(Session session) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/Login1.fxml"));
+        String resource;
+
+        if(session.getChosenView() == 0) {
+            resource = "/firstView/Login1.fxml";
+        } else {
+            resource = "/secondView/Login2.fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
         loader.setController(new LoginGUIController(session));
         showStage(loader);
     }

@@ -4,6 +4,7 @@ import engClasses.DAO.OrganiserDAO;
 import engClasses.DAO.SwimmerDAO;
 import engClasses.beans.login.LoggedUserBean;
 import engClasses.beans.login.UserBean;
+import engClasses.exceptions.AlreadyInUseException;
 import engClasses.exceptions.LoginFromDBException;
 import model.Organiser;
 import model.Swimmer;
@@ -26,7 +27,7 @@ public class LoginController {
         return loggedUser;
     }
 
-    public LoggedUserBean signInMethod(UserBean loggingUser) {
+    public LoggedUserBean signInMethod(UserBean loggingUser) throws AlreadyInUseException {
         String username = loggingUser.getUsername();
         String fullname = loggingUser.getFullname();
         String password = loggingUser.getPassword();

@@ -1,5 +1,6 @@
 package engClasses.DAO;
 
+import engClasses.exceptions.AlreadyInUseException;
 import engClasses.exceptions.LoginFromDBException;
 import engClasses.query.LoginQuery;
 import misc.Connect;
@@ -37,7 +38,7 @@ public class OrganiserDAO {
         return new Organiser(usr, fullname);
     }
 
-    public static void addOrganiser(Organiser organiser, String pw) {
+    public static void addOrganiser(Organiser organiser, String pw) throws AlreadyInUseException {
         Statement stmt = null;
         Connection conn = null;
 
@@ -47,7 +48,7 @@ public class OrganiserDAO {
 
             ResultSet rs = LoginQuery.orgLogin(stmt, organiser.getUsername());
             if(rs.first()) {
-                //username already in use
+                throw new AlreadyInUseException("this username is taken!");
             }
 
             LoginQuery.organiserSignIn(stmt, organiser, pw);

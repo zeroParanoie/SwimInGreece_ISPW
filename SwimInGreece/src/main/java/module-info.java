@@ -5,6 +5,8 @@ module SwimInGreece {
     requires java.sql;
     requires com.opencsv;
     requires org.controlsfx.controls;
+    requires org.testng;
+    requires org.junit.jupiter.api;
 
     opens misc;
     opens controllers.graphical;
@@ -14,4 +16,7 @@ module SwimInGreece {
     opens controllers.graphical.reviews;
     opens model;
     opens engClasses.pattern;
+    exports engClasses.beans.login;
+    exports engClasses.exceptions;
+    exports controllers.application;
 }
