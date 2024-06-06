@@ -12,12 +12,17 @@ import controllers.graphical.sponsorTrip.AddSwimGUIController;
 import controllers.graphical.sponsorTrip.OrgPubsGUIController;
 import controllers.graphical.sponsorTrip.SponsorTourFormGUIController;
 import controllers.graphical.sponsorTrip.SubmitTourGUIController;
+import engClasses.DAO.LogWriterDAO;
 import engClasses.beans.sponsorTour.BeanNewTour;
+import engClasses.pattern.Facade;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.Swimmer;
 import model.Tour;
+
+import java.io.IOException;
 
 public class ViewFactory {
     public ViewFactory() {}
@@ -92,6 +97,13 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SwimmerHomepage1.fxml"));
         loader.setController(new SwimmerHomepageGUIController(session));
         showStage(loader);
+        Swimmer swimmer = Facade.getInstance().getSwimmerFromFacade(session.getLoggedUserBean().getUsr());
+        LogWriterDAO logWriterDAO = new LogWriterDAO();
+        try {
+            logWriterDAO.updateLog(swimmer.getBookedTours());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void showOrganiserHomePage(Session session) {

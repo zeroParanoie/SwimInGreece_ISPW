@@ -1,0 +1,4 @@
+These are the tour you booked: 
+You booked tour: Tour in Crete on date: 23/05/2024
+You booked tour: Tour in Naxos on date: 06/06/2024
+You booked tour: Tour in Naxos on date: 31/05/2024
