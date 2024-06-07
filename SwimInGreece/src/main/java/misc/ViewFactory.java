@@ -27,6 +27,7 @@ import java.io.IOException;
 public class ViewFactory {
     public ViewFactory() {}
 
+
     public void showHomepage(Session session) {
         String resource;
 
@@ -71,6 +72,13 @@ public class ViewFactory {
     }
 
     public void showCreateAccount(Session session) {
+        String resource;
+        if(session.getChosenView() == 0) {
+            resource = "/firstView/CreateAccount1.fxml";
+        } else {
+            resource = "/secondView/CreateAccount2.fxml";
+        }
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/CreateAccount1.fxml"));
         loader.setController(new CreateAccountGUIController(session));
         showStage(loader);
@@ -79,9 +87,17 @@ public class ViewFactory {
     public void showBooking(Session session) {
         String resource;
         if(session.getLoggedUserBean() == null) {
-            resource = "/firstView/SearchTrips1.fxml";
+            if(session.getChosenView() == 0) {
+                resource = "/firstView/SearchTrips1.fxml";
+            } else {
+                resource = "/secondView/SearchTrips2.fxml";
+            }
         } else {
-            resource = "/firstView/LoggedSearchTrips1.fxml";
+            if(session.getChosenView() == 0) {
+                resource = "/firstView/LoggedSearchTrips1.fxml";
+            } else {
+                resource = "/secondView/LoggedSearchTrips2.fxml";
+            }
         }
         FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
         if(session.getLoggedUserBean() == null) {
@@ -94,7 +110,13 @@ public class ViewFactory {
     }
 
     public void showSwimmerHomepage(Session session) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SwimmerHomepage1.fxml"));
+        String resource;
+        if(session.getChosenView() == 0) {
+            resource = "/firstView/SwimmerHomepage1.fxml";
+        } else {
+            resource = "/secondView/SwimmerHomepage2.fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
         loader.setController(new SwimmerHomepageGUIController(session));
         showStage(loader);
         Swimmer swimmer = Facade.getInstance().getSwimmerFromFacade(session.getLoggedUserBean().getUsr());
@@ -107,13 +129,25 @@ public class ViewFactory {
     }
 
     public void showOrganiserHomePage(Session session) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/OrganiserHomepage1.fxml"));
+        String resource;
+        if(session.getChosenView() == 0) {
+            resource = "/firstView/OrganiserHomepage1.fxml";
+        } else {
+            resource = "/secondView/OrganiserHomepage2.fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
         loader.setController(new OrganiserHomepageGUIController(session));
         showStage(loader);
     }
 
     public void showSponsor(Session session) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/SponsorTour1.fxml"));
+        String resource;
+        if(session.getChosenView() == 0) {
+            resource = "/firstView/SponsorTour1.fxml";
+        } else {
+            resource = "/secondView/SponsorTour2.fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
         loader.setController(new SponsorTourFormGUIController(session));
         showStage(loader);
     }
@@ -137,7 +171,13 @@ public class ViewFactory {
     }
 
     public void showBookings(Session session) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/Bookings1.fxml"));
+        String resource;
+        if(session.getChosenView() == 0) {
+            resource = "/firstView/Bookings1.fxml";
+        } else {
+            resource = "/secondView/Bookings2.fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
         loader.setController(new BookingsGUIController(session));
         showStage(loader);
     }
@@ -155,13 +195,25 @@ public class ViewFactory {
     }
 
     public void showTourReviewsFromBooking(Session session, Tour tour) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/ReadReviewsFromBook1.fxml"));
+        String resource;
+        if(session.getChosenView() == 0) {
+            resource = "/firstView/ReadReviewsFromBook1.fxml";
+        } else {
+            resource = "/secondView/ReadReviewsFromBook2.fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
         loader.setController(new ReadReviewsFromBookGUIController(session, tour));
         showStage(loader);
     }
 
     public void showOrgPubs(Session session) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/OrgPubs1.fxml"));
+        String resource;
+        if(session.getChosenView() == 0) {
+            resource = "/firstView/OrgPubs1.fxml";
+        } else {
+            resource = "/secondView/OrgPubs2.fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
         loader.setController(new OrgPubsGUIController(session));
         showStage(loader);
     }

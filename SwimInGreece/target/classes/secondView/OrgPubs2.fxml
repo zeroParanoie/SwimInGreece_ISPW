@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="600.0" prefHeight="600.0" prefWidth="0.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="288.0" prefWidth="52.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="600.0" fitWidth="841.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../misc/pNWQ4kfR.jpeg" />
+               </image>
+            </ImageView>
+            <VBox layoutX="41.0" layoutY="86.0" prefHeight="313.0" prefWidth="519.0" styleClass="logo_container" stylesheets="@style2.css" AnchorPane.topAnchor="140.0">
+               <children>
+                  <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="tourCol" prefWidth="239.0" text="Tour" />
+                      <TableColumn fx:id="placeCol" prefWidth="239.0" text="Place" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="20.0" />
+                     </VBox.margin>
+                  </TableView>
+                  <HBox prefHeight="73.0" prefWidth="519.0">
+                     <children>
+                        <Button fx:id="submitBtn" mnemonicParsing="false" text="Back to trips">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="backBtn" mnemonicParsing="false" text="Back to personal area">
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+               </children></VBox>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

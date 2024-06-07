@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <ImageView fitHeight="600.0" fitWidth="768.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <effect>
+            <BoxBlur />
+        </effect>
+        <Image url="@../misc/pNWQ4kfR.jpeg" />
+    </ImageView>
+    <VBox layoutX="47.0" layoutY="168.0" prefHeight="460.0" prefWidth="498.0" styleClass="logo_container" stylesheets="@style2.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0">
+        <Label text="These are all the trips you booked">
+            <font>
+                <Font size="24.0" />
+            </font>
+            <VBox.margin>
+                <Insets left="20.0" top="30.0" />
+            </VBox.margin>
+        </Label>
+        <TableView fx:id="tableView" prefHeight="261.0" prefWidth="682.0">
+            <columns>
+                <TableColumn fx:id="tourCol" prefWidth="309.0" text="Tour" />
+                <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="150.0" text="Date" />
+            </columns>
+            <VBox.margin>
+                <Insets left="20.0" right="20.0" top="30.0" />
+            </VBox.margin>
+        </TableView>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="reviewBtn" mnemonicParsing="false" prefHeight="52.0" prefWidth="279.0" style="-fx-cursor: hand" text="Leave a review">
+                    <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="AT" />
+                    </graphic>
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
+                </Button>
+                <Button fx:id="backBtn" mnemonicParsing="false" prefHeight="52.0" prefWidth="232.0" style="-fx-cursor: hand;" text="Personal area">
+                    <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="INFO" />
+                    </graphic>
+                    <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+    </VBox>
+</AnchorPane>

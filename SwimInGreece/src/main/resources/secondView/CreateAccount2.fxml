@@ -5,18 +5,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <left>
         <VBox prefHeight="200.0" prefWidth="250.0" styleClass="navbar" stylesheets="@style2.css" BorderPane.alignment="CENTER">
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="homeBtn" mnemonicParsing="false" style="-fx-background-color: linear-gradient(rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);" text="Home">
+            <Button fx:id="homeBtn" mnemonicParsing="false" text="Home">
                 <graphic>
                     <FontAwesomeIconView fill="WHITE" glyphName="HOME" />
                 </graphic>
                 <VBox.margin>
                     <Insets left="50.0" top="50.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="loginBtn" mnemonicParsing="false" text="Login">
+                <graphic>
+                    <FontAwesomeIconView fill="WHITE" glyphName="USER" />
+                </graphic>
+                <VBox.margin>
+                    <Insets left="55.0" />
                 </VBox.margin>
             </Button>
             <Button fx:id="bookBtn" mnemonicParsing="false" text="Book trips">
@@ -27,13 +34,6 @@
                     <Insets left="30.0" />
                 </VBox.margin>
             </Button>
-         <Button fx:id="personalAreaBtn" mnemonicParsing="false" text="Personal area">
-         <Label fx:id="errorLabel" layoutX="1021.0" layoutY="6.0" text="You need to login to perform this action!" textFill="RED" />
-         <Label fx:id="welcomeLabel" layoutX="55.0" layoutY="6.0" prefHeight="43.0" prefWidth="527.0" text="welcome" textFill="WHITE" />
-             <VBox.margin>
-               <Insets left="30.0" />
-            </VBox.margin>
-         </Button>
         </VBox>
     </left>
     <center>
@@ -41,10 +41,29 @@
             <ImageView fitHeight="600.0" fitWidth="747.0" pickOnBounds="true" preserveRatio="true" styleClass="textRect">
                 <Image url="@../misc/pNWQ4kfR.jpeg" />
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="311.0" layoutX="71.0" layoutY="150.0" stroke="WHITE" strokeType="INSIDE" styleClass="textRect" width="363.0" />
-            <ImageView fitHeight="260.0" fitWidth="325.0" layoutX="89.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../misc/textHomepage.png" />
-            </ImageView>
+         <VBox layoutX="112.0" layoutY="111.0" prefHeight="271.0" prefWidth="376.0" styleClass="logo_container" stylesheets="@style2.css">
+            <children>
+               <TextField fx:id="usernameField" promptText="Username...">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="20.0" />
+                  </VBox.margin></TextField>
+               <TextField fx:id="passwordField" promptText="Password...">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" />
+                  </VBox.margin></TextField>
+               <TextField fx:id="fullnameField" promptText="Fullname...">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" />
+                  </VBox.margin></TextField>
+               <CheckBox fx:id="orgCheckBox" mnemonicParsing="false" text="I'm making an organiser account">
+                  <VBox.margin>
+                     <Insets left="20.0" />
+                  </VBox.margin></CheckBox>
+               <Button fx:id="submitBtn" mnemonicParsing="false" text="Submit">
+                  <VBox.margin>
+                     <Insets left="130.0" />
+                  </VBox.margin></Button>
+            </children></VBox>
         </AnchorPane>
     </center>
 </BorderPane>

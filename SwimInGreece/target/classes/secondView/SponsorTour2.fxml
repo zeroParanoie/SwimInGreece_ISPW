@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <left>
+        <VBox prefHeight="200.0" prefWidth="250.0" styleClass="navbar" stylesheets="@style2.css" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="homeBtn" mnemonicParsing="false" text="Home">
+                <graphic>
+                    <FontAwesomeIconView fill="WHITE" glyphName="HOME" />
+                </graphic>
+                <VBox.margin>
+                    <Insets left="50.0" top="50.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="sponsorBtn" mnemonicParsing="false" prefHeight="46.0" prefWidth="230.0" style="-fx-background-color: linear-gradient(rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);" text="Sponsor trip">
+                <graphic>
+                    <FontAwesomeIconView fill="WHITE" />
+                </graphic>
+                <VBox.margin>
+                    <Insets left="10.0" />
+                </VBox.margin>
+                <font>
+                    <Font size="10.0" />
+                </font>
+            </Button>
+            <Button fx:id="personalAreaBtn" mnemonicParsing="false" text="Personal area">
+                <VBox.margin>
+                    <Insets left="30.0" />
+                </VBox.margin>
+            </Button>
+        </VBox>
+    </left>
+    <center>
+        <AnchorPane prefHeight="600.0" prefWidth="463.0" stylesheets="@style2.css" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="600.0" fitWidth="747.0" pickOnBounds="true" preserveRatio="true" styleClass="textRect">
+                <Image url="@../misc/pNWQ4kfR.jpeg" />
+            </ImageView>
+         <VBox layoutX="72.0" layoutY="146.0" prefHeight="309.0" prefWidth="457.0" styleClass="logo_container" stylesheets="@style2.css">
+            <children>
+               <Label text="Tour name">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="10.0" />
+                  </VBox.margin></Label>
+               <TextField fx:id="TourNameField">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="-15.0" />
+                  </VBox.margin></TextField>
+               <Label text="Number of total swims for the tour">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" />
+                  </VBox.margin></Label>
+               <TextField fx:id="swimsField">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="-15.0" />
+                  </VBox.margin></TextField>
+               <Label text="Tour place">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" />
+                  </VBox.margin></Label>
+               <ChoiceBox fx:id="placeChoiceBox" prefWidth="150.0">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="-15.0" />
+                  </VBox.margin></ChoiceBox>
+               <Button fx:id="submitBtn" mnemonicParsing="false" prefHeight="52.0" prefWidth="417.0" text="Continue to swims specifications">
+                  <VBox.margin>
+                     <Insets left="20.0" />
+                  </VBox.margin></Button>
+            </children></VBox>
+        </AnchorPane>
+    </center>
+</BorderPane>

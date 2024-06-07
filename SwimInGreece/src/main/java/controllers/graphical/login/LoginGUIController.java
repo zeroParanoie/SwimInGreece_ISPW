@@ -86,7 +86,7 @@ public class LoginGUIController implements Initializable {
             loggedUserBean = loginController.loginMethod(userBean);
 
             session.setLoggedUserBean(loggedUserBean);
-
+            session.setChosenView(this.session.getChosenView());
             Stage stage = (Stage) submitBtn.getScene().getWindow();
             Model.getInstance().getViewFactory().closeStage(stage);
 
@@ -108,7 +108,6 @@ public class LoginGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLabel.setVisible(false);
-
         homeBtn.setOnAction(actionEvent -> onHome());
         registerBtn.setOnAction(actionEvent -> onCreateAccount());
         submitBtn.setOnAction(actionEvent -> onLogin());

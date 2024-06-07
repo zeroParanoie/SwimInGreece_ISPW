@@ -54,3 +54,9 @@
 .logo_container CheckBox:selected .box {
     -fx-background-color: #323232;
 }
+
+.logo_container choice-box {
+    -fx-text-fill: #5FBCDE;
+    -fx-background-color: white;
+    -fx-border-color: #5FBCDE;
+}

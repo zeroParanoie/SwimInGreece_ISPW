@@ -1,7 +1,7 @@
 USER STORIES
 
-1. As an athlete, I want to book a swimming trip in Greece, so that i can plan my stay in advance.
-2. As an athlete, I want to attach reviews to a past trip, so that other users can decide on a trip plan.  
+1. As a swimmer, I want to book a swimming trip, so that i can plan my stay in advance.
+2. As a swimmer, I want to attach reviews to a past trip, so that other users can decide on a trip plan.  
 3. As an organiser, I want to create a swimming trip experience, so that swimmers from other countries can visit new places.
 
 
