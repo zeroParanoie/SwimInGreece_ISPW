@@ -12,6 +12,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import misc.Model;
 import misc.Session;
 import model.Review;
 
@@ -81,6 +83,12 @@ public class OrgReadReviewsGUIController implements Initializable {
         tableView.setItems(reviews);
     }
 
+    private void onHome() {
+        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showSwimmerHomepage(session);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -88,6 +96,10 @@ public class OrgReadReviewsGUIController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        homeBtn.setOnAction(actionEvent -> onHome());
+        loginBtn.setVisible(false);
+        bookBtn.setVisible(false);
     }
 }
 

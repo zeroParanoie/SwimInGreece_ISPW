@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_org`()
+CREATE PROCEDURE `new_procedure` ()
 BEGIN
 	select Username, Body, Rating, Name
 	from Reviews join Tours on Reviews.Tour = Tours.Name;

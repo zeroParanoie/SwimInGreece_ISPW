@@ -16,6 +16,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import misc.Model;
 import misc.Session;
 import model.Review;
 import model.Tour;
@@ -180,9 +182,24 @@ public class ReadReviewsFromBookGUIController implements Initializable {
 
     }
 
+    private void onHome() {
+        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showSwimmerHomepage(session);
+    }
+
+    private void back() {
+        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showBooking(session);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableInit();
+        loginBtn.setVisible(false);
+        homeBtn.setOnAction(actionEvent -> onHome());
+        submitBtn.setOnAction(actionEvent -> back());
         progressBarsInit();
     }
 }
