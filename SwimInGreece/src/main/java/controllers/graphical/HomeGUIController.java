@@ -54,7 +54,7 @@ public class HomeGUIController implements Initializable {
     private void onBook() {
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showBooking(new Session());
+        Model.getInstance().getViewFactory().showBooking(session);
     }
 
     @Override

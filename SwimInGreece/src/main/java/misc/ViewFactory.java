@@ -86,6 +86,7 @@ public class ViewFactory {
 
     public void showBooking(Session session) {
         String resource;
+        System.out.println(session.getChosenView());
         if(session.getLoggedUserBean() == null) {
             if(session.getChosenView() == 0) {
                 resource = "/firstView/SearchTrips1.fxml";
@@ -171,6 +172,7 @@ public class ViewFactory {
     }
 
     public void showBookings(Session session) {
+
         String resource;
         if(session.getChosenView() == 0) {
             resource = "/firstView/Bookings1.fxml";

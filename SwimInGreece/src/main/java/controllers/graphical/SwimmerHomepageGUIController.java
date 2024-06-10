@@ -48,7 +48,7 @@ public class SwimmerHomepageGUIController implements Initializable {
     }
 
     private void onBook() {
-        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
+        Stage stage = (Stage) personalAreaBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showBooking(session);
     }
