@@ -1,14 +1,14 @@
 package controllers.application;
 
-import engClasses.DAO.BookingsDAO;
-import engClasses.DAO.ReviewsDAO;
-import engClasses.beans.login.LoggedUserBean;
-import engClasses.beans.reviews.BookingBean;
-import engClasses.beans.reviews.FetchReviewsBean;
-import engClasses.beans.reviews.ReviewBean;
-import engClasses.exceptions.DivisionByZero;
-import engClasses.exceptions.NoReviewsFound;
-import engClasses.exceptions.NoTripsFound;
+import engclasses.dao.BookingsDAO;
+import engclasses.dao.ReviewsDAO;
+import engclasses.beans.login.LoggedUserBean;
+import engclasses.beans.reviews.BookingBean;
+import engclasses.beans.reviews.FetchReviewsBean;
+import engclasses.beans.reviews.ReviewBean;
+import engclasses.exceptions.DivisionByZero;
+import engclasses.exceptions.NoReviewsFound;
+import engclasses.exceptions.NoTripsFound;
 import model.Review;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class WriteReview {
 
     public FetchReviewsBean getReviews(String organiser) throws NoReviewsFound, NoTripsFound {
         FetchReviewsBean fetchReviewsBean = new FetchReviewsBean();
-        List<Review> reviews = ReviewsDAO.getReviewsFromOrg(organiser);
+        List<Review> reviews = ReviewsDAO.getReviewsFromOrg();
 
         fetchReviewsBean.setReviews(reviews);
         return fetchReviewsBean;

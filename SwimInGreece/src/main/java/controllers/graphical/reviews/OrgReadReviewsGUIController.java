@@ -1,8 +1,8 @@
 package controllers.graphical.reviews;
 
 import controllers.application.WriteReview;
-import engClasses.beans.reviews.FetchReviewsBean;
-import engClasses.exceptions.NoReviewsFound;
+import engclasses.beans.reviews.FetchReviewsBean;
+import engclasses.exceptions.NoReviewsFound;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -72,7 +72,7 @@ public class OrgReadReviewsGUIController implements Initializable {
                 reviews.add(review);
             }
         } catch (NoReviewsFound nrf) {
-            throw new Exception(nrf);
+            nrf.printStackTrace();
         }
 
         tourCol.setCellValueFactory(new PropertyValueFactory<>("tourName"));

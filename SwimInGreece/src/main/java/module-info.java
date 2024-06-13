@@ -11,12 +11,12 @@ module SwimInGreece {
     opens misc;
     opens controllers.graphical;
     opens controllers.graphical.login;
-    opens controllers.graphical.sponsorTrip;
-    opens controllers.graphical.searchTrips;
+    opens controllers.graphical.sponsortrip;
+    opens controllers.graphical.searchtrips;
     opens controllers.graphical.reviews;
     opens model;
-    opens engClasses.pattern;
-    exports engClasses.beans.login;
-    exports engClasses.exceptions;
+    opens engclasses.pattern;
+    exports engclasses.beans.login;
+    exports engclasses.exceptions;
     exports controllers.application;
 }

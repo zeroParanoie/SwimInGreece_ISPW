@@ -1,11 +1,11 @@
 package controllers.application;
 
-import engClasses.DAO.OrganiserDAO;
-import engClasses.DAO.SwimmerDAO;
-import engClasses.beans.login.LoggedUserBean;
-import engClasses.beans.login.UserBean;
-import engClasses.exceptions.AlreadyInUseException;
-import engClasses.exceptions.LoginFromDBException;
+import engclasses.dao.OrganiserDAO;
+import engclasses.dao.SwimmerDAO;
+import engclasses.beans.login.LoggedUserBean;
+import engclasses.beans.login.UserBean;
+import engclasses.exceptions.AlreadyInUseException;
+import engclasses.exceptions.LoginFromDBException;
 import model.Organiser;
 import model.Swimmer;
 

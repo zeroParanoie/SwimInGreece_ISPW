@@ -1,16 +1,14 @@
 package controllers.graphical.reviews;
 
 import controllers.application.WriteReview;
-import engClasses.beans.reviews.FetchReviewsBean;
-import engClasses.exceptions.NoReviewsFound;
-import engClasses.exceptions.NoTripsFound;
+import engclasses.beans.reviews.FetchReviewsBean;
+import engclasses.exceptions.NoReviewsFound;
+import engclasses.exceptions.NoTripsFound;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,10 +17,8 @@ import javafx.stage.Stage;
 import misc.Model;
 import misc.Session;
 import model.Review;
-import model.Tour;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ReadReviewsSwimmerGUIController implements Initializable {
@@ -77,7 +73,7 @@ public class ReadReviewsSwimmerGUIController implements Initializable {
         } catch (NoReviewsFound e) {
             reviewObservableList = null;
         } catch (NoTripsFound e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         tourCol.setCellValueFactory(new PropertyValueFactory<>("tourName"));
@@ -87,13 +83,13 @@ public class ReadReviewsSwimmerGUIController implements Initializable {
         tableView.setItems(reviewObservableList);
     }
 
-    private void onHome() {
+    public void revOnHome() {
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showSwimmerHomepage(session);
     }
 
-    private void back() {
+    public void revBack() {
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showBooking(session);
@@ -103,8 +99,8 @@ public class ReadReviewsSwimmerGUIController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         startSettings();
         loginBtn.setVisible(false);
-        homeBtn.setOnAction(actionEvent -> onHome());
-        bookBtn.setOnAction(actionEvent -> back());
+        homeBtn.setOnAction(actionEvent -> revOnHome());
+        bookBtn.setOnAction(actionEvent -> revBack());
     }
 
 }

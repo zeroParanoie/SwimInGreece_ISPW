@@ -1,7 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 public class Tour {
@@ -67,7 +66,7 @@ public class Tour {
         return orgName;
     }
 
-    public void setOrgName(String orgName) {
+    public void setOrgName() {
         this.orgName = organiser.getUsername();
     }
 }

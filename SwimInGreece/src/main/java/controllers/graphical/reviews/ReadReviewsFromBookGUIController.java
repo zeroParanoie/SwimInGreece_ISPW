@@ -1,10 +1,10 @@
 package controllers.graphical.reviews;
 
 import controllers.application.WriteReview;
-import engClasses.beans.reviews.FetchReviewsBean;
-import engClasses.exceptions.DivisionByZero;
-import engClasses.exceptions.NoReviewsFound;
-import engClasses.exceptions.NoTripsFound;
+import engclasses.beans.reviews.FetchReviewsBean;
+import engclasses.exceptions.DivisionByZero;
+import engclasses.exceptions.NoReviewsFound;
+import engclasses.exceptions.NoTripsFound;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,6 +29,8 @@ public class ReadReviewsFromBookGUIController implements Initializable {
 
     private Session session;
     private Tour tour;
+
+    private ReadReviewsSwimmerGUIController readReviewsSwimmerGUIController;
 
     @FXML
     private TableColumn<Review, String> bodyCol;
@@ -107,6 +109,7 @@ public class ReadReviewsFromBookGUIController implements Initializable {
     public ReadReviewsFromBookGUIController(Session session, Tour tour) {
         this.session = session;
         this.tour = tour;
+        this.readReviewsSwimmerGUIController = new ReadReviewsSwimmerGUIController(session);
     }
 
     private void tableInit() {
@@ -118,7 +121,7 @@ public class ReadReviewsFromBookGUIController implements Initializable {
         } catch (NoReviewsFound e) {
             reviewObservableList = null;
         } catch (NoTripsFound ntf) {
-            throw new RuntimeException(ntf);
+            ntf.printStackTrace();
         }
 
         for(Review review : fetchReviewsBean.getReviews()) {
@@ -169,7 +172,7 @@ public class ReadReviewsFromBookGUIController implements Initializable {
                 }
             }
         } catch (NoReviewsFound e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DivisionByZero dbz) {
             onePerc.setText("0%");
             twoPerc.setText("0%");
@@ -177,21 +180,17 @@ public class ReadReviewsFromBookGUIController implements Initializable {
             fourPerc.setText("0%");
             fivePerc.setText("0%");
         } catch (NoTripsFound ntf) {
-            throw new RuntimeException(ntf);
+            ntf.printStackTrace();
         }
 
     }
 
     private void onHome() {
-        Stage stage = (Stage) loginBtn.getScene().getWindow();
-        Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showSwimmerHomepage(session);
+        readReviewsSwimmerGUIController.revOnHome();
     }
 
     private void back() {
-        Stage stage = (Stage) loginBtn.getScene().getWindow();
-        Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showBooking(session);
+        readReviewsSwimmerGUIController.revBack();
     }
 
     @Override

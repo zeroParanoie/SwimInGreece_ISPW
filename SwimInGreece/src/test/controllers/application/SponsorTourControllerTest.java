@@ -1,7 +1,7 @@
 package controllers.application;
 
-import engClasses.beans.sponsorTour.BeanNewTour;
-import engClasses.exceptions.TourAlreadyExistsException;
+import engclasses.beans.sponsortour.BeanNewTour;
+import engclasses.exceptions.TourAlreadyExistsException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

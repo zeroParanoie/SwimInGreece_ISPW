@@ -1,10 +1,7 @@
 package misc;
 
-import engClasses.DAO.LogWriterDAO;
-import engClasses.pattern.Facade;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.Swimmer;
 
 import java.io.IOException;
 

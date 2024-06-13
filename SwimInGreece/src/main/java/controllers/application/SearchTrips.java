@@ -1,14 +1,11 @@
 package controllers.application;
 
-import engClasses.DAO.ToursDAO;
-import engClasses.beans.login.LoggedUserBean;
-import engClasses.beans.searchTrips.TourBean;
-import engClasses.exceptions.NoTripsFound;
+import engclasses.dao.ToursDAO;
+import engclasses.beans.login.LoggedUserBean;
+import engclasses.beans.searchtrips.TourBean;
+import engclasses.exceptions.NoTripsFound;
 import model.Tour;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class SearchTrips {
     public TourBean getAllTours() throws NoTripsFound {

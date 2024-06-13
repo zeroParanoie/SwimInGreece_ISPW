@@ -1,8 +1,8 @@
 package controllers.graphical.reviews;
 
 import controllers.application.WriteReview;
-import engClasses.beans.reviews.ReviewBean;
-import engClasses.exceptions.RatingNotSelectedException;
+import engclasses.beans.reviews.ReviewBean;
+import engclasses.exceptions.RatingNotSelectedException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

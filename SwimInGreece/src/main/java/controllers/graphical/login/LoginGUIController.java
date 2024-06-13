@@ -1,9 +1,9 @@
 package controllers.graphical.login;
 
 import controllers.application.LoginController;
-import engClasses.beans.login.LoggedUserBean;
-import engClasses.beans.login.UserBean;
-import engClasses.exceptions.LoginFromDBException;
+import engclasses.beans.login.LoggedUserBean;
+import engclasses.beans.login.UserBean;
+import engclasses.exceptions.LoginFromDBException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -72,7 +72,6 @@ public class LoginGUIController implements Initializable {
 
         try {
             LoggedUserBean loggedUserBean;
-            Session session = new Session();
             boolean isOrganiser = orgCheckBox.isSelected();
             String username = usernameField.getText();
             String password = passwordField.getText();

@@ -1,10 +1,8 @@
 package controllers.application;
 
-import engClasses.beans.login.LoggedUserBean;
-import engClasses.beans.login.UserBean;
-import engClasses.exceptions.AlreadyInUseException;
-import engClasses.exceptions.LoginFromDBException;
-import model.User;
+import engclasses.beans.login.UserBean;
+import engclasses.exceptions.AlreadyInUseException;
+import engclasses.exceptions.LoginFromDBException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,11 +18,10 @@ class LoginControllerTest {
         userBean.setPassword("2");
         userBean.setOrganiser(false);
 
-        LoggedUserBean loggedUserBean = new LoggedUserBean();
         LoginController loginController = new LoginController();
 
         try {
-            loggedUserBean = loginController.loginMethod(userBean);
+            loginController.loginMethod(userBean);
         } catch (LoginFromDBException e) {
             flag = 1;
         }
@@ -41,11 +38,10 @@ class LoginControllerTest {
         userBean.setPassword("2");
         userBean.setOrganiser(true);
 
-        LoggedUserBean loggedUserBean = new LoggedUserBean();
         LoginController loginController = new LoginController();
 
         try {
-            loggedUserBean = loginController.loginMethod(userBean);
+            loginController.loginMethod(userBean);
         } catch (LoginFromDBException e) {
             flag = 1;
         }
@@ -62,11 +58,10 @@ class LoginControllerTest {
         userBean.setPassword("1");
         userBean.setOrganiser(true);
 
-        LoggedUserBean loggedUserBean = new LoggedUserBean();
         LoginController loginController = new LoginController();
 
         try {
-            loggedUserBean = loginController.loginMethod(userBean);
+            loginController.loginMethod(userBean);
         } catch (LoginFromDBException e) {
             flag = 1;
         }
@@ -83,11 +78,10 @@ class LoginControllerTest {
         userBean.setPassword("1");
         userBean.setOrganiser(false);
 
-        LoggedUserBean loggedUserBean = new LoggedUserBean();
         LoginController loginController = new LoginController();
 
         try {
-            loggedUserBean = loginController.loginMethod(userBean);
+            loginController.loginMethod(userBean);
         } catch (LoginFromDBException e) {
             flag = 1;
         }
@@ -109,12 +103,11 @@ class LoginControllerTest {
         _userBean.setPassword("1");
         _userBean.setOrganiser(true);
 
-        LoggedUserBean loggedUserBean = new LoggedUserBean();
         LoginController loginController = new LoginController();
 
         try {
-            loggedUserBean = loginController.loginMethod(userBean);
-            loggedUserBean = loginController.loginMethod(_userBean);
+            loginController.loginMethod(userBean);
+            loginController.loginMethod(_userBean);
         } catch (LoginFromDBException e) {
             flag = 1;
         }
@@ -131,11 +124,10 @@ class LoginControllerTest {
         userBean.setPassword("5");
         userBean.setOrganiser(false);
 
-        LoggedUserBean loggedUserBean = new LoggedUserBean();
         LoginController loginController = new LoginController();
 
         try {
-            loggedUserBean = loginController.signInMethod(userBean);
+            loginController.signInMethod(userBean);
         } catch (AlreadyInUseException e) {
             flag = 1;
         }
@@ -152,11 +144,10 @@ class LoginControllerTest {
         userBean.setPassword("5");
         userBean.setOrganiser(false);
 
-        LoggedUserBean loggedUserBean = new LoggedUserBean();
         LoginController loginController = new LoginController();
 
         try {
-            loggedUserBean = loginController.signInMethod(userBean);
+            loginController.signInMethod(userBean);
         } catch (AlreadyInUseException e) {
             flag = 1;
         }
@@ -178,12 +169,11 @@ class LoginControllerTest {
         userBean.setPassword("5");
         userBean.setOrganiser(false);
 
-        LoggedUserBean loggedUserBean = new LoggedUserBean();
         LoginController loginController = new LoginController();
 
         try {
-            loggedUserBean = loginController.signInMethod(userBean);
-            loggedUserBean = loginController.signInMethod(_userBean);
+            loginController.signInMethod(userBean);
+            loginController.signInMethod(_userBean);
         } catch (AlreadyInUseException e) {
             flag = 1;
         }
@@ -205,12 +195,11 @@ class LoginControllerTest {
         userBean.setPassword("5");
         userBean.setOrganiser(false);
 
-        LoggedUserBean loggedUserBean = new LoggedUserBean();
         LoginController loginController = new LoginController();
 
         try {
-            loggedUserBean = loginController.signInMethod(userBean);
-            loggedUserBean = loginController.signInMethod(_userBean);
+            loginController.signInMethod(userBean);
+            loginController.signInMethod(_userBean);
         } catch (AlreadyInUseException e) {
             flag = 1;
         }

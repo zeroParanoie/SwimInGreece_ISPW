@@ -4,17 +4,17 @@ import controllers.graphical.*;
 import controllers.graphical.login.CreateAccountGUIController;
 import controllers.graphical.login.LoginGUIController;
 import controllers.graphical.reviews.*;
-import controllers.graphical.searchTrips.BookConfirmationGUIController;
-import controllers.graphical.searchTrips.BookingsGUIController;
-import controllers.graphical.searchTrips.LoggedSearchTripsGUIController;
-import controllers.graphical.searchTrips.SearchTripsGUIController;
-import controllers.graphical.sponsorTrip.AddSwimGUIController;
-import controllers.graphical.sponsorTrip.OrgPubsGUIController;
-import controllers.graphical.sponsorTrip.SponsorTourFormGUIController;
-import controllers.graphical.sponsorTrip.SubmitTourGUIController;
-import engClasses.DAO.LogWriterDAO;
-import engClasses.beans.sponsorTour.BeanNewTour;
-import engClasses.pattern.Facade;
+import controllers.graphical.searchtrips.BookConfirmationGUIController;
+import controllers.graphical.searchtrips.BookingsGUIController;
+import controllers.graphical.searchtrips.LoggedSearchTripsGUIController;
+import controllers.graphical.searchtrips.SearchTripsGUIController;
+import controllers.graphical.sponsortrip.AddSwimGUIController;
+import controllers.graphical.sponsortrip.OrgPubsGUIController;
+import controllers.graphical.sponsortrip.SponsorTourFormGUIController;
+import controllers.graphical.sponsortrip.SubmitTourGUIController;
+import engclasses.dao.LogWriterDAO;
+import engclasses.beans.sponsortour.BeanNewTour;
+import engclasses.pattern.Facade;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -25,8 +25,6 @@ import model.Tour;
 import java.io.IOException;
 
 public class ViewFactory {
-    public ViewFactory() {}
-
 
     public void showHomepage(Session session) {
         String resource;
@@ -79,14 +77,13 @@ public class ViewFactory {
             resource = "/secondView/CreateAccount2.fxml";
         }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/firstView/CreateAccount1.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
         loader.setController(new CreateAccountGUIController(session));
         showStage(loader);
     }
 
     public void showBooking(Session session) {
         String resource;
-        System.out.println(session.getChosenView());
         if(session.getLoggedUserBean() == null) {
             if(session.getChosenView() == 0) {
                 resource = "/firstView/SearchTrips1.fxml";
