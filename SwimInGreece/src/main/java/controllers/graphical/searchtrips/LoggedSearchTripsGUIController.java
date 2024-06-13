@@ -113,7 +113,7 @@ public class LoggedSearchTripsGUIController implements Initializable {
                 tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
             }
         } catch (NoTripsFound ntf) {
-            ntf.printStackTrace();
+            session.getLogger().info(ntf.getMessage());
         }
 
 
@@ -138,7 +138,7 @@ public class LoggedSearchTripsGUIController implements Initializable {
             try {
                 onBook();
             } catch (TourNotSelectedException e) {
-                e.printStackTrace();
+                session.getLogger().info(e.getMessage());
             }
         });
         refreshBtn.setOnAction(actionEvent -> onRefresh());
@@ -149,7 +149,7 @@ public class LoggedSearchTripsGUIController implements Initializable {
         try {
             allTours = searchTrips.getAllTours();
         } catch (NoTripsFound e) {
-            e.printStackTrace();
+            session.getLogger().info(e.getMessage());
         }
         for(Tour tour : allTours.getTours()) {
             tourObservableList.add(tour);

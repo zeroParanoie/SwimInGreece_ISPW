@@ -72,7 +72,7 @@ public class OrgReadReviewsGUIController implements Initializable {
                 reviews.add(review);
             }
         } catch (NoReviewsFound nrf) {
-            nrf.printStackTrace();
+            session.getLogger().info(nrf.getMessage());
         }
 
         tourCol.setCellValueFactory(new PropertyValueFactory<>("tourName"));
@@ -94,7 +94,7 @@ public class OrgReadReviewsGUIController implements Initializable {
         try {
             tableInit();
         } catch (Exception e) {
-            e.printStackTrace();
+            session.getLogger().info(e.getMessage());
         }
 
         homeBtn.setOnAction(actionEvent -> onHome());

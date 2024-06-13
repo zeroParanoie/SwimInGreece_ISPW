@@ -91,3 +91,5 @@ j
 :SwimInGreece/src/test/engclasses/dao/LogWriterDAOTest.java,2\0\20564448e04d1762a705ee189ffdfc85a408f9fa
 Å
 QSwimInGreece/src/main/java/controllers/graphical/reviews/AbstractReadReviews.java,a\d\ade19925e32f7697ca311f02d90cc8973bb97310
+\
+,SwimInGreece/src/main/java/misc/Session.java,6\2\6243d1c2d89463e66e3460a514614307f0e89033

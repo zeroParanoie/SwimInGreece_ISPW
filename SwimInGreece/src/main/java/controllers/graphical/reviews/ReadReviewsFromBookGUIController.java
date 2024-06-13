@@ -121,7 +121,7 @@ public class ReadReviewsFromBookGUIController implements Initializable {
         } catch (NoReviewsFound e) {
             reviewObservableList = null;
         } catch (NoTripsFound ntf) {
-            ntf.printStackTrace();
+            session.getLogger().info(ntf.getMessage());
         }
 
         for(Review review : fetchReviewsBean.getReviews()) {
@@ -172,7 +172,7 @@ public class ReadReviewsFromBookGUIController implements Initializable {
                 }
             }
         } catch (NoReviewsFound e) {
-            e.printStackTrace();
+            session.getLogger().info(e.getMessage());
         } catch (DivisionByZero dbz) {
             onePerc.setText("0%");
             twoPerc.setText("0%");
@@ -180,7 +180,7 @@ public class ReadReviewsFromBookGUIController implements Initializable {
             fourPerc.setText("0%");
             fivePerc.setText("0%");
         } catch (NoTripsFound ntf) {
-            ntf.printStackTrace();
+            session.getLogger().info(ntf.getMessage());
         }
 
     }

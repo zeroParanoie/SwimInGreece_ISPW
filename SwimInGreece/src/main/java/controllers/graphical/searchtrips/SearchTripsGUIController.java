@@ -98,7 +98,7 @@ public class SearchTripsGUIController implements Initializable {
         } catch (NumberFormatException e) {
             errorLabel.setText("max length must be a number!");
             errorLabel.setVisible(true);
-            e.printStackTrace();
+            session.getLogger().info(e.getMessage());
         }
 
         try {
@@ -116,7 +116,7 @@ public class SearchTripsGUIController implements Initializable {
                 tourBean = searchTrips.getSelectedTours("", Float.parseFloat(maxLengthField.getText()));
             }
         } catch (NoTripsFound ntf) {
-            ntf.printStackTrace();
+            session.getLogger().info(ntf.getMessage());
         }
 
 
@@ -142,7 +142,7 @@ public class SearchTripsGUIController implements Initializable {
         try {
             allTours = searchTrips.getAllTours();
         } catch (NoTripsFound e) {
-            e.printStackTrace();
+            session.getLogger().info(e.getMessage());
         }
         for(Tour tour : allTours.getTours()) {
             tourObservableList.add(tour);

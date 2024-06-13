@@ -73,7 +73,7 @@ public class ReadReviewsSwimmerGUIController implements Initializable {
         } catch (NoReviewsFound e) {
             reviewObservableList = null;
         } catch (NoTripsFound e) {
-            e.printStackTrace();
+            session.getLogger().info(e.getMessage());
         }
 
         tourCol.setCellValueFactory(new PropertyValueFactory<>("tourName"));
